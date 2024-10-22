@@ -1,0 +1,126 @@
+<!DOCTYPE> Ejercicio1 [
+	<!ELEMENT Texto (Frase | Párrafo)>
+		<!ATTLIST Texto Id ID#REQUIRED>
+		<!ATTLIST Texto TamañoDeLetra  (NMTOKENS | Pequeño | Grande)>
+		<!ATTLIST Texto Color CDATA>
+		<!ATTLIST Texto Fuente (Arial, Verdina, Calibri)>
+	<!ELEMENT Frase (#PCDATA)>
+	<!ELEMENT Párrafo (Frase*)>
+
+	<!ELEMENT Título EMPTY>
+		<!ATTLIST Título Identificador ID#REQUIRED>
+		<!ATTLIST Título Fuente (1|2|3|4|5|6|7|8|9|10)>
+		<!ATTLIST Título Estilo NMTOKEN>
+
+	<!ELEMENT Imagen (.png | .jpge | .jpg)>
+		<!ATTLIST Imagen Identificador ID#REQUIRED>
+		<!ATTLIST Imagen Tamaño NMTOKEN>
+		<!ATTLIST Imagen Filtro CDATA#>
+
+	<!ELEMENT Video EMPTY>
+		<!ATTLIST Video Duración NMTOKEN>
+		<!ATTLIST Video Comienzo NMTOKEN#FIXED "0">
+	
+	<!ELEMENT Encabezado (Imagen | Texto)
+
+	<!ELEMENT Pie (Imagen?|Texto?)>
+]>
+
+
+
+<?Xml version="1.0" enconding="UFT-8">
+<!DOCTYPE Ejercicio2 [
+	<!ELEMENT Conferencia (Nombre, Fecha)+>
+	<!ELEMENT Nombre (#PCDATA)>
+	<!ELEMENT Fecha (#PCDATA)>
+
+	<!ELEMENT Ponentes (Ponente+)>
+	<!ELEMENT Ponente (Nombre, Biografía)>
+		<!ATTLIST Ponente Experiencia ("Novato" | "Intermedio" | "Experto")#FIXED "Novato">
+	<!ELEMENT Biografía ANY>
+
+	<!ELEMENT Sesiones (Sesión)>
+	<!ELEMENT Sesión (Título, Duración, Descripción?|Ponente)>
+	<!ELEMENT Título (#PCDATA)>
+	<!ELEMENT Duración (#PCDATA)>
+	<!ELEMENT Descripción (#PCDATA)>
+]>
+
+
+
+<?Xml version="1.0" enconding="UFT-8">
+<!DOCTYPE Ejercicio 3[
+	<!ELEMENT Evento (Organizador+, Participante*, Patrocinador?, Ubicación)>
+		<!ATTLIST Evento Nombre CDATA>
+		<!ATTLIST Evento Fecha NMTOKEN>
+
+	<!ELEMENT Ubicación (Dirección, Capacidad)>
+		<!ATTLIST Ubicación Tipo ("Interior" | "Exterior")#FIXED "Interior">
+	<!ELEMENT Dirección (#PCDATA)>
+	<!ELMENT Capacidad (#PCDATA)>
+	
+	<!ELEMENT Organizadores (Organizador+)>
+	<!ELEMENT Organizador (Nombre.Organizador)>
+		<!ATTLIST Organizador Nombre.Organización CDATA>
+		<!ATTLIST Organizador Tipo ("Corporativo" | "Sin ánimo de lucro")>
+	<!ELEMENT Nombre.Organizador (#PCDATA)>
+	
+	<!ELEMENT Participantes (Participante+)>
+	<!ELEMENT Participante (Nombre, Correo Electrónico)>
+		<!ATTLIST Participante Tipo ("Ponente" | "Asistente")>
+	<!ELEMENT Nombre (#PCDATA)>
+	<!ELEMENT Correo Electrónico (#PCDATA)>
+
+	<!ELEMENT Patrocinadores (Patrocinador+)>
+	<!ELEMENT Patrocinador (Nombre)>
+		<!ATTLIST Patrocinador Nivel ("Oro" | "Bronce" | "Plata")>
+	<!ELEMENT Programa (Sesiones)>
+	<!ELEMENT Sesiones (Sesión+)>
+	<!ELEMENT Sesión (Título, Duración, Descripción)?>
+	<!ELEMENT Título (#PCDATA)>
+	<!ELEMENT Duración (#PC DATA)>
+	<!ELEMENT Descripción (#PCDATA)>
+]>
+
+
+
+<!DOCTYPE Ejercicio 4>[
+	<!ELEMENT Curso (Nombre, instructores, estudiantes, materiales)>
+		<!ATTLIST Cuso Fecha-Inicio NMTOKENS>
+
+	<!ELEMENT Nombre (#PCDATA)>
+
+	<!ELEMENT Instructores (Instructor+)>
+	<!ELEMENT Instructor (Nombre, Correo_Electrónico)>
+		<!ATTLIST Instructor Especialización ("Organización" | "Diseño" | "Marketing")>
+	<!ELEMENT Correo_Eletrónico (#PCDATA)>
+	
+	<!ELEMEMT Estudiantes (Estudiante+)>
+	<!ELEMENT Estudiante (Nombre, Número_Identificación)>
+		<!ATTLIST Estudiante Nivel ("Principiante" | "Intermedio" | "Avanzado")>
+	<!ELEMENT Número_Identificador (#PCDATA)>
+
+	<!ELEMENT Materiales (Material+)>
+	<!ELEMENT Material (Título, Tipo)>
+		<!ATTLIST Material Obligatorio ("Si" | "No")>
+	<!ELEMENT Título (#PCDATA)>
+	<!ELEMENT Tipo ("Libro" | "Vídeo" | "Artículo")>
+
+	<!ELEMENT Sesiones (Sesión+)>
+	<!ELEMENT Sesión (Título, Fecha, Duración, Descripción?)>
+	<!ELEMENT Fecha (#PCDATA)>
+	<!ELEMENT Duración (#PCDATA)>
+	<!ELEMENT Descripción (#PCDATA)>
+]>
+
+
+Ejemplo de Representación HTML de una parte del Ejercicio 4:
+<Curso>
+	<Nombre> A </Nombre>
+	<Instructores>
+		<Instructor>
+			<Nombre> Pepe </Nombre>
+			<Correo_Electrónico> pepe@gmail.com </Correo_Electrónico>
+		</Instructor>
+	</Instructores>
+</Curso>

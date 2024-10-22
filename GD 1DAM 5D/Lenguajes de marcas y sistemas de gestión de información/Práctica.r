@@ -1,0 +1,21 @@
+\documentclass[10]{article}
+\usepackage{amsmath}
+\begin{document}
+	\begin{tittle}
+		\LARGE textft{01.02 EJERCICIOS DE IDENTIFICACIÓN DEL LENGUAJE DE MARCAS}
+	\end{tittle}
+
+\\ \text{Con la información recopilada escribe en código:}
+\begin{equation}
+	\\frac{1}{1+\sqrt{2}-\sqrt{3}}=\frac{1}{\sqrt{2}-\sqrt{3}}*\frac{\left(1+\sqrt{2}\right)+\sqrt{3}}{\left(1+\sqrt{2}\right)+\sqrt{3}}
+\end {equation}
+
+\\\\8. \text{El conjunto solución de la ecuación} \begin{equation} \sqrt{x+\sqrt{x+8}}=2\sqrt{x} \end{equation} \text{es:}
+
+\begin{equation}
+	\\\sum_{k=1}^{1}k\left(k!\right)=1\left(1!\right)=1,
+\end{equation}
+
+\\ \text{Suponemos que}\begin{equation} x\in\left(-\infty,1\right)]=1-x, \end{equation} \text{pues} \begin{equation} 1-x>0.\end{equation} \text{Por lo tanto:}
+
+\end{document}

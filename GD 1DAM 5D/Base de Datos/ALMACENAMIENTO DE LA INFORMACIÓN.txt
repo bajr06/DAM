@@ -1,0 +1,7 @@
+ALMACENAMIENTO DE LA INFORMACIÓN
+Un fichero tiene que tener datos relacionados entre si y cada uno de estos registros están determinados por campos.
+- Tipos de ficheros según la información:
+F.P: datos importantes de una aplicación. Con un periodo de permanencia amplio.
+Fichero Maestro; Fichero constante y; Fichero histórico.
+F.T: almacenar información en una parte de la información. Generados a partir de los F.P. Periodo de existencia corto.
+Fichero intermedio; Fichero de maniobras y; ficheros de resultados.

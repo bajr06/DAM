@@ -1,0 +1,5 @@
+Hay dos usuarios de esta aplicación: Los viajeros y los administradores
+El primero dirá que necesita que sea accesible, fácil de entender y acepte cualquier tipo de paga con cualquier tarjeta, además de tener un apartado para ayuda asistida si llega a ser necesario.
+El administrador del sistema necesitaría acceso a los datos de cada viajero y que sea posible modificar estos mismos, que puedan cambiar lo que el viajero ve y poder añadir o quitar cosas en caso de ser necesario.
+Todo esto en la referente a los funcionales.
+En los 2 no funcionales, se exigiría el tener una seguridad, este accesible para cualquier tipo de maquina y que además tenga un rendimiento moderado.

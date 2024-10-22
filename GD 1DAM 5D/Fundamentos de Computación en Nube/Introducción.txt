@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (){
+	
+	printf("Fundamentos de computación en la nube");
+
+	return EXIT_SUCCESS;
+}
+
+- Responsabilidad compartida.
+- Nube pública, privada, híbrida, múltiple y comunitaria.
+- Alta disponibilidad.
+- SLA.
+- Escalada vertical y horizontal.
+- Confiabilidad, Predicción, Rendimiento y Coste.
+- Administración de y en la nube.
