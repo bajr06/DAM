@@ -14,6 +14,7 @@ int main(){
 	for(n=0; n <=10; n ++){
 		suma += n;
 	}
+
 	printf("El resultado de la suma de todos los número desde el 1 al 10 es: %d\n", suma);
 	 
 	return EXIT_SUCCESS;
