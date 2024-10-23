@@ -16,6 +16,6 @@
 	\\\sum_{k=1}^{1}k\left(k!\right)=1\left(1!\right)=1,
 \end{equation}
 
-\\ \text{Suponemos que}\begin{equation} x\in\left(-\infty,1\right)]=1-x, \end{equation} \text{pues} \begin{equation} 1-x>0.\end{equation} \text{Por lo tanto:}
+\\ \text{Suponemos que}\begin{equation} x\in\left(-\infty,1\right)=1-x, \end{equation} \text{pues} \begin{equation} 1-x>0.\end{equation} \text{Por lo tanto:}
 
 \end{document}

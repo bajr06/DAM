@@ -1,6 +1,9 @@
 #Excluimos los ejecutables de C
 *.out
-*.pdf
 
 # Excluir de C
 *.swp
+
+#Archivos varios no leibles
+*.pdf
+*.docx
