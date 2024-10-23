@@ -3,18 +3,18 @@
 
 int main(){
 	char str1 [20];
-	char X='\0';
 	char str2 [20];
+	char str3 [5];
 
 	printf("Introduzca una palabra:\n");
-	scanf("%s", str1);
+	scanf(" %s", str1);
 
 	printf("Introduzca otra palabra:\n");
-	scanf("%s", str2);
+	scanf(" %s", str2);
 	
-	str1[X]str2;
+	str3['\0'];
 
-	printf("La nueva palabra es: %s\n", str1);
+	printf("La nueva palabra es: %s%s%s\n", str1, str3, str2);
 	
 	return EXIT_SUCCESS;
 }
