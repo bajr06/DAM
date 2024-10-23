@@ -57,7 +57,7 @@
 	<!ELEMENT Ubicación (Dirección, Capacidad)>
 		<!ATTLIST Ubicación Tipo ("Interior" | "Exterior")#FIXED "Interior">
 	<!ELEMENT Dirección (#PCDATA)>
-	<!ELMENT Capacidad (#PCDATA)>
+	<!ELEMENT Capacidad (#PCDATA)>
 	
 	<!ELEMENT Organizadores (Organizador+)>
 	<!ELEMENT Organizador (Nombre.Organizador)>
@@ -85,7 +85,7 @@
 
 
 <!DOCTYPE Ejercicio 4>[
-	<!ELEMENT Curso (Nombre, instructores, estudiantes, materiales)>
+	<!ELEMENT Curso (Nombre, Instructores, Estudiantes, Materiales)>
 		<!ATTLIST Cuso Fecha-Inicio NMTOKENS>
 
 	<!ELEMENT Nombre (#PCDATA)>
@@ -95,7 +95,7 @@
 		<!ATTLIST Instructor Especialización ("Organización" | "Diseño" | "Marketing")>
 	<!ELEMENT Correo_Eletrónico (#PCDATA)>
 	
-	<!ELEMEMT Estudiantes (Estudiante+)>
+	<!ELEMENT Estudiantes (Estudiante+)>
 	<!ELEMENT Estudiante (Nombre, Número_Identificación)>
 		<!ATTLIST Estudiante Nivel ("Principiante" | "Intermedio" | "Avanzado")>
 	<!ELEMENT Número_Identificador (#PCDATA)>
