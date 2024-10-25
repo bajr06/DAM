@@ -9,9 +9,8 @@
 
 int main(){
 	int numero;
-	int divisor = 10000;
-	int residuo;
-	int guardado;
+	long int divisor = 1000000000000000000;
+	int residuo = 0;
 
 	printf("Escriba un número\n");
 	scanf("%d", &numero);
@@ -19,13 +18,12 @@ int main(){
 	do{
 		numero = numero % divisor;
 		divisor = divisor / 10;
-		residuo = numero / divisor;
-		guardado += residuo;
+		residuo += numero / divisor; 
 
 	}
 	while(numero % divisor);
 
-		printf("%d\n", residuo);
+		printf("La suma de todos sus digitos es igual a %d\n", residuo);
 		
 	return EXIT_SUCCESS;
-}
+} 

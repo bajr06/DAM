@@ -20,7 +20,7 @@ int main(){
 	printf("%d\n", i); //5 (2+3)
 	
 	i -= 5; //Decrementa 5
-	printf("");
+	printf("%d\n", i);
 
 	return EXIT_SUCCESS;
 }
