@@ -1,3 +1,4 @@
+<?Xml version="1.0" enconding="UFT-8">
 <!DOCTYPE> Ejercicio1 [
 	<!ELEMENT Texto (Frase | Párrafo)>
 		<!ATTLIST Texto Id ID#REQUIRED>
@@ -35,15 +36,15 @@
 	<!ELEMENT Fecha (#PCDATA)>
 
 	<!ELEMENT Ponentes (Ponente+)>
-	<!ELEMENT Ponente (Nombre, Biografía)>
+	<!ELEMENT Ponente (Nombre, Biografia)>
 		<!ATTLIST Ponente Experiencia ("Novato" | "Intermedio" | "Experto")#FIXED "Novato">
 	<!ELEMENT Biografía ANY>
 
 	<!ELEMENT Sesiones (Sesión)>
-	<!ELEMENT Sesión (Título, Duración, Descripción?|Ponente)>
-	<!ELEMENT Título (#PCDATA)>
-	<!ELEMENT Duración (#PCDATA)>
-	<!ELEMENT Descripción (#PCDATA)>
+	<!ELEMENT Sesión (Título, Duracion, Descripcion?|Ponente)>
+	<!ELEMENT Titulo (#PCDATA)>
+	<!ELEMENT Duracion (#PCDATA)>
+	<!ELEMENT Descripcion (#PCDATA)>
 ]>
 
 
@@ -84,6 +85,7 @@
 
 
 
+<?Xml version="1.0" enconding="UFT-8">
 <!DOCTYPE Ejercicio 4>[
 	<!ELEMENT Curso (Nombre, Instructores, Estudiantes, Materiales)>
 		<!ATTLIST Cuso Fecha-Inicio NMTOKENS>
@@ -111,7 +113,7 @@
 	<!ELEMENT Fecha (#PCDATA)>
 	<!ELEMENT Duración (#PCDATA)>
 	<!ELEMENT Descripción (#PCDATA)>
-]>
+]
 
 
 Ejemplo de Representación HTML de una parte del Ejercicio 4:

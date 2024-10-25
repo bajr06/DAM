@@ -4,9 +4,15 @@
         <title> Mi primera página web </title>
         <meta charset="utf8" name="theme-color" content="red">  <!-- Cosas presentes en la página web pero que en si no se muestra -->
     </head>
+
     <body>
         <!-- Etiquetas de Texto -->
+	<header>
         <h1> Bienvenido a mi página web </h1>
+	</header>
+
+<section>
+        <p id="Cabecera"> Cabecera </p>
         <h2> Subtítulo del h1 al h6 </h2>
         <h3> Etiquetas de Texto </h3>
         <p> <strong> <em> <es> Lorem dolor sit amet consectetur adipisicing elit. </es>
@@ -20,7 +26,10 @@
             <h1> Subindice superíndices </h1>
             <p>A<sup>2</sup> + 2<sub>2</sub></p>
             <p> Esta es la clase <dfn> de lenguaje de marcas </dfn> <abbr>LM</abbr> <small> SUS </small></p>
-        
+</section>
+
+<section>
+        <p id="Lista"> Lista </p>
         <h1> Listas </h1> <!-- Colocar listas -->
         <h2> Lista numeradas </h2>
             <ol>
@@ -48,6 +57,61 @@
         <h3> Imagen </h3>
         <center><img src="Swain.jpg" alt="Swain" width="600"> </center> <!-- Poner una imagen de Ruta Absoluta (Que es encuentra en nuestro ordenador)-->
         <center><img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg" height="400">"</center> <!-- Poner una imagen de Ruta Relativa (En una Página Web)-->
-    </body>
-    </html>
+</section>
+
+<section>
+		<h2> Enlaces </h2>
+		<nav>
+			<a href="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg"> Pantheon </a>
+			<a href="#Cabecera" > Cabecera </a>
+			<a href="#Lista" target"_blank"> Lista </a>
+		</nav>
+</section>
+
+<section>
+        <h2> Multimedia </h2>
+    <picture>
+        <source media="(width > 900px)" srcset="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flor_llorona.jpg" alt="Flor_llorona">
+        <img width="500" height="300" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Flor-_Hibiscus_rosa-sinensis.JPG" alt="Flor-_Hibiscus_rosa-sinensis">
+    </picture>
+    <video src="video.mp4 #t=30,40" width="500" height="300" autoplay muted lopp controls playsinline> </video>
     
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/V-LFL1o5V7A" title="Metro de Madrid series 7000 y 9400 con pitada" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <audio src="Halloween.mp3 #t=30,40" autoplay lopp controls preload="metadata"> </audio>
+</section>
+
+<section>
+    <h2> Tablas </h2>
+    <table border="1px" align="center">
+        <!--- Fila 1--->
+    <head>
+        <tr>
+            <th> Columna 1 </th>
+            <th> Columna 2 </th>
+        </tr>
+    </head>
+    <body>
+        <!-- Fila 2-->
+        <tr>
+            <td colspan="2"> Columna 1 </td>
+ 
+        </tr>
+        <!-- Fila 3-->
+        <tr>
+            <td rowspan="2"> Columna 2 </td>
+            <td> Columa 1</td>
+        </tr>
+            <!-- Fila 4-->
+        <tr>
+            
+            <td>Columna 2</td>
+        </tr>
+        </body>
+    <tfoot>
+        <caption> Ejemplo de Tabla </caption>
+    </tfoot>
+    </table>
+</section>
+	<footer><p> Pie de Página </p></footer>
+    </body>
+</html> 
