@@ -20,7 +20,7 @@ int main(){
 		numero = numero % divisor;
 		divisor = divisor / 10;
 		residuo = numero / divisor;
-		guardado = residuo;
+		guardado += residuo;
 
 	}
 	while(numero % divisor);
