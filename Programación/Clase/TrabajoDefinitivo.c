@@ -136,7 +136,8 @@ void comparar_3_numeros(){
 	printf("Inserte el número 3:\n");
 	scanf("%d", z);
 
-	if(x<y && y<z && x<z && x>y && y>z x>z)
+	if(x<y && y<z && x<z && x>y && y>z && x>z){
+		printf
 }
 int main(){
 	int Opción;
