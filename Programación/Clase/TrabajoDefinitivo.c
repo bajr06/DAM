@@ -130,15 +130,29 @@ void comparar_3_numeros(){
 	int z;
 
 	printf("Inserte el número 1:\n");
-	scanf("%d", x);
+	scanf("%d", &x);
 	printf("Inserte el número 2:\n");
-	scanf("%d", y);
+	scanf("%d", &y);
 	printf("Inserte el número 3:\n");
-	scanf("%d", z);
+	scanf("%d", &z);
 
-	if(x<y && y<z && x<z && x>y && y>z && x>z){
-		printf
+	if(x>y && x>z){
+		printf("Es %d el  número mayor.\n", x);
+	}
+	else
+	if(y>x && y>z){
+		printf("Es %d el número mayor.\n", y);
+	}
+	else
+	if(z>x && z>y){
+		printf("Es %d el número mayor.\n", z);
+	}
+	else
+	if(x==y && x==z && y==z && z==x && z==y){
+		printf("Hay números iguales.\n");
+	}
 }
+
 int main(){
 	int Opción;
 
@@ -169,10 +183,16 @@ int main(){
 		case 5:
 			es_primo();
 			break;
-
+		case 6:
+			comparar_3_numeros();
+			break;
+		case 7:
+			printf("¡Hasta la próxima!\n");
+			break;
+		default:
+			printf("Operación inválida\n");
 	}
 
-	printf("La prueba %d se ha ejecutado con exito\n", Opción);
 
 	return EXIT_SUCCESS;
 }
