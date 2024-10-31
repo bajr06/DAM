@@ -2,7 +2,7 @@
 <html lang="es"> <!-- Indica Idioma -->
     <head>
         <title> Mi primera página web </title>
-        <meta charset="utf8" name="theme-color" content="red">  <!-- Cosas presentes en la página web pero que en si no se muestra -->
+        <meta charset="UTF-8" name="theme-color" content="red">  <!-- Cosas presentes en la página web pero que en si no se muestra -->
     </head>
 
     <body>
@@ -112,6 +112,79 @@
     </tfoot>
     </table>
 </section>
-	<footer><p> Pie de Página </p></footer>
+
+<section>
+    <h2> Formularios </h2>
+        <form name="Formulario1" method="" action="">
+            <p> Nombre: <input type="text" name="nombre" required> </p>
+            <p> Teléfono: <input type="tel" name="telefono"> </p>
+            <p> Correo: <input type="email" name="correo"> </p>
+            <p> Constraseña: <input type="password" name="contraseña"> </p>
+            <p> Página Web: <input type="url" name="pagina", placeholder="salesianossantodomingosavio.es"> </p>
+            <input type="hidden" name="oculto" value="12">
+            <p> Edad: <input type="range" name="edad" min="0" max="50" step="5"> </p>
+            <p> Edad: <input type="number" name="edad" min="0" max="50"> </p>
+            <p> Fecha: <input type="date" name="fecha" min="2024.01.01" max="2024.12.31"> </p>
+            <p> Mes: <input type="month" name="mes"> </p>
+            <p> Semana: <input type="week" name="semana"> </p>
+            <p> Hora: <input type="time" name="hora"> </p>
+            <p> Fecha y hora: <input type="datetime-local" name="fechahora"> </p>
+            <input type="submit">
+        
+        <p> Opciones (checkbox): ¿Qué te gusta más?</p>
+            <p> <input type="checkbox" name="opcion1" value="piscina"> Piscina </p>
+            <p> <input type="checkbox" name="opcion2" value="campo" checked> Campo </p>
+            <p> <input type="checkbox" name="opcion3" value="playa"> Playa </p>
+      
+        <p> Opciones (radio): ¿Qué te gusta más?</p>
+            <p> <input type="radio" name="opcion" value="piscina"> Piscina </p>
+            <p> <input type="radio" name="opcion" value="campo" checked> Campo </p>
+            <p> <input type="radio" name="opcion" value="playa"> Playa </p>
+
+        <p> Opciones (lista desplegable): ¿Qué te gusta más?</p>
+        
+        <p>
+        <select>
+            <optgroup label="Categoria 1">
+                <option value="piscina"> Piscina </option>
+                <option value="campo" selected> Campo </option>
+                <option value="playa"> Playa </option>
+            </optgroup>
+            
+            <optgroup label="Categoria 2">
+                <option value="parque"> Parque </option>
+                <option value="rio"> Río </option>
+            </optgroup>
+        </select>
+        </p>
+
+        <p>
+        <select multiple>
+            <optgroup label="Categoria 1">
+                <option value="piscina"> Piscina </option>
+                <option value="campo" selected> Campo </option>
+                <option value="playa"> Playa </option>
+            </optgroup>
+        <p>    
+            <optgroup label="Categoria 2">
+                <option value="parque"> Parque </option>
+                <option value="rio"> Río </option>
+            </optgroup>
+        </select>
+        </p>
+
+        <input type="color" value="#FFFFFF">
+        <textarea name="texto" cols="10" rows="10" placeholder="Escribe aqui..."> </textarea>
+        <progress></progress>
+        <meter min="0" max="50" value="25" low="10" high="40"></meter>
+        <button disabled> Botón </button>
+        <input type="submit" value="Aceptar">
+        <input type="reset" value="Borrar">
+        </form>
+</section>
+
+	<footer>
+        <p> Pie de Página </p>
+    </footer>
     </body>
 </html> 

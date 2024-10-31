@@ -1,5 +1,5 @@
 <!DOCTYPE> article [
-<!ELEMENT Articulo (Texto*| Título+| Imagen*| Video*| Encabezado*| Pie*)>[
+<!ELEMENT Articulo (Texto*| Título+| Imagen*| Video*| Encabezado*| Pie*)[
 	<!ELEMENT Texto (Identificador, TamañoDeLetra+, Color+, Fuente+)>[
 		<!ELEMENT Identificador ANY>
 			<!ATTLIST Único Identificador ID#REQUIRED>
@@ -11,7 +11,7 @@
 			<!ATTLIST Tipo Fuente CDATA#REQUIRED>
 	]>
 
-	<!ELEMENT Título (Identificador, Fuente+, Estilo*)>[
+	<!ELEMENT Título (Identificador, Fuente+, Estilo*)[
 		<!ELEMENT Identificador ANY>
 			<!ATTLIST Único Identificador ID#REQUIRED>
 		<!ELEMENT Fuente (#PCDATA)>
@@ -20,7 +20,7 @@
 			<!ATTLIST Tipo Estilo NMTOKEN#REQUIRED>
 	]>
 
-	<!ELEMENT Imagen (Identificador, Tamaño+, Filtro)>[
+	<!ELEMENT Imagen (Identificador, Tamaño+, Filtro)[
  		<!ELEMENT Identificador ANY>
 			<!ATTLIST Único Identificador ID#REQUIRED>
 		<!ELEMENT Tamaño ANY>
@@ -29,24 +29,23 @@
 			<!ATTLIST Estilo Filtro CDATA#IMPLIED>
 	]>
 
-	<!ELEMENT Video (Duración?| Comienzo?)>[
+	<!ELEMENT Video (Duración?| Comienzo?)[
 		<!ELEMENT Duración ANY>
-			!ATTLIST Número Duración CDATA#REQUIRED>
+		<!ATTLIST Número Duración CDATA#REQUIRED>
 		<!ELEMENT Comienzo ANY>
-			!ATTLIST N Comienzo CDATA#FIXED "0">
+			<!ATTLIST N Comienzo CDATA#FIXED "0">
 	]>
 	
-	<!ELEMENT Encabezado (Imagen?|Texto?)>[
+	<!ELEMENT Encabezado (Imagen?|Texto?)[
 		<!ELEMENT Imagen (#PCDATA)>
 			<!ATTLIST ID Imagen IDREF#IMPLIED>
 		<!ELEMENT Video(#PCDATA)>
 			<!ATTLIST ID Video IDREF#IMPLIED>
 	]>
 
-	<!ELEMENT Pie (Imagen?|Texto?)>[
+	<!ELEMENT Pie (Imagen?|Texto?)[
 		<!ELEMENT Imagen (#PCDATA)>
 			<!ATTLIST ID Imagen IDREF#IMPLIED>
 		<!ELEMENT Video(#PCDATA)>
 			<!ATTLIST ID Video IDREF#IMPLIED>
 	]>
-]>
