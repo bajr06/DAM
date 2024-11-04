@@ -136,19 +136,19 @@ void comparar_3_numeros(){
 	printf("Inserte el número 3:\n");
 	scanf("%d", &z);
 
-	if(x>y && x>z){
+	if(x > y && x > z){
 		printf("Es %d el  número mayor.\n", x);
 	}
 	else
-	if(y>x && y>z){
+	if(y > x && y > z){
 		printf("Es %d el número mayor.\n", y);
 	}
 	else
-	if(z>x && z>y){
+	if(z > x && z > y){
 		printf("Es %d el número mayor.\n", z);
 	}
 	else
-	if(x==y && x==z && y==z && z==x && z==y){
+	if(x == y && x == z && y == z && z == x && z == y){
 		printf("Hay números iguales.\n");
 	}
 }

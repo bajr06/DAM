@@ -1,3 +1,1 @@
 print("Hola Mundo")
-
-for;
