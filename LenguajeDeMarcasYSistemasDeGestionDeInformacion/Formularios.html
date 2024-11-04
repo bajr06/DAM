@@ -54,7 +54,7 @@
                     <p> Nombre: <input type="text" name="nombre" required> </p>
                     <p> Correo Electrónico: <input type="email" name="correo" required> </p>
                     <p> Calificación: <input type="number" name="calificacion" min="1" max="5"> </p>
-                    <p> Comentarios: </p><textarea name="texto" cols="10" rows="1" placeholder="Comentario"> </textarea> </p>
+                    <p> Comentarios: </p><textarea name="texto" cols="10" rows="1" placeholder> Comentario </textarea> </p>
                     <input type="submit">
                 </form>
 
@@ -69,28 +69,49 @@
             <h1> Formularios Definitivos </h1>
                 <h2> Formulario 1 </h2>    
                     <form>
-                        <p> Velocidad: </p>
-                        <p>
-                            <select>
-                                <option value="100_mbits"> 100 Mbits </option>
-                                <option value="1000_mbits"> 1000 Mbits </option>
-                            </select>
-                        </p>
+                        <fieldset>
+                            <legend> Preferencias </legend>
+                            <p>
+                                <select>
+                                    <option value="100_mbits"> 100 Mbits </option>
+                                    <option value="1000_mbits"> 1000 Mbits </option>
+                                </select>
+                            </p>
 
-                        <p> DNI: <input type="text" name="dni" required> </p>
-                        <p> Nombre: <input type="text" name="nombre" required> </p>
-                        <p> Apellidos: <input type="text" name="apellidos"> </p>
-                        <p> Email: <input type="email" name="email" required> </p>
+                            <p> DNI: <input type="text" name="dni" required> </p>
+                            <p> Nombre: <input type="text" name="nombre" required> </p>
+                            <p> Apellidos: <input type="text" name="apellidos"> </p>
+                            <p> Email: <input type="email" name="email" required> </p>
 
-                        <p> Elija un color:
-                            <input type="color" value="#FFFFFF">
-                        </p>
+                            <p> Elija un color:
+                                <input type="color" value="#FFFFFF">
+                            </p>
 
-                        <textarea name="texto" cols="49" rows="6" placeholder="Por favor, escribe aquí"> </textarea>
+                            <textarea name="texto" cols="49" rows="6" placeholder="Por favor, escribe aquí"> </textarea>
 
                             <p> <input type="checkbox" name="procesador" value="procesadoramd"> AMD </p>
                             <p> <input type="checkbox" name="procesador" value="procesadorintel_i5"> Intel i5 </p>
                             <p> <input type="checkbox" name="procesador" value="procesadorintel_i7"> Intel i 7 </p>
+
+                            <p> Elige una hora: <input type="time" name="hora"> </p>
+
+                            <p> <input type="radio" name="red" value="red2g"> 2G </p>
+                            <p> <input type="radio" name="red" value="red3g"> 3G </p>
+                            <p> <input type="radio" name="red" value="red4g"> 4G </p>
+
+                            <p> Seleccione un archivo: <input type="file" name="fichero"> </p>
+
+                            <p> <input type="checkbox" name="asigantura" value="asignaturahistoria"> Historia </p>
+                            <p> <input type="checkbox" name="asigantura" value="asiganturageografia"> Geografía </p>
+                            <p> <input type="checkbox" name="asignatura" value="asiganturalengua"> Lengua </p>
+                            <p> <input type="checkbox" name="asignatura" value="asiganturamatematicas"> Matemáticas </p>
+
+                            <p> Eliga nuevamente una hora: <input type="time" name="hora"> </p>
+
+                            <p> Seleccione nuevamente un archivo: <input type="file" name="fichero"> </p>
+
+                            <textarea cols="49" rows="8" placeholder> Inserte aqui el texto </textarea>
+                        </fieldset>
                     </form>
         </body>
     </html>
