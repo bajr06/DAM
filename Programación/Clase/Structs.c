@@ -24,10 +24,10 @@ struct cuenta{
 };
 
 int main(){
-	struct cuenta usuario[100];
+	struct cuenta cliente[100];
 	// Declarando "hueco" para 100 cuentas.
 	
-	struct cuenta cliente={12345, 'R', "Jose", 586.30, 24, 5, 1990};
+	struct cuenta usuario = {12345, 'R', "Jose", 586.30, {24, 5, 1990}};
 		//num_cuenta, tipo_cuenta, nombre, saldo, fecha.dia, fecha.mes, fecha.año
 	
 	printf("Número de cuenta: %d\n", usuario.num_cuenta);
