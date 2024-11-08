@@ -86,7 +86,7 @@
 
 
 <?Xml version="1.0" enconding="UFT-8">
-<!DOCTYPE Ejercicio 4>[
+<!DOCTYPE Ejercicio 4 [
 	<!ELEMENT Curso (Nombre, Instructores, Estudiantes, Materiales)>
 		<!ATTLIST Cuso Fecha-Inicio NMTOKENS>
 
