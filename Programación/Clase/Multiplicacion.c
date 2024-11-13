@@ -6,8 +6,9 @@ int main(){
 	int numero2=2;
 	int resultado;
 
-	resultado=numero1*numero2;
+	resultado = numero1 * numero2;
 
 	printf("El resultado de multiplicar %d y %d es %d\n", numero1, numero2, resultado);
+	
 	return EXIT_SUCCESS;
 }
