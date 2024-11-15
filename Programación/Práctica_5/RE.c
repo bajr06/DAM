@@ -16,7 +16,7 @@ struct cuenta{
 
 int main(){
 	struct cuenta estudiante[25];
-	struct cuenta usuario
+	struct cuenta usuario;
 
 	return EXIT_SUCCESS;
 }
