@@ -23,7 +23,7 @@ int main(){
 	printf("Contenido de p: %d\n", *p);
 	
 	printf("Dirección de memoria de la variable p: %p\n", &p);
-	printf("Contenido de x: %d\n", *x);
+	printf("Contenido de x: %d\n", x);
 	
 	return EXIT_SUCCESS;
 }
