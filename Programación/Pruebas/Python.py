@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+=======
 print("Hola Mundo")
 
-print("Si esto lanza error seía lo mejor del mundo XD")
+print("ESTO ES UNA PRUEBA DEL FUNCIONAMIENTO DE GIT.")
+>>>>>>> refs/remotes/origin/main
