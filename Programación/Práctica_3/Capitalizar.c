@@ -10,6 +10,7 @@ int main (){
 	
 	printf("Escribe una letra:\n");
 	scanf("%c", &letra_minúscula);
+	
 	printf("Tu letra en mayúscula es: %c\n", capitalizar(letra_minúscula));
 
 	return 0;

@@ -21,7 +21,6 @@ int main(){
 	if (edad>=65){
 		printf("Usted es mayor");
 	}
-
 // Dependiendo de que valor nos de, y usando las condicionales, determninamos en cada franja si la edad es de un niño o de una persona mayor.
 
 	return EXIT_SUCCESS;

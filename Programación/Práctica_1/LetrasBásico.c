@@ -11,8 +11,7 @@ int main (){
 	D='D';
 	I='I';
 	S='S';
-
-
+	
 	printf("%c%c%c%c\n%c%c%c%c%c\n", H, O, L, A, A, D, I, O, S);
 
 	return EXIT_SUCCESS;
