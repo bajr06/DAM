@@ -36,14 +36,23 @@ typedef struct{
 } */
 
 void inicializar(estudiante *estudiante_a_rellenar, char *nombre, int *edad, float *nota){
-	estudiante_a_rellenar.edad -> edad;
-	//Habría que hacer *estudiante_a_rellenar = nota
-	// estudiante_a_rellenar.nota = nota; esto no funciona porque es un puntero
-	estudiante_a_rellenar.nota -> nota
+	estudiante_a_rellenar -> edad = *edad;
+	//Habría que hacer (*estudiante_a_rellenar).nota = nota.
+	// estudiante_a_rellenar.nota = nota; esto no funciona porque es un puntero.
+	estudiante_a_rellenar -> nota = *nota;
 	// estudiante_a_rellenar_nombre = nombre;
 	// Esto no es posible porque lo que hace es igualar las direcciones de memoria, no el contenido
-	strcpy(estudiante_a_rellenar.nombre, nombre);
+	strcpy(estudiante_a_rellenar -> nombre, nombre);
 }
+
+// Tiene que recibir un puntero a estudiante porque va a modificar la variable que va a recibir.
+// No es necesario el valor de retorno.
+void cumpleanios(estudiante *cumpleanero){
+	cumpleanero -> edad++;
+}
+
+// Crea una fución que cree un string con la información del estudiante.
+// Crear una función que imprima por pantalla.
 
 int main(){
 	estudiante listado[MAX_ESTUDIANTE]; //Aquí se reserva la memoria para los estudiantes.
@@ -56,11 +65,11 @@ int main(){
 	printf("%p\n", listado);
 	printf("Sizeof listado: %ld\n", sizeof(listado)); //560
 	printf("Sizeof estudiante: %ld\n", sizeof(estudiante)); //28
-	
+
 	printf("¿Cuántos estudiantes desea inicializar?\n");
 	scanf("%d", &num_estudiantes);
 
-	for(int i = 0; i < num_estudiante; i++){
+	for(int i = 0; i < num_estudiantes; i++){
 		printf("Introduce la edad:\n");
 		scanf("%d", &edad);
 		printf("Introduce la nota:\n");
@@ -70,6 +79,13 @@ int main(){
 
 		inicializar(listado + i, nombre, &edad, &nota);
 	}
+
+	// El estudiante de la primer posición ha cumplido años
+	printf("Edad antigua de %s: %d\n", listado[0].nombre, listado[0].edad);
+	cumpleanios(&listado[0]);
+	printf("Edad nueva: %d.\n", listado[0].edad);
+
+	printf("%d", (listado+6) -> edad);
 
 	return EXIT_SUCCESS;
 }
