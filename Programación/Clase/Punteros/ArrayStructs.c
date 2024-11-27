@@ -5,6 +5,7 @@
 //Definimos constantes
 #define MAX_NOMBRE 20
 #define MAX_ESTUDIANTE 20
+#define MAX_BUFFER 200
 
 /* 
  * 	Autor: Bryan Andreu Jiménez Rojas.
@@ -31,8 +32,7 @@ typedef struct{
 // Es válida pero no sabemos utilizarla
 /* estudiante *inicializar(char *nombre, int edad, float nota){
 	estudiante *estudiante_nuevo = malloc(); // Memoria dinámica
-
-	return &estudiante_nuevo;º
+	return &estudiante_nuevo;
 } */
 
 void inicializar(estudiante *estudiante_a_rellenar, char *nombre, int *edad, float *nota){
@@ -51,8 +51,25 @@ void cumpleanios(estudiante *cumpleanero){
 	cumpleanero -> edad++;
 }
 
-// Crea una fución que cree un string con la información del estudiante.
-// Crear una función que imprima por pantalla.
+// Recibe un estudiante, e imprime por pantalla sus datos.
+// PASAR POR REFERENCIA.
+void imprimir_estudiante(const estudiante *estudiante_a_imprimir){
+	printf("Nombre: %s\n",  estudiante_a_imprimir -> nombre);
+	printf("\tEdad: %d\n",  estudiante_a_imprimir -> edad);
+	printf("\tNota: %f\n",  estudiante_a_imprimir -> nota);
+}
+
+void estudianteToString(const estudiante * datos, char *retval){
+	
+	//snprintf (donde, cuánto, el qué[lo que harías con tu printf])
+	snprintf(retval, MAX_BUFFER * sizeof(char) /*200 x 4*/, "El estudiante %s de %d años ha sacado un %f", datos -> nombre, datos -> edad, datos -> nota);
+
+	// Da Warning porque esta función deja de existir cuando deja de existir.
+}
+
+void modificarEstudiante(estudiante *estudiante_a_cambiar, char *nuevo_nombre){
+	strcpy(estudiante_a_cambiar -> nombre, nuevo_nombre);
+}
 
 int main(){
 	estudiante listado[MAX_ESTUDIANTE]; //Aquí se reserva la memoria para los estudiantes.
@@ -84,8 +101,22 @@ int main(){
 	printf("Edad antigua de %s: %d\n", listado[0].nombre, listado[0].edad);
 	cumpleanios(&listado[0]);
 	printf("Edad nueva: %d.\n", listado[0].edad);
+	// printf("%d", (listado+6) -> edad);
 
-	printf("%d", (listado+6) -> edad);
+	/* Vamos a imrpimir estudiantes */
+	imprimir_estudiante(&listado[0]);
+	
+	char StringARellenar[MAX_BUFFER];
+	estudianteToString(&listado[0], StringARellenar);
+	printf("%s\n", StringARellenar);
+	// El estudiante ... de ... años ha sacado un ... .
+
+	char cambio[MAX_NOMBRE];
+	scanf("%s", cambio);
+	modificarEstudiante(&listado[0], cambio);
+
+	estudianteToString(&listado[0], StringARellenar);
+	printf("%s\n", StringARellenar);
 
 	return EXIT_SUCCESS;
 }

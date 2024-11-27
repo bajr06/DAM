@@ -4,4 +4,3 @@ Historia: Años 60: Se crean lenguajes para notaciones en correos electrónicos 
 	  Años 80: CERN crea un lenguaje de marca para compartir información a través de las redes (HTML).
 	  Años 90: W3C toma la iniciativa para dotar a la web un lenguaje más potente (XML).
 Lenguajes: SGML: aquel que define lenguajes de marca.
-	   

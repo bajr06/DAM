@@ -1,15 +1,19 @@
-@font-face
 body{
-	background-color = #CFC;
+	background-color: lightgreen;
 }
 
 p{
-	color = #00F;
+	color: blue;
 }
+
 #Titulo{
-	color = red;
+	color: red;
 }
 
 #Subtitulo{
-	color = 
+	color: red;
+}
+
+ul{
+	color: green;
 }
