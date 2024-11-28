@@ -32,10 +32,31 @@ typedef struct{
 } libro;
 
 void mostrarLibros(libro *catalogo){
-	printf("%d, %s, %s, %f, %u, %d.\n", catalogo -> identificador, catalogo -> titulo, catalogo -> autor, catalogo -> precio, catalogo -> literario, catalogo -> cantidad );
+    printf("%d, %s, %s, %.2f, ", catalogo -> identificador, catalogo -> titulo, catalogo -> autor, catalogo -> precio);
+    
+    switch(catalogo -> literario){
+        case 0:
+            printf("FICCION, ");
+            break;
+        case 1:
+            printf("NO_FICCION, ");
+            break;
+        case 2:
+            printf("POESIA, ");
+            break;
+        case 3:
+            printf("TEATRO, ");
+            break;
+        case 4:
+            printf("ENSAYO, ");
+    }
+    
+    printf("%d.\n", catalogo -> cantidad);
 }
 
 int main(){
+    char respuesta[5];
+
     libro libros[MAX_LIBROS] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10},
         {2, "1984", "George Orwell", 12.49, FICCION, 5},
@@ -79,9 +100,23 @@ int main(){
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10}
     }; 
 
-    for (int i = 0; i < MAX_LIBROS; ++i){
-    	mostrarLibros(&libros[0] + i);
-	}
+    printf("Bienvenido a la biblioteca de Pantheon, ¿Deseas ver todos los libros que tenemos?\n");
+    scanf("%s", respuesta);
+
+    if(strcmp(respuesta, "Si") == 0){
+       for (int i = 0; i < MAX_LIBROS; ++i){
+            mostrarLibros(&libros[0] + i); 
+        }
+    }
+    else
+    if(strcmp(respuesta, "No") == 0){
+        printf("Vale\n");
+    }
+    else{
+        printf("Has introducido una respuesta incorrecta.\n");
+    }
+
+    printf("A continuación tiene las opciones de:\n");
 
 	return EXIT_SUCCESS;
 }
