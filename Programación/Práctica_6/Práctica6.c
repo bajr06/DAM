@@ -6,7 +6,6 @@
 
 #define MAX_NOMBRE 50
 #define MAX_GENERO 5
-#define MAX_BUFFER 100
 #define MAX_LIBROS 40
 
 /* 
@@ -31,10 +30,8 @@ typedef struct{
 	int cantidad;
 } libro;
 
-void mostrarLibros(libro *catalogo){
-    printf("%d, %s, %s, %.2f, ", catalogo -> identificador, catalogo -> titulo, catalogo -> autor, catalogo -> precio);
-    
-    switch(catalogo -> literario){
+void categoria(genero *tipo){
+    switch(*tipo){
         case 0:
             printf("FICCION, ");
             break;
@@ -50,12 +47,24 @@ void mostrarLibros(libro *catalogo){
         case 4:
             printf("ENSAYO, ");
     }
-    
-    printf("%d.\n", catalogo -> cantidad);
+}
+
+// Imprime los datos de cada libro.
+void mostrarLibro(libro * libro_a_imprimir){
+    printf("%d, %s, %s, %.2f, ",  libro_a_imprimir -> identificador,  libro_a_imprimir -> titulo,  libro_a_imprimir -> autor,  libro_a_imprimir -> precio);
+    categoria(& libro_a_imprimir -> literario); // Imprimir la categoría en la que se encuentra.
+    printf("%d.\n",  libro_a_imprimir -> cantidad);
+}
+
+// Imprime el libro con el ID que el usuario ha insertado.
+void comparar_y_mostrar(libro *inventario, const int busqueda){
+    if(busqueda == inventario -> identificador){
+        mostrarLibro(inventario); // Ejecutamos la misma función con la que se imprime los datos de cada libro, pero especificando cual.
+    }
 }
 
 int main(){
-    char respuesta[5];
+    int buscar;
 
     libro libros[MAX_LIBROS] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10},
@@ -100,23 +109,28 @@ int main(){
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10}
     }; 
 
-    printf("Bienvenido a la biblioteca de Pantheon, ¿Deseas ver todos los libros que tenemos?\n");
-    scanf("%s", respuesta);
+    printf("Bienvenido a la biblioteca de Pantheon; estos son todos los libros que se encuentran en nuestro inventario\n");
 
-    if(strcmp(respuesta, "Si") == 0){
-       for (int i = 0; i < MAX_LIBROS; ++i){
-            mostrarLibros(&libros[0] + i); 
+    // Muestra todos los libros que se encuentren en el struct "libro".
+    for (int i = 0; i < MAX_LIBROS; ++i){
+        mostrarLibro(&libros[0] + i); 
+        //mostrarLibro(libros + i); 
+    }
+
+    printf("\tInserte el id del libro que desea visualizar:");
+    scanf("%d", &buscar);
+
+    // Pasamos por cada libro para que, al comprobar que el número que hemos insertado es igual al ID de uno de los libros, lo imprima.
+    int j =0;
+    if(buscar <= MAX_LIBROS){
+        while(j < MAX_LIBROS){
+            comparar_y_mostrar(&libros[0] + j, buscar);
+            j++;
         }
     }
-    else
-    if(strcmp(respuesta, "No") == 0){
-        printf("Vale\n");
-    }
     else{
-        printf("Has introducido una respuesta incorrecta.\n");
+        printf("Error: el id que has insertado no existe.\n");
     }
-
-    printf("A continuación tiene las opciones de:\n");
 
 	return EXIT_SUCCESS;
 }
