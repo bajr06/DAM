@@ -50,21 +50,39 @@ void categoria(genero *tipo){
 }
 
 // Imprime los datos de cada libro.
-void mostrarLibro(libro * libro_a_imprimir){
+void mostrarLibro(libro *libro_a_imprimir){
     printf("%d, %s, %s, %.2f, ",  libro_a_imprimir -> identificador,  libro_a_imprimir -> titulo,  libro_a_imprimir -> autor,  libro_a_imprimir -> precio);
-    categoria(& libro_a_imprimir -> literario); // Imprimir la categoría en la que se encuentra.
+    categoria(&libro_a_imprimir -> literario); // Imprimir la categoría en la que se encuentra.
     printf("%d.\n",  libro_a_imprimir -> cantidad);
 }
 
 // Imprime el libro con el ID que el usuario ha insertado.
-void comparar_y_mostrar(libro *inventario, const int busqueda){
-    if(busqueda == inventario -> identificador){
+void comparar_y_mostrar(libro *inventario, const int busqueda1){
+    if(busqueda1 == inventario -> identificador){
         mostrarLibro(inventario); // Ejecutamos la misma función con la que se imprime los datos de cada libro, pero especificando cual.
     }
 }
 
+void añadir_stock(libro *registro, const int busqueda2, int cantidad){
+    if(busqueda2 == registro -> identificador){
+        registro -> cantidad += cantidad;
+        mostrarLibro(registro);
+    }
+}
+
+void mostrar_por_categoria(libro *memoria, const int buscarcategoria){
+    for (int l = 0; l < MAX_LIBROS; ++l){
+        if(buscarcategoria == memoria -> literario){
+            mostrarLibro(memoria);
+        }
+        else{
+            printf("Error: el número del género que has ingresado, no existe\n");
+        }
+    }
+}
+
 int main(){
-    int buscar;
+    int buscar1, buscar2, stock, buscat;
 
     libro libros[MAX_LIBROS] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10},
@@ -109,6 +127,7 @@ int main(){
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10}
     }; 
 
+
     printf("Bienvenido a la biblioteca de Pantheon; estos son todos los libros que se encuentran en nuestro inventario\n");
 
     // Muestra todos los libros que se encuentren en el struct "libro".
@@ -117,20 +136,48 @@ int main(){
         //mostrarLibro(libros + i); 
     }
 
-    printf("\tInserte el id del libro que desea visualizar:");
-    scanf("%d", &buscar);
+
+    printf("\tInserte el id del libro que desea visualizar:\n");
+    scanf("%d", &buscar1);
 
     // Pasamos por cada libro para que, al comprobar que el número que hemos insertado es igual al ID de uno de los libros, lo imprima.
-    int j =0;
-    if(buscar <= MAX_LIBROS){
+    int j = 0;
+    if(buscar1 <= MAX_LIBROS){
         while(j < MAX_LIBROS){
-            comparar_y_mostrar(&libros[0] + j, buscar);
+            comparar_y_mostrar(&libros[0] + j, buscar1);
             j++;
         }
     }
     else{
         printf("Error: el id que has insertado no existe.\n");
     }
+
+
+    printf("\tInserte el ID del libro al que le quiera cambiar el stock:\n");
+    scanf("%d", &buscar2);
+
+    printf("¿Cuántos libros deseas añadir al stock?\n");
+    scanf("%d", &stock);
+
+    // Al seleccionar un libro, podemos encontrar su stock respectivo, y después imprimirlo.
+    int k = 0;
+    if(buscar2 <= MAX_LIBROS){
+        do{
+            añadir_stock(&libros[0] + k, buscar2, stock);
+            k++;
+        }
+        while(k < MAX_LIBROS);
+    }
+    else{
+        printf("Error: el id que has insertado no existe.\n");
+    }
+
+
+    // Mostrar todos los libros dependiendo de la cateogoría en la que se encuentre.
+    printf("¿De qué categoría de libros quieres ver los libros (FICCION, NO_FICCION, POESIA, TEATRO, ENSAYO)?\n");
+    scanf("%d", &buscat);
+
+    mostrar_por_categoria(&libros[0], buscat);
 
 	return EXIT_SUCCESS;
 }
