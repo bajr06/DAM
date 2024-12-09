@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title> Examen de 2022 </title>
+        <link rel="stylesheet" href="EJ_EXAMEN.css"> <!-- rel es el tipo de relación que tiene con el documento con el que estamos conectando, y href el nombre del documento -->
+    </head>
+    <body>
+        <div id="caja1">
+            <h1> CABECERA (h1) </h1>
+            <p> Los titulos h1 son de la familia de Arial y son del tamaño 28pt y negrita, el color de estos titulos será azul </p>
+            <p> 
+                Esta cabecera es de color amarillo y las cajas de abajo de esta caja están alineadas con flex. Esta caja está 
+                en la cabecera pero solo contiene el texto. Las cajas contenedoras a las que afecta flex son naranjas, la caja 
+                que las contiene rosa, las cajas tienen propiedad que las hace que estén alineadas y hau un hueco(gap) entre ellas 
+                de 10pt, además de tener un padding de 10pt y los párrafos son de la familia de Century Gothic y de tamaño 11pt. 
+            </p>
+        </div>
+        <div id="caja2">
+            <div class="cajanaranja">
+                <p> 
+                    Las listas y los párrafos de los divs que estén contenidos en la cabecera serán de la familia Arial como 
+                    h1 pero de tamaño 12
+                </p>
+                <p> Elementos que hay que tener en cuenta </p>
+                <ul>
+                    <li> Cerrar bien los divs </li>
+                    <li> Tener cuidado con la posición </li>
+                </ul>
+            </div>
+            <div class="cajanaranja">
+                <p>
+                    Estos textos son de ejemplo, recuerda que no se puedan poner la etiqueta br a no ser que la necesites para
+                    algo. Y que, aunque sea texto de ejemplo, debes de ponerlos en tipo párrafo.
+                </p>
+            </div>
+            <div class="cajanaranja">
+                <p>
+                    Estos textos son de ejemplo, recuerda que no se puedan poner la etiqueta br a no ser que la necesites para
+                    algo. Y que, aunque sea texto de ejemplo, debes de ponerlos en tipo párrafo.
+                </p>
+            </div>
+        </div>
+        <div id="caja3">
+            <div class="cajamorada">
+                <h2> GUIA PARA ESTA PARTE (h2) </h2>
+                <p> h2 es del color blanco, lo demás lo dejamos por defecto. </p>
+                <p>
+                    En esta caja hay tres cajas que se van a alainear con grid, la cuadrícula a crear es de 4x4, la primera caja 
+                    ocupa toda la fila de arriba. Haced las cajas con fracciones, por ejemplo, con una fracción. La caja central 
+                    es verde y las distintas cajas son moradas.  Hay una separación entre filas y columnas que permite ver la 
+                    cuadrículaya que el fondo de la caja es verde y las otras cajas son moradas. Añadimos 10pt y justificamos texto.
+                </p>
+            </div>
+            <div class="cajamorada">
+                <form>
+                    <p> Tu nombre: <input type="text" name="nombre"></p>
+                    <p> Tu dirección de correo: <input type="email" name="correo"></p>
+                    
+                    <p> Selecciona como te ha salido:</p>
+                    <p><input type="radio" name="opcion"> Bien </p>
+                    <p><input type="radio" name="opcion"> Mal </p>
+                    <p><input type="radio" name="opcion"> Regular </p>
+
+                    <p> Las opciones del desplegable son JavaScript, PHP, Java, C# y C++ </p>
+                    <p> Lenguaje </p>
+                    <select>
+                        <option value="JavaScript" > JavaScript </option>
+                        <option value="PHP"> PHP </option>
+                        <option value="Java" selected> Java </option>
+                        <option value="C#"> C# </option>
+                        <option value="C++"> C++ </option>
+                    </select>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+            <div class="cajamorada">
+                <p> Ejemplo de fusión de celdas </p>
+                <table border="1px">
+                    <tr>
+                        <td> Fusión de celdas </td>
+                        <th> Columna 1 </th>
+                        <th> Columna 2 </th>
+                        <th> Columna 3 </th>
+                        <th> Columna 4 </th>
+                        <th> Columna 5 </th>
+                    </tr>
+                    <tr>
+                        <th> Fila 1 </th>
+                        <td rowspan="2"> A </td>
+                        <td colspan="2"> B </td>
+                        <td colspan="2"> C</td>
+                    </tr>
+                    <tr>
+                        <th> Fila 2 </th>
+                        <td rowspan="2"> D </td>
+                        <td colspan="2"> E </td>
+                        <td rowspan="2"> F </td>
+                    </tr>
+                    <tr>
+                        <th> Fila 3 </th>
+                        <td rowspan="2"> G </td>
+                        <td colspan="2" rowspan="2"> H </td>
+                    </tr>
+                    <tr>
+                        <th> Fila 4 </th>
+                        <td> I </td>
+                        <td> J </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

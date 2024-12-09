@@ -67,7 +67,7 @@
 	<!ELEMENT Nombre.Organizador (#PCDATA)>
 	
 	<!ELEMENT Participantes (Participante+)>
-	<!ELEMENT Participante (Nombre, Correo Electrónico)>
+	<!ELEMENT Participante (Nombre, Correo Electronico)>
 		<!ATTLIST Participante Tipo ("Ponente" | "Asistente")>
 	<!ELEMENT Nombre (#PCDATA)>
 	<!ELEMENT Correo Electrónico (#PCDATA)>
@@ -76,11 +76,11 @@
 	<!ELEMENT Patrocinador (Nombre)>
 		<!ATTLIST Patrocinador Nivel ("Oro" | "Bronce" | "Plata")>
 	<!ELEMENT Programa (Sesiones)>
-	<!ELEMENT Sesiones (Sesión+)>
-	<!ELEMENT Sesión (Título, Duración, Descripción)?>
-	<!ELEMENT Título (#PCDATA)>
-	<!ELEMENT Duración (#PC DATA)>
-	<!ELEMENT Descripción (#PCDATA)>
+	<!ELEMENT Sesiones (Sesion+)>
+	<!ELEMENT Sesion (Titulo, Duracion, Descripcion)>
+	<!ELEMENT Titulo (#PCDATA)>
+	<!ELEMENT Duracion (#PCDATA)>
+	<!ELEMENT Descripcion (#PCDATA)>
 ]>
 
 
@@ -113,7 +113,7 @@
 	<!ELEMENT Fecha (#PCDATA)>
 	<!ELEMENT Duración (#PCDATA)>
 	<!ELEMENT Descripción (#PCDATA)>
-]
+]>
 
 
 Ejemplo de Representación HTML de una parte del Ejercicio 4:

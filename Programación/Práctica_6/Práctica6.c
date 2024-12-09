@@ -7,11 +7,12 @@
  *  Curso: Desarrollo de Aplicaciones Multiplataforma 1.
 */ 
 
-// Definimos constantes que usaremos en nuestro código y no van a cambiar.
+// Definición de constantes que se usan pero no cambian.
 #define MAX_NOMBRE 50
 #define MAX_LIBROS 40
+#define MIN_LIBROS 1
 
-// Definimos un tipo de dato llamado "genero".
+// Definición de tipo de dato "genero".
 typedef enum{
 	FICCION, // = 0
 	NO_FICCION, // = 1
@@ -20,7 +21,7 @@ typedef enum{
 	ENSAYO, // = 4
 } genero;
 
-// Definimos otro tipo de dato que contendrá el contenido de cada uno de los libros.
+// Definición del tipo de dato compuesto "libro".
 typedef struct{
 	int identificador;
 	char titulo [MAX_NOMBRE];
@@ -64,7 +65,7 @@ void comparar_y_mostrar(libro *inventario, const int busqueda1){
     }
 }
 
-// Dandole un el ID correspondiente, lo busca, y le aumenta la cantidad de unidades de ese libro en específico.
+// Dandole un número, lo compara con el ID, y si es igual lo imprime.
 void añadir_stock(libro *registro, const int busqueda2, const int suma){
     if(busqueda2 == registro -> identificador){
         registro -> cantidad += suma;
@@ -72,7 +73,7 @@ void añadir_stock(libro *registro, const int busqueda2, const int suma){
     }
 }
 
-// Busca cada libro que tenga la misma categoría introducida como número, y la imprime.
+// Pasa por cada uno de los libros, e imprime los que tenga el mismo número de categoría.
 void mostrar_por_categoria(libro *memoria, const int buscarcategoria){
     for (int l = 0; l < MAX_LIBROS; ++l){
         // Tenemos SI o SI, recorrer el array de alguna manera, por algo estamos usando el bucle.
@@ -155,10 +156,10 @@ int main(){
         // Dependiendo de su respuesta, ejecutará una línea de código o no.
         switch(escoger){
             case 1:
-                // Muestra todos los libros que se encuentren en el struct "libro".
+                // Pasa por cada uno de los libros guardado en el array.
                 for (int i = 0; i < MAX_LIBROS; ++i){
                     mostrarLibro(&libros[0] + i); 
-                    //mostrarLibro(libros + i);
+                    //mostrarLibro(libros + i); // Es lo mismo, porque empieza de manera predeterminada en el 0,.
                 }
                 break;
 
@@ -167,10 +168,10 @@ int main(){
                 scanf("%d", &buscar1);
 
                 // Pasamos por cada libro para que, al comprobar que el número que hemos insertado es igual al ID de uno de los libros, lo imprima.
-                if(buscar1 <= MAX_LIBROS){
+                if(buscar1 <= MAX_LIBROS && buscar1 >= MIN_LIBROS){
                     int j = 0;
                     while(j < MAX_LIBROS){
-                        comparar_y_mostrar(&libros[0] + j, buscar1);
+                        comparar_y_mostrar(&libros[0] + j, buscar1); // Es necesario enviar la dirección de memoria en 0 porque el último dato que le hemos dado es el libro 40 (anterior función)
                         j++;
                     }
                 }
@@ -186,8 +187,8 @@ int main(){
                 printf("¿Cuántos libros deseas añadir al stock?\n");
                 scanf("%d", &stock);
 
-                // Al seleccionar un libro, podemos encontrar su stock respectivo, y después imprimirlo.
-                if(buscar2 <= MAX_LIBROS){
+                // Al seleccionar un libro, le aumentamos a su stock actual una cantidad que le demos, y después le imprimimos
+                if(buscar2 <= MAX_LIBROS && buscar2 >= MIN_LIBROS){
                     int k = 0;
                     do{
                         añadir_stock(&libros[0] + k, buscar2, stock);
@@ -205,14 +206,14 @@ int main(){
                 printf("¿De qué categoría de libros quieres ver los libros (FICCION = 0, NO_FICCION = 1, POESIA = 2, TEATRO = 3, ENSAYO = 4)?\n");
                 scanf("%d", &buscat);
 
-                mostrar_por_categoria(&libros[0], buscat);
+                mostrar_por_categoria(&libros[0], buscat); // La mandamos a función correspondiente.
                 break;
 
             case 5:
                 // Por último, imprimiremos el o los libros del autor que el usuario escriba.
                 printf("Escriba el nombre del autor de manera totalmente correcta:\n");
-                scanf(" "); //
-                fgets(escritor, MAX_NOMBRE, stdin);
+                scanf(" "); // Le damos un espacio en blanco para evitar que guarde en entero de la anterior función ejecutada.
+                fgets(escritor, MAX_NOMBRE, stdin); // Es una de las maneras que se usan para guardar cadenas de carácteres con espacios intermedios.
 
                 mostrar_por_autor(&libros[0], escritor);
                 break;
