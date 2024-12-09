@@ -15,7 +15,7 @@ void es_vocal(){
 	printf("Introduce una letra:\n");
 	scanf(" %c", &letra);
 
-	if(letra=='a' || letra=='e' || letra=='i' || letra=='o' || letra=='u' || letra=='A' || letra=='E' || letra=='I' || letra=='O' || letra=='U'){
+	if(letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u' || letra == 'A' || letra == 'E' || letra == 'I' || letra == 'O' || letra == 'U'){
 		printf("La letra %c es una vocal\n", letra);
 	} 
 	else {
@@ -29,20 +29,20 @@ void calcular_area_figura(){
 	double area;
 	double lado;
 
-	printf("¿Qué figura deseas calcular (círculo=1, cuadrado=2)?\n");
+	printf("¿Qué figura deseas calcular (círculo = 1, cuadrado = 2)?\n");
 	scanf("%d", &calcular);
 	
 	switch(calcular){
 		case 1:
 			printf("Introduce el radio del círculo:\n");
 			scanf("%lf", &radio);
-			area=radio*radio*3.1416;
+			area = radio * radio * 3.1416;
 			printf("El área del círculo con radio %lf es %lf\n", radio, area);
 			break;
 		case 2:
 			printf("Introduce el lado del cuadrado:\n");
 			scanf("%lf", &lado);
-			area=lado*lado;
+			area = lado * lado;
 			printf("El área del cuadrado con lado %lf es %lf\n", lado, area);
 			break;
 		default:
@@ -59,7 +59,7 @@ void calcular_promedio(){
 	printf("¿De cuántos números quiere hacer el promedio? (3 o 4)\n");
 	scanf("%d", &cantidad);
 
-	if(cantidad==3){
+	if(cantidad == 3){
 		printf("Inserte el primer número:\n");
 		scanf(" %lf", &num1);
 		printf("Inserte el segundo número:\n");
@@ -67,11 +67,11 @@ void calcular_promedio(){
 		printf("Inserte el tercer número:\n");
 		scanf(" %lf", &num3);
 
-		calcular_promedio_tres_num=(num1+num2+num3)/2;
+		calcular_promedio_tres_num=(num1 + num2 + num3) / 2;
 		printf("El promedio de %lf, %lf y %lf es %lf.\n", num1, num2, num3, calcular_promedio_tres_num);
 	}
 	else
-	if(cantidad==4){
+	if(cantidad == 4){
 		printf("Inserte el primer número\n");
 		scanf(" %lf", &num1);
 		printf("Inserte el segundo número:\n");
@@ -81,7 +81,7 @@ void calcular_promedio(){
 		printf("Inserte el cuarto número:\n");
 		scanf(" %lf", &num4);
 
-		calcular_promedio_cuatro_num=(num1+num2+num3+num4)/2;
+		calcular_promedio_cuatro_num=(num1 + num2 + num3 + num4)/2;
 
 		printf("El promedio de %lf, %lf, %lf y %lf es %lf.\n", num1, num2, num3, num4, calcular_promedio_cuatro_num);
 	}
@@ -97,13 +97,13 @@ void convertir_hora_24_a_12(){
 	printf("Introduce la hora en formato 24 horas:\n");
 	scanf("%d", &hora24);
 
-	if(hora24>=0 && hora24<=11){
-		hora12=hora24;
+	if(hora24 >= 0 && hora24 <= 11){
+		hora12 = hora24;
 		printf("La hora en formato de 12 horas es %d AM\n", hora12);
 	}
 	else
-	if(hora24>=12 && hora24<=23){
-		hora12=hora24-12;
+	if(hora24 >= 12 && hora24 <= 23){
+		hora12 = hora24 - 12;
 		printf("La hora en formato de 12 horas es %d PM\n", hora12);
 	}
 	else{
@@ -116,8 +116,8 @@ void es_primo(){
 	printf("Introduce un número menor de 10:\n");
 	scanf("%d", &número);
 
-	if(número>0 && número<=10){
-		(número==2||número==3||número==5||número==7)? printf("El número %d es primo.\n", número) : printf("El número %d no es primo.\n", número);
+	if(número > 0 && número <= 10){
+		(número == 2||número == 3||número == 5||número == 7)? printf("El número %d es primo.\n", número) : printf("El número %d no es primo.\n", número);
 	}
 	else{
 		printf("Inserte un valor menor o igual al 10.\n");

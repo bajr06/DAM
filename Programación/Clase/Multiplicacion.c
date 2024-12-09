@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 int main(){
-	int numero1=6;
-	int numero2=2;
+	int numero1 = 6;
+	int numero2 = 2;
 	int resultado;
 
 	resultado = numero1 * numero2;

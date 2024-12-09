@@ -8,7 +8,7 @@ int calcularlaraiz(){;
 
 	printf("Introduzca cualquier número\n");
 	scanf("%d", &valor);
-	raiz=sqrt(valor);
+	raiz = sqrt(valor);
 
 	printf("La raíz cuadrada de %d es %lf\n", valor, raiz);
 }
