@@ -3,20 +3,20 @@
 #include <math.h>
 
 float suma(float numero1, float numero2){
-	return numero1+numero2;
+	return numero1 + numero2;
 }
 
 
 float resta(float numero1, float numero2){
-	return numero1-numero2;
+	return numero1 - numero2;
 }
 
 float multiplicación(float numero1, float numero2) {
-	return numero1*numero2;
+	return numero1 * numero2;
 }
 
 float división(float numero1, float numero2){
-	return numero1/numero2;
+	return numero1 / numero2;
 }
 
 int main(){

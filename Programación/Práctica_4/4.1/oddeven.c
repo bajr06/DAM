@@ -7,7 +7,7 @@ int main (){
 	printf("Escriba un número:\n");
 	scanf("%d", &n1); //Escaneamos en la variable int el número que nos de el usuario.
 
-	if(n1%2){
+	if(n1 % 2){
 		printf("Es un número inpar\n");
 	}
 	else{

@@ -4,7 +4,7 @@
 int main(){
 	int Dias;
 	
-	printf("Introduce un número (1-7):\n");
+	printf("Introduce un número (1 - 7):\n");
 	scanf("%d", &Dias);
 
 	switch(Dias){

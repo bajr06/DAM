@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 int main(){
-	float X=1.25;
-	float Y=2.2;
+	float X = 1.25;
+	float Y = 2.2;
 	float multiplicacion, division;
 
 	multiplicacion=X*Y;

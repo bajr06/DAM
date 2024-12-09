@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 int main(){
-	int X=8;
-	int Y=4;
-	int Z=2;
+	int X = 8;
+	int Y = 4;
+	int Z = 2;
 	int resultado;
 
 	resultado=X+Y+Z;

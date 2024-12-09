@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 char capitalizar(char letra_minúscula){
-	return letra_minúscula-32;
+	return letra_minúscula - 32;
 }
 
 int main (){
