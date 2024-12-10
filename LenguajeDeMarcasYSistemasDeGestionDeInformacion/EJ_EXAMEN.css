@@ -19,6 +19,8 @@ p{
 }
 
 #caja2{
+    display: flex;
+    gap: 10px;
     background-color: pink;
 }
 
@@ -27,9 +29,18 @@ p{
 }
 
 #caja3{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     background-color: green;
 }
 
-.cajamorada{
+.cajamorada1{
     background-color: purple;
+}
+
+.cajamorada2{
+    background-color: purple;
+    grid-column: 2 span;
+    align-items: center;
 }

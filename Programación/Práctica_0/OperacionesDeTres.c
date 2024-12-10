@@ -7,7 +7,7 @@ int main(){
 	int Z = 2;
 	int resultado;
 
-	resultado=X+Y+Z;
+	resultado = X + Y + Z;
 
 	printf("El primer número es %d\n", X);
 	printf("El segundo número es %d\n", Y);
