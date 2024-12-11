@@ -42,5 +42,6 @@ p{
 .cajamorada2{
     background-color: purple;
     grid-column: 2 span;
-    align-items: center;
+    align-content: center;
+    text-align: center;
 }
