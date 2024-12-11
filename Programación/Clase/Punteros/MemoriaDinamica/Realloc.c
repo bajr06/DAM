@@ -8,16 +8,16 @@
 */ 
 
 // Se puede usar macros.
-int error(int *memoria){
-	if(memoria == NULL){
-		printf("Error, no hay memoria");
-
-		return EXIT_FAILURE; // 1.
-	}
-	else{
-		return EXIT_SUCCESS; // 0.
-	}
-}
+#define error(memoria){ \
+	if(memoria == NULL){ \
+		printf("Error, no hay memoria"); \
+\
+		return EXIT_FAILURE; \
+	} \
+	else{ \
+		return EXIT_SUCCESS; \
+	} \
+} \
 
 int main(){
 	int p;
@@ -40,7 +40,7 @@ int main(){
 	// arr = arr = ampliado.
 	// MALA PRÁCTICA. arr se ha dejado "colgado".
 
-	p = error(arr_ampliado);
+	error(arr_ampliado);
 
 	if(p == 1){
 		free(arr);
