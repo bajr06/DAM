@@ -48,6 +48,7 @@ char *categoria(genero *tipo){
             break;
         case 4:
             return "ENSAYO";
+            break;
         default:
             return "GENERO NO ENCONTRADO";
     }
