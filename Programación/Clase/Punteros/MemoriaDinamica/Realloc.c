@@ -14,9 +14,6 @@
 \
 		return EXIT_FAILURE; \
 	} \
-	else{ \
-		return EXIT_SUCCESS; \
-	} \
 } \
 
 int main(){
