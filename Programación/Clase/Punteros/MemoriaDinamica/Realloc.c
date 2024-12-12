@@ -17,8 +17,6 @@
 } \
 
 int main(){
-	int p;
-
 	// Declara un array de tamaño 3 utilizando memoria dinámica.
 	int *arr = (int *)malloc(3*sizeof(int));
 	
@@ -38,22 +36,13 @@ int main(){
 	// MALA PRÁCTICA. arr se ha dejado "colgado".
 
 	error(arr_ampliado);
-
-	if(p == 1){
-		free(arr);
-
-		return EXIT_FAILURE;
-	}
-	else{
-		printf("Todo correcto\n");
-	}
 	
 	// Terminamos de inicializar.
 	arr_ampliado[3] = 7;
 	arr_ampliado[4] = 9;
 
 	for(int j = 0; j < 5; ++j){
-		printf("arr_ampliado[%d]: %d", j, arr_ampliado[j]);
+		printf("arr_ampliado[%d]: %d\n", j, arr_ampliado[j]);
 	}
 	
 	// ¿Qué tengo que liberar?
