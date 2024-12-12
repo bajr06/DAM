@@ -1,47 +1,61 @@
+/* body{
+	margin: 0px; Margen entre los bloques y el borde de la página web.
+	padding-top: 0px; Hay que buscar.
+}*/
+
 h1{
-    font-family: Arial, Helvetica, sans-serif; /* Familia de letras a la que pertenece. */
-    font-size: 28pt; /* Tamaño de la letra */
-    color: blue;
+	font-family: "Arial, Helvetica, sans-serif"; /* Familia de letras a la que pertenece. */
+	font-size: 28pt; /* Tamaño de la letra */
+	color: blue;
 }
 
 h2{
-    color:white;
-    
+	color:white;
 }
 
 p{
-    font-family: "Century Gothic";
-    font-size: 11pt;
+	font-family: "Century Gothic";
+	font-size: 11pt;
 }
 
 #caja1{
-    background-color: yellow;
+	background-color: yellow;
+	padding: 10pt;
 }
 
 #caja2{
-    display: flex;
-    gap: 10px;
-    background-color: pink;
+	/* inline-block te permite modificar el ancho de las cajas. */
+	/* inline-flex permite que los elementos se pongan alado. (INVESTIGAR). */
+	display: flex; /* Tiene la etiqueta block por defecto. */
+	flex-direction: row;
+	/* align-items:; Los alinea en la zona vertical. (center, end, init, stretch). */
+	/* justify-content:; Alinea en la zona horizontal, con los mismo atributos. Mueves las cajas que no ocupen todo el ancho (INVESTIGAR). */
+	/* flex-wrap: wrap; Si hay desbordamiento, lo escriba en la siguiente línea. */
+	gap: 10px;
+	background-color: pink;
 }
 
 .cajanaranja{
-    background-color: orange;
+	background-color: orange;
 }
 
 #caja3{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    background-color: green;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Como son las cuadrículas. */
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	background-color: green;
+	gap: 10px;
 }
 
-.cajamorada1{
-    background-color: purple;
+.cajamorada{
+	background-color: blueviolet;
+	text-align: justify;
 }
 
-.cajamorada2{
-    background-color: purple;
-    grid-column: 2 span;
-    align-content: center;
-    text-align: center;
+#cajamoradatabla{
+	background-color: blueviolet;
+	grid-column-start: 1;
+	grid-column-end: 3;
 }
