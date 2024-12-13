@@ -1,190 +1,179 @@
 <!DOCTYPE html>
 <html lang="es"> <!-- Indica Idioma -->
-    <head>
-        <title> Mi primera página web </title>
-        <meta charset="UTF-8" name="theme-color" content="red">  <!-- Cosas presentes en la página web pero que en si no se muestra -->
-    </head>
+	<head>
+		<title> Mi primera página web </title>
+		<meta charset="UTF-8" name="theme-color" content="red">  <!-- Cosas presentes en la página web pero que en si no se muestra -->
+	</head>
+	<body>
+		<!-- Etiquetas de Texto -->
+		<header>
+			<h1> Bienvenido a mi página web </h1>
+		</header>
 
-    <body>
-        <!-- Etiquetas de Texto -->
-	<header>
-        <h1> Bienvenido a mi página web </h1>
-	</header>
+		<section>
+			<p id="Cabecera"> Cabecera </p>
+			<h2> Subtítulo del h1 al h6 </h2>
+			<h3> Etiquetas de Texto </h3>
+			<p> <strong> <em> <es> Lorem dolor sit amet consectetur adipisicing elit. </em><mark> <u> tempore iure, quo excepturi facere aperiam distinctio maxime amet recusandae. </u></mark> <!-- Ignora los espacios -->        
+Ratione maiores hic facilis, molestias quisquam ipsam alias velit omnis. </em></strong></p>
+			<cite> Harry Potter y la Piedra Filosofal </cite> <!-- Citar libros, páginas web, entrevistas entre otros. -->
+			<p> Harry Potter dijo que: </p> 
+			<q> Voldemor está aquí </q>
 
-<section>
-        <p id="Cabecera"> Cabecera </p>
-        <h2> Subtítulo del h1 al h6 </h2>
-        <h3> Etiquetas de Texto </h3>
-        <p> <strong> <em> <es> Lorem dolor sit amet consectetur adipisicing elit. </es>
-        <mark> <u> tempore iure, quo excepturi facere aperiam distinctio maxime amet recusandae. </u></mark> <!-- Ignora los espacios -->        
-        Ratione maiores hic facilis, molestias quisquam ipsam alias velit omnis. </em></strong></p>
-        
-            <cite> Harry Potter y la Piedra Filosofal </cite> <!-- Citar libros, páginas web, entrevistas entre otros. -->
-            <p> Harry Potter dijo que: </p> 
-            <q> Voldemor está aquí </q>
+			<h1> Subindice superíndices </h1>
+			<p> A <sup> 2 </sup> + 2 <sub> 2 </sub></p>
+			<p> Esta es la clase <dfn> de lenguaje de marcas </dfn> <abbr>LM</abbr> <small> SUS </small></p>
+		</section>
 
-            <h1> Subindice superíndices </h1>
-            <p> A <sup> 2 </sup> + 2 <sub> 2 </sub></p>
-            <p> Esta es la clase <dfn> de lenguaje de marcas </dfn> <abbr>LM</abbr> <small> SUS </small></p>
-</section>
+		<section>
+			<p id="Lista"> Lista </p>
+			<h1> Listas </h1> <!-- Colocar listas -->
+			<h2> Lista numeradas </h2>
+			<ol>
+				<li> Item 1 </li>
+				<li> Item 2 </li>
+				<li> Item 3 </li>
+			</ol>
+			<h2> Lista no numeradas </h2>
+			<ul>
+				<li> Item 1 </li>
+				<li> Item 2 </li>
+				<li> Item 3 </li>
+			</ul>
+			<h2> Lista multinivel </h2>
+			<ol type="1" start="3"reversed>
+				<li> Element 1 </li>
+				<li> Element 2
+					<ul> 
+						<li> Among Us </li>
+						<li> Among Us 2 </li>
+					</ul>
+				</li>
+			</ol>
+			<h3> Imagen </h3>
+			<center><img src="Swain.jpg" alt="Swain" width="600"> </center> <!-- Poner una imagen de Ruta Absoluta (Que es encuentra en nuestro ordenador)-->
+			<center><img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg" height="400">"</center> <!-- Poner una imagen de Ruta Relativa (En una Página Web)-->
+		</section>
+		<section>
+			<h2> Enlaces </h2>
+			<nav>
+				<a href="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg"> Pantheon </a>
+				<a href="#Cabecera" > Cabecera </a>
+				<a href="#Lista" target"_blank"> Lista </a> <!-- _blank te habre el enlace en otra página -->
+			</nav>
+		</section>
+		<section>
+			<h2> Multimedia </h2>
+			<picture>
+				<source media="(width > 900px)" srcset="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flor_llorona.jpg" alt="Flor_llorona">
+				<img width="500" height="300" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Flor-_Hibiscus_rosa-sinensis.JPG" alt="Flor-_Hibiscus_rosa-sinensis">
+			</picture>
+			<video src="video.mp4 #t=30,40" width="500" height="300" autoplay muted lopp controls playsinline> </video>
 
-<section>
-        <p id="Lista"> Lista </p>
-        <h1> Listas </h1> <!-- Colocar listas -->
-        <h2> Lista numeradas </h2>
-        <ol>
-            <li> Item 1 </li>
-            <li> Item 2 </li>
-            <li> Item 3 </li>
-        </ol>
-        <h2> Lista no numeradas </h2>
-        <ul>
-            <li> Item 1 </li>
-            <li> Item 2 </li>
-            <li> Item 3 </li>
-        </ul>
-        <h2> Lista multinivel </h2>
-        <ol type="1" start="3"reversed>
-        <ol>
-        <li> Element 1 </li>
-        <li> Element 2
-            <ul> 
-                <li> Among Us </li>
-                <li> Among Us 2 </li>
-            </ul>
-        </li>
-        </ol>
-        <h3> Imagen </h3>
-        <center><img src="Swain.jpg" alt="Swain" width="600"> </center> <!-- Poner una imagen de Ruta Absoluta (Que es encuentra en nuestro ordenador)-->
-        <center><img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg" height="400">"</center> <!-- Poner una imagen de Ruta Relativa (En una Página Web)-->
-</section>
+			<iframe width="500" height="300" src="https://www.youtube.com/embed/V-LFL1o5V7A" title="Metro de Madrid series 7000 y 9400 con pitada" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<audio src="Halloween.mp3 #t=30,40" autoplay lopp controls preload="metadata"> </audio>
+		</section>
+		<section>
+			<h2> Tablas </h2>
+			<table border="1px" align="center">
+				<!--- Fila 1--->
+				<head>
+					<tr>
+						<th> Columna 1 </th>
+						<th> Columna 2 </th>
+					</tr>
+				</head>
+				<body>
+					<!-- Fila 2-->
+					<tr>
+						<td colspan="2"> Columna 1 </td>
+					</tr>
+					<!-- Fila 3-->
+					<tr>
+						<td rowspan="2"> Columna 2 </td>
+						<td> Columa 1</td>
+					</tr>
+					<!-- Fila 4-->
+					<tr>
+						<td>Columna 2</td>
+					</tr>
+				</body>
+				<tfoot>
+					<caption> Ejemplo de Tabla </caption>
+				</tfoot>
+			</table>
+		</section>
 
-<section>
-		<h2> Enlaces </h2>
-		<nav>
-			<a href="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_0.jpg"> Pantheon </a>
-			<a href="#Cabecera" > Cabecera </a>
-			<a href="#Lista" target"_blank"> Lista </a> <!-- _blank te habre el enlace en otra página -->
-		</nav>
-</section>
+		<section>
+			<h2> Formularios </h2>
+			<form name="Formulario1" method="" action="">
+				<p> Nombre: <input type="text" name="nombre" required> </p>
+				<p> Teléfono: <input type="tel" name="telefono"> </p>
+				<p> Correo: <input type="email" name="correo"> </p>
+				<p> Constraseña: <input type="password" name="contraseña"> </p>
+				<p> Página Web: <input type="url" name="pagina", placeholder="salesianossantodomingosavio.es"> </p>
+				<input type="hidden" name="oculto" value="12">
+				<p> Edad: <input type="range" name="edad" min="0" max="50" step="5"> </p>
+				<p> Edad: <input type="number" name="edad" min="0" max="50"> </p>
+				<p> Fecha: <input type="date" name="fecha" min="2024.01.01" max="2024.12.31"> </p>
+				<p> Mes: <input type="month" name="mes"> </p>
+				<p> Semana: <input type="week" name="semana"> </p>
+				<p> Hora: <input type="time" name="hora"> </p>
+				<p> Fecha y hora: <input type="datetime-local" name="fechahora"> </p>
+				<input type="submit">
 
-<section>
-        <h2> Multimedia </h2>
-    <picture>
-        <source media="(width > 900px)" srcset="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flor_llorona.jpg" alt="Flor_llorona">
-        <img width="500" height="300" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Flor-_Hibiscus_rosa-sinensis.JPG" alt="Flor-_Hibiscus_rosa-sinensis">
-    </picture>
-    <video src="video.mp4 #t=30,40" width="500" height="300" autoplay muted lopp controls playsinline> </video>
-    
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/V-LFL1o5V7A" title="Metro de Madrid series 7000 y 9400 con pitada" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <audio src="Halloween.mp3 #t=30,40" autoplay lopp controls preload="metadata"> </audio>
-</section>
+				<p> Opciones (checkbox): ¿Qué te gusta más?</p>
+				<p> <input type="checkbox" name="opcion1" value="piscina"> Piscina </p>
+				<p> <input type="checkbox" name="opcion2" value="campo" checked> Campo </p>
+				<p> <input type="checkbox" name="opcion3" value="playa"> Playa </p>
+				<p> Opciones (radio): ¿Qué te gusta más?</p>
+				<p> <input type="radio" name="opcion" value="piscina"> Piscina </p>
+				<p> <input type="radio" name="opcion" value="campo" checked> Campo </p>
+				<p> <input type="radio" name="opcion" value="playa"> Playa </p>
 
-<section>
-    <h2> Tablas </h2>
-    <table border="1px" align="center">
-        <!--- Fila 1--->
-    <head>
-        <tr>
-            <th> Columna 1 </th>
-            <th> Columna 2 </th>
-        </tr>
-    </head>
-    <body>
-        <!-- Fila 2-->
-        <tr>
-            <td colspan="2"> Columna 1 </td>
- 
-        </tr>
-        <!-- Fila 3-->
-        <tr>
-            <td rowspan="2"> Columna 2 </td>
-            <td> Columa 1</td>
-        </tr>
-            <!-- Fila 4-->
-        <tr>
+				<p> Opciones (lista desplegable): ¿Qué te gusta más?</p>
 
-            <td>Columna 2</td>
-        </tr>
-        </body>
-    <tfoot>
-        <caption> Ejemplo de Tabla </caption>
-    </tfoot>
-    </table>
-</section>
+				<p>
+				<select>
+					<optgroup label="Categoria 1">
+						<option value="piscina"> Piscina </option>
+						<option value="campo" selected> Campo </option>
+						<option value="playa"> Playa </option>
+					</optgroup>
 
-<section>
-    <h2> Formularios </h2>
-        <form name="Formulario1" method="" action="">
-            <p> Nombre: <input type="text" name="nombre" required> </p>
-            <p> Teléfono: <input type="tel" name="telefono"> </p>
-            <p> Correo: <input type="email" name="correo"> </p>
-            <p> Constraseña: <input type="password" name="contraseña"> </p>
-            <p> Página Web: <input type="url" name="pagina", placeholder="salesianossantodomingosavio.es"> </p>
-            <input type="hidden" name="oculto" value="12">
-            <p> Edad: <input type="range" name="edad" min="0" max="50" step="5"> </p>
-            <p> Edad: <input type="number" name="edad" min="0" max="50"> </p>
-            <p> Fecha: <input type="date" name="fecha" min="2024.01.01" max="2024.12.31"> </p>
-            <p> Mes: <input type="month" name="mes"> </p>
-            <p> Semana: <input type="week" name="semana"> </p>
-            <p> Hora: <input type="time" name="hora"> </p>
-            <p> Fecha y hora: <input type="datetime-local" name="fechahora"> </p>
-            <input type="submit">
-        
-        <p> Opciones (checkbox): ¿Qué te gusta más?</p>
-            <p> <input type="checkbox" name="opcion1" value="piscina"> Piscina </p>
-            <p> <input type="checkbox" name="opcion2" value="campo" checked> Campo </p>
-            <p> <input type="checkbox" name="opcion3" value="playa"> Playa </p>
-      
-        <p> Opciones (radio): ¿Qué te gusta más?</p>
-            <p> <input type="radio" name="opcion" value="piscina"> Piscina </p>
-            <p> <input type="radio" name="opcion" value="campo" checked> Campo </p>
-            <p> <input type="radio" name="opcion" value="playa"> Playa </p>
+					<optgroup label="Categoria 2">
+						<option value="parque"> Parque </option>
+						<option value="rio"> Río </option>
+					</optgroup>
+				</select>
+				</p>
 
-        <p> Opciones (lista desplegable): ¿Qué te gusta más?</p>
-        
-        <p>
-        <select>
-            <optgroup label="Categoria 1">
-                <option value="piscina"> Piscina </option>
-                <option value="campo" selected> Campo </option>
-                <option value="playa"> Playa </option>
-            </optgroup>
-            
-            <optgroup label="Categoria 2">
-                <option value="parque"> Parque </option>
-                <option value="rio"> Río </option>
-            </optgroup>
-        </select>
-        </p>
+				<p>
+				<select multiple>
+					<optgroup label="Categoria 1">
+						<option value="piscina"> Piscina </option>
+						<option value="campo" selected> Campo </option>
+						<option value="playa"> Playa </option>
+					</optgroup>
+					<optgroup label="Categoria 2">
+						<option value="parque"> Parque </option>
+						<option value="rio"> Río </option>
+					</optgroup>
+				</select>
+				</p>
 
-        <p>
-        <select multiple>
-            <optgroup label="Categoria 1">
-                <option value="piscina"> Piscina </option>
-                <option value="campo" selected> Campo </option>
-                <option value="playa"> Playa </option>
-            </optgroup>
-        <p>    
-            <optgroup label="Categoria 2">
-                <option value="parque"> Parque </option>
-                <option value="rio"> Río </option>
-            </optgroup>
-        </select>
-        </p>
+				<input type="color" value="#FFFFFF">
+				<textarea name="texto" cols="10" rows="10" placeholder="Escribe aqui..."> </textarea>
+				<progress></progress>
+				<meter min="0" max="50" value="25" low="10" high="40"></meter>
+				<button disabled> Botón </button>
+				<input type="submit" value="Aceptar">
+				<input type="reset" value="Borrar">
+			</form>
+		</section>
 
-        <input type="color" value="#FFFFFF">
-        <textarea name="texto" cols="10" rows="10" placeholder="Escribe aqui..."> </textarea>
-        <progress></progress>
-        <meter min="0" max="50" value="25" low="10" high="40"></meter>
-        <button disabled> Botón </button>
-        <input type="submit" value="Aceptar">
-        <input type="reset" value="Borrar">
-        </form>
-</section>
-
-	<footer>
-        <p> Pie de Página </p>
-    </footer>
-    </body>
-</html> 
+		<footer>
+			<p> Pie de Página </p>
+		</footer>
+	</body>
+</html>

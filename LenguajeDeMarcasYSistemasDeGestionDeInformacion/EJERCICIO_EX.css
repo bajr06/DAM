@@ -1,0 +1,52 @@
+#cajaazul{
+	display: flex;
+	flex-direction: row;
+	font-family: "Arial" "Helvetica" sans-serif;
+}
+
+.contenedor{
+	flex: 1;
+	background-color: blue;
+	font-family: "Gill Sans" "Extrabold" sans-serif;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	padding: 10px;
+	gap: 10px;
+}
+
+.cajaverde{
+	background-color: greenyellow;
+	font-family: "Helvetica" sans-serif;
+	padding: 10px;
+	gap: 10px;
+	grid-column: span 2;
+}
+
+.cajaamarilla{
+	background-color: yellow;
+	padding: 10px;
+	gap: 10px;
+}
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+tr, td{
+	border: 1px solid black;
+	text-align: center;
+}
+
+#cajamarino{
+	background-color: darkturquoise;
+	grid-column: span 2;
+	padding: 10px;
+	gap: 10px;
+}
+
+footer{
+	background-color: pink;
+	text-align: center;
+}

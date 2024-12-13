@@ -20,7 +20,7 @@ p{
 
 #caja1{
 	background-color: yellow;
-	padding: 10pt;
+	padding: 10pt; /* Incrementa en tamaño de la caja. */
 }
 
 #caja2{
@@ -37,6 +37,8 @@ p{
 
 .cajanaranja{
 	background-color: orange;
+	text-align: justify;
+	padding: 10pt;
 }
 
 #caja3{
@@ -52,10 +54,26 @@ p{
 .cajamorada{
 	background-color: blueviolet;
 	text-align: justify;
+	padding: 10pt;
 }
 
 #cajamoradatabla{
 	background-color: blueviolet;
 	grid-column-start: 1;
 	grid-column-end: 3;
+	text-align: justify;
+	padding: 10pt;
+}
+
+table{
+	border: 1px solid black; /* Border exterior de la tabla. */
+	margin-left: auto; /* Posición de la tabla. */
+	margin-right: auto;
+	border-collapse: collapse;
+
+}
+
+tr, td, th{
+	border: 1px solid black; /* Borde interior de la tabla. */
+	text-align: center;
 }

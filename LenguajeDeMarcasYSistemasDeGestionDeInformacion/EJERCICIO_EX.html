@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Ejercicio de Ejemplo de EXAMEN (HTML y CSS) </title>
+		<link rel="stylesheet" href="EJERCICIO_EX.css">
+	</head>
+	<body>
+		<div id="cajaazul">
+			<div class="contenedor">
+				<div class="cajaverde">
+					<h1> Ejemplo de elementos de HTML 1. </h1>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Normas del examen </h2>
+					<p> Para realizar este examen debes consultar la hoja explicativa,  tienes aproximadamente 2 horas para realizarlo ya que hay varias partes que realizar. </p>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Consejos prácticos </h2>
+					<ul>
+						<li> Primero realiza el posicionamiento de las cajas junto con el estilo. </li>
+						<li> Después ocúpate de los elemenos de HTML. </li>
+						<li> No utilices Internet, ya que en el examen no lo puedes utilizar. </li>
+						<li> Utiliza un cronómetro para medir el tiempo que utilices ¡SUERTE! </li>
+					</ul>
+				</div>
+				<div id="cajamarino">
+					<h2> Formulario básico </h2>
+					<form>
+						<p> Nombre del Alumno: <input type="text" name="nombrealumno"></p>
+						<p> Fecha examen: <input type="date" name="fechaexamen"></p>
+						<p> Sexo: <input type="radio" name="sexo" value="hombre"> Hombre <input type="radio" name="sexo" value="mujer"> Mujer </p>
+						<p><input type="button" value="Enviar"> <input type="button" value="Borrar"></p>
+					</form>
+				</div>
+			</div>
+			<div class="contenedor">
+				<div class="cajaverde">
+					<h1> Ejemplo de elementos de HTML 2 </h1>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Lista sin numerar </h2>
+					<ul>
+						<li style="list-style-type: circle;"> Lista con círculo </li>
+						<li style="list-style-type: square;"> Lista con cuadrado </li>
+						<li> Lista con punto </li>
+					</ul>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Lista numerada </h2>
+					<ol>
+						<li style="list-style-type: upper-latin;"> Lista con letras mayúsculas </li>
+						<li style="list-style-type: lower-roman;"> Lista con números romanos </li>
+						<li> Lista con los números por defecto. </li>
+					</ol>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Tabla sencilla </h2>
+					<table>
+						<tr>
+							<td> Celda 1 </td>
+							<td> Celda 2 </td>
+						</tr>
+						<tr>
+							<td> Celda 3 </td>
+							<td> Celda 4 </td>
+						</tr>
+					</table>
+				</div>
+				<div class="cajaamarilla">
+					<h2> Celdas combinadas </h2>
+					<table>
+						<tr>
+							<td colspan=2> Celda 1 </td>
+						</tr>
+						<tr>
+							<td rowspan=2> Celda 2 </td>
+							<td> Celda 3 </td>
+						</tr>
+						<tr>
+							<td>Celda 4</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<footer> Pie </footer>
+	</body>
+</html>
