@@ -1,9 +1,9 @@
 body{
-    background-color: seagreen; 
+	background-color: seagreen; 
 }
 
 h1{
-    color: blue;
+	color: blue;
 }
 
 .titulo{
@@ -11,44 +11,44 @@ h1{
 }
 
 #titulo3{
-    color: red;
+	color: red;
 }
 
 #padre{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 #contenedor1{
-    position: relative;
-    top: 80px;
-    left: 10%;
-    display: inline-block;
-    background-color: violet;
+	position: relative;
+	top: 80px;
+	left: 10%;
+	display: inline-block;
+	background-color: violet;
 }
 
 #subcontenedor1{
-    position: absolute;
-    top: 80px;
-    left: 10%;
-    z-index: 3; /* El último elemento del plano se lo superpone; ignorando la propiedad de los demás contenedores. */
-    background-color: aliceblue;
+	position: absolute;
+	top: 80px;
+	left: 10%;
+	z-index: 3; /* El último elemento del plano se lo superpone; ignorando la propiedad de los demás contenedores. */
+	background-color: aliceblue;
 }
 
 #contenedor2{
-    position: relative;
-    top: 80px;
-    left: 10%;
-    float: left;
-    background-color: rgb(155, 250, 253);
+	position: relative;
+	top: 80px;
+	left: 10%;
+	float: left;
+	background-color: rgb(155, 250, 253);
 }
 
 #contenedor3{
-    position: relative;
-    top: 80px;
-    left: 10%;
-    background-color: white;
-    width: 180;
-    height: 180;
+	position: relative;
+	top: 80px;
+	left: 10%;
+	background-color: white;
+	width: 180;
+	height: 180;
 }
