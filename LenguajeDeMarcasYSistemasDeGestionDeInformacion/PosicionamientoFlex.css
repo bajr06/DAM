@@ -1,0 +1,31 @@
+body{
+	background: red;
+}
+
+#cajaRoja{
+	display: flex;
+	flex-direction: row; /* Ponerlo siempre */
+	flex-wrap: wrap; /* Decide que hacer si los elementos no caben */
+	/* flex-flow: row wrap; Lo mismo de lo anterior */
+	justify-content: space-between; /* Justificar div que están dentro */
+	align-items: stretch; /* Mover items en el eje vertical */
+}
+
+#cajaVerde{
+	background-color: green;
+	width: 50%;
+}
+
+#cajaMorada{
+	background-color: purple;
+	width: 30%;
+	/* margin-left: 10%; */
+	height: 10%;
+	align-self: center;
+	align-items: center; /* Con el texto de la caja */
+}
+
+#cajaAmarilla{
+	background-color: yellow;
+	flex-basis: 100%; /* Lo mismo que width */
+}

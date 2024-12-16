@@ -1,0 +1,25 @@
+body{
+	background-color: red;
+}
+
+#cajaVerde{
+	position: absolute;
+	height: 50vh;
+	width: 50%;
+	background-color: green;
+}
+
+#cajaMorada{
+	position: absolute;
+	height: 50vh;
+	width: 50vh;
+	left: 50%;
+	background-color: purple;
+}
+
+#cajaAmarilla{
+	position:absolute;
+	top: 55vh;
+	height: 50vh;
+	background-color: yellow;
+}

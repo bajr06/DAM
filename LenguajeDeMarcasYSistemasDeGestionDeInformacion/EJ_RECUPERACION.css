@@ -1,20 +1,26 @@
 #cajaroja{
     background-color: red;
+    display: flex;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h2{
+#cajanaranja{
     background-color: orange;
     color: white;
+    position: absolute;
+    width: 45%;
+    height: 15%;
+    text-align: center;
+    /* Usar Z-index */
 }
 
-h1{
-    background-color: blue;
+#cajaazul{
+    background-color: blue;    
     color: white;
-}
-
-#cajarosa{
-    background-color: pink;
+    position: relative;
+    top: 50pt;
+    left: 10%;
+    width: 38%;
 }
 
 .cajablanca{
@@ -24,6 +30,7 @@ h1{
 #cajaturquesa{
     background-color: turquoise;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
 }
 
 #cajaverde{
@@ -32,4 +39,10 @@ h1{
 
 #cajaamarilla{
     background-color: gold;
+}
+
+#cajarosa{
+    background-color: pink;
+    display: grid;
+    gap: 10pt;
 }

@@ -1,0 +1,36 @@
+body{
+	background-color: red;
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	/* margin: top right bottom left*/
+	/* margin: 10px 10px 10px 20px*/
+}
+
+#cajaVerde{
+	float: left;
+	background-color: green;
+	width: 50vh; /* Ancho */
+	height: 50vh;
+	padding: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+#cajaMorada{
+	float: left; /* Posición */
+	background-color: purple;
+	height: 50vh;
+	width: 30vh;
+	padding: 20px;
+}
+
+#cajaAmarilla{
+	clear: both;
+	float: left;
+	background-color: yellow;
+	width: 100vh;
+	height: 50vh; /* Altura */
+	padding: 20px;
+}

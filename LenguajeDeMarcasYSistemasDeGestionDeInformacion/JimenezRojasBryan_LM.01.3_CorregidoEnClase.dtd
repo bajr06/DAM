@@ -117,10 +117,11 @@
 
 
 Ejemplo de Representación HTML de una parte del Ejercicio 4:
-<Curso>
+<?Xml version="1.0" enconding="UFT-8">
+<Curso Fecha-Inicio=(18/05/2023)>
 	<Nombre> A </Nombre>
 	<Instructores>
-		<Instructor>
+		<Instructor Especialización="Programación">
 			<Nombre> Pepe </Nombre>
 			<Correo_Electrónico> pepe@gmail.com </Correo_Electrónico>
 		</Instructor>
