@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Examen de HTML y CSS </title>
+		<link rel="stylesheet" href="JimenezRojasBryanAndreu_CSS.css">
+	</head>
+	<body>
+		<div id = "caja1">
+			<div class = "cajamorada">
+				<p> 1 </p>
+			</div>
+			<div class = "cajamorada">
+				<p> 1 </p>
+			</div>
+			<div class = "cajamorada">
+				<p> 1 </p>
+			</div>
+		</div>
+		<div id = "caja2">
+			<div id = "cajanaranja1">
+				<form>
+					<h1> Formulario </h1>
+					<p> ¿Cuá es tu nombre? <input type = "text"  name = "nombre"></p>
+					<p> ¿Qué género de series prefieres? </p>
+					<p><input type = "checkbox"  name = "genero" value = "accion"> Acción </p>
+					<p><input type = "checkbox"  name = "genero" value = "comedia"> Comedia </p>
+					<p> ¿Cuál de estas series has visto? </p>
+					<p><input type = "radio"  name = "pelicula" value = "breakingbad"> Breaking Bad </p>
+					<p><input type = "radio"  name = "pelicula" value = "strangerthings"> Stranger Things </p>
+					<p> ¿Cuál es tu serie favorita?
+					<select>
+						<p><option value = "serie" selected> Seleccione una serie </p>
+						<p><option value = "friends"> Friends </p>
+						<p><option value = "themandalorian"> The Mandalorian </p>
+					</select>
+					</p>
+					<p><input type = "button" value = "Enviar"> <input type = "button" value = "Resetear"></p>
+				</form>
+			</div>
+			<div class="cajaamarilla">
+				<p>A</p>
+			</div>
+			<div id="cajanaranja2">
+				<p>A</p>
+			</div>
+			<div class="cajaamarilla">
+				<p>A</p>
+			</div>
+		</div>
+		<div id="caja3">
+			<h2> Lista de Frutas </h2>
+			<ol>
+				<li> Frutas cítricas </li>
+				<ul>
+					<li> Naranja </li>
+					<li> Limón </li>
+					<li> Mandarina </li>
+				</ul>
+			</ol>
+		</div>
+		<div id="caja4">
+			<table>
+				<tr>
+					<th rowspan="2"> Encabezado 1 </th>
+					<th colspan="3"> Encabezado 2 </th>
+					<th rowspan="3"> Encabezado 3 </th>
+				</tr>
+				<tr>
+					<th colspan="2"> Subencabezado 1 </th>
+					<th> Subencabezado 2 </th>
+				</tr>
+				<tr>
+					<th> Subencabezado 3 </th>
+					<th colspan="2"> Subencabezado 4 </th>
+					<th>  </th>
+				</tr>
+				<tr>
+					<td> Fila 1, Col 1 </td>
+					<td colspan="2"> Fila 1, Celdas Combinadas </td>
+					<td rowspan="2"> Fila 1,  Col 4 </td>
+					<td rowspan="4">  </td>
+				</tr>
+				<tr>
+					<td> Fila 2, Col 1 </td>
+					<td> Fila 2, Col 2 </td>
+					<td> Fila 2, Col 3 </td>
+				</tr>
+				<tr>
+					<td rowspan="2"> Fila 3, Col 1 (combinada) </td>
+					<td colspan="2"> Fila 3, Celdas Combinadas (Col 2 y 3) </td>
+					<td> Fila 3, Col 4 </td>
+				</tr>
+				<tr>
+					<td colspan="3"> Fila 4, Celdas Combinadas (Col 2, 3 y 4) </td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

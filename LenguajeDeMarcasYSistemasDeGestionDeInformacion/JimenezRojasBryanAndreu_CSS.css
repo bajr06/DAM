@@ -1,0 +1,93 @@
+body{
+	font-family: Arial, sans-serif;
+}
+
+h1{
+	font-family: 'Courier New', Courier, monospace;
+	justify-self: center;
+	color: white;
+}
+
+table{
+	border: 8px;
+	border-color: black;
+	border-style: solid;
+	width: 100%;
+	justify-content: center;
+	
+}
+
+tr, th, td{
+	border: 8px;
+	border-color: black;
+	border-style: solid;
+}
+
+#caja1{
+	background-color: pink;
+	position: absolute;
+	display: flex;
+	width: 70%;
+	height: 30%;
+	z-index: 1;
+}
+
+.cajamorada{
+	background-color: blueviolet;
+	width: 30%;
+	height: 25%;
+	margin: auto;
+}
+
+#caja2{
+	background-color: cyan;
+	position: absolute;
+	top: 20%;
+	right: 0%;
+	width: 70%;
+	height: auto;
+	z-index: 4;	
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr repeat(2, 60px);
+}
+
+#cajanaranja1{
+	background-color: orange;
+	grid-column: span 2;
+	line-height: 0.1px;
+	margin: 10px;
+}
+
+.cajaamarilla{
+	background-color: yellow;
+	margin: 10px;
+	height: auto;
+}
+
+#cajanaranja2{
+	background-color: orange;
+	grid-row: span 2;
+	height: auto;
+	margin: 10px;
+}
+
+#caja3{
+	background-color: green;
+	position: absolute;
+	top: 40%;
+	width: 70%;
+	height: 30%;
+	z-index: 2;
+}
+
+#caja4{
+	background-color: turquoise;
+	position: absolute;
+	top: 70%;
+	right: 0%;
+	width: 55%;
+	align-content: center;
+	padding: 10px;
+	z-index: 3;
+}
