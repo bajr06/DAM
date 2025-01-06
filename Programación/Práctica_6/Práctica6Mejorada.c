@@ -39,9 +39,60 @@ void inicializarLibro(libro * inventario, int id, char * nombre, char * escritor
 	inventario -> cantidad = cuantidad;
 }
 
+char * gen(genero * literario){
+	switch(*literario){
+		case 0:
+			return "FICCION";
+			break;
+		case 1:
+			return "NO_FICCION";
+			break;
+		case 2:
+			return "POESIA";
+			break;
+		case 3:
+			return "TEATRO";
+			break;
+		case 4:
+			return "ENSAYO";
+			break;
+		default:
+			return "NO IDENTIFICADO";
+	}
+}
+
+void ImprimirLibro(libro * contenido){
+	printf("%d, %s, %s, %.2f, %s, %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> cantidad);
+}
+
+void ImprimirEstante(libro * inventario){
+	for(int i = 0; i < MAX_LIBROS; i++, inventario++){
+		ImprimirLibro(inventario);
+	}
+}
+
+void BuscarLibro(libro * imprimir, const int numero){
+	for(int j = 0; j < MAX_LIBROS; j++, imprimir++){
+		if(imprimir -> identificador == numero){
+			ImprimirLibro(imprimir);
+		}
+	}
+}
+
+void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){
+	printf("Este es el libro que has seleccionado:\n");
+	añadir = añadir + (numero - 1);
+	ImprimirLibro(añadir);
+
+	añadir -> cantidad += nuevacantidad;
+	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir -> cantidad);
+}
+
+void ImprimirCategoria(libro * estante, const int tipo){
+}
+
 int main(int argc, char ** argv){
 	libro * catalogo = (libro *)malloc(MAX_LIBROS*sizeof(libro));
-
 	error(catalogo);
 
 	inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10);
@@ -85,7 +136,7 @@ int main(int argc, char ** argv){
 	inicializarLibro(&catalogo[38], 39, "The Republic", "Plato", 16.00, ENSAYO, 6);
 	inicializarLibro(&catalogo[39], 40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10);
 
-	int escoger;
+	int escoger; 
 	printf("Bienvenido a la biblioteca de Pantheon. Escriba el número de una de las siguientes operaciones que deseas ejecutar:\n\
 			1. Mostrar todos los libros.\n\
 			2. Mostrar el libro que escojas por ID.\n\
@@ -93,6 +144,36 @@ int main(int argc, char ** argv){
 			4. Mostrar todos los libros de una categoría.\n\
 			5. Mostrar los libros del autor.\n");
 	scanf("%d", &escoger);
+	
+	switch(escoger){
+		case 1:
+			printf("Estos son todos los libros que tenemos disponibles:\n");
+			ImprimirEstante(&catalogo[0]);
+			break;
+		case 2:
+			int id;
+
+			printf("Escriba el número del identificador del libro:\n");
+			scanf("%d", &id);
+
+			BuscarLibro(&catalogo[0], id);
+			break;
+		case 3:
+			int vinculo, nuevacantidad;
+			
+			printf("Escriba el número del identificador del libro:\n");
+			scanf("%d", &vinculo);
+			printf("Escriba la cantidad de libros a añadir: \n");
+			scanf("%d", &nuevacantidad);
+
+			AñadirLote(&catalogo[0], vinculo, nuevacantidad);
+			break;
+		case 4:
+
+			break;
+	}
 
 	free(catalogo);
+
+	return EXIT_SUCCESS;
 }
