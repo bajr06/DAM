@@ -45,7 +45,7 @@ char * gen(genero * literario){
 			return "FICCION";
 			break;
 		case 1:
-			return "NO_FICCION";
+			return "NO FICCION";
 			break;
 		case 2:
 			return "POESIA";
@@ -62,7 +62,7 @@ char * gen(genero * literario){
 }
 
 void ImprimirLibro(libro * contenido){
-	printf("%d, %s, %s, %.2f, %s, %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> cantidad);
+	printf("%d, %s, %s, %.2f, %s[%d], %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> literario ,contenido -> cantidad);
 }
 
 void ImprimirEstante(libro * inventario){
@@ -71,24 +71,36 @@ void ImprimirEstante(libro * inventario){
 	}
 }
 
-void BuscarLibro(libro * imprimir, const int numero){
-	for(int j = 0; j < MAX_LIBROS; j++, imprimir++){
-		if(imprimir -> identificador == numero){
-			ImprimirLibro(imprimir);
-		}
+int BuscarLibro(libro * imprimir, const int numero){
+	int pasos = 0, limite = 1;
+
+	while(limite != numero){
+		imprimir++;
+		limite++;
+		pasos++;
 	}
+
+	ImprimirLibro(imprimir);
+
+	return pasos;
 }
 
 void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){
+	int vueltas;
+	
 	printf("Este es el libro que has seleccionado:\n");
-	añadir = añadir + (numero - 1);
-	ImprimirLibro(añadir);
+	vueltas = BuscarLibro(añadir, numero);
 
-	añadir -> cantidad += nuevacantidad;
-	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir -> cantidad);
+	añadir[vueltas].cantidad += nuevacantidad;
+	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad);
 }
 
-void ImprimirCategoria(libro * estante, const int tipo){
+void ImprimirCategoria(libro * estante, const int clase){
+	for(int k = 0; k < MAX_LIBROS; k++, estante++){
+		if(estante -> literario == clase){
+			ImprimirLibro(estante);
+		}
+	}
 }
 
 int main(int argc, char ** argv){
@@ -169,7 +181,18 @@ int main(int argc, char ** argv){
 			AñadirLote(&catalogo[0], vinculo, nuevacantidad);
 			break;
 		case 4:
+			int tipo;
 
+			printf("Los género literarios están divididos en números:\n\
+	0 es FICCION;\n\
+	1 es NO FICCION;\n\
+	2 es POESIA;\n\
+	3 es TEATRO;\n\
+	4 es ENSAYO\n");
+			printf("¿Los libros de qué categoría deseas observar?\n");
+			scanf("%d", &tipo);
+
+			ImprimirCategoria(&catalogo[0], tipo);
 			break;
 	}
 
