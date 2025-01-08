@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define MAX_NOMBRE 50
-#define MAX_LIBROS 40
+int MAX_LIBROS = 40;
 
 #define error(memoria){ \
 	if(memoria == NULL){ \
@@ -29,6 +30,7 @@ typedef struct{
 	genero literario;
 	int cantidad;
 } libro;
+
 
 void inicializarLibro(libro * inventario, int id, char * nombre, char * escritor, float costo, genero clase, int cuantidad){
 	inventario -> identificador = id;
@@ -103,6 +105,45 @@ void ImprimirCategoria(libro * estante, const int clase){
 	}
 }
 
+void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
+	for(int m = 0; m < MAX_LIBROS; m++, libreria++){
+		if(strcmp(libreria -> autor, literato) == false){
+			ImprimirLibro(libreria);
+		}
+	}
+}
+
+libro * AñadirLibro(libro * repositorio, const int nuevo){
+	int id, cuantidad;
+	float costo;
+	char nombre[MAX_NOMBRE], escritor[MAX_NOMBRE];
+	genero clase;
+	
+	libro * recatalogo = (libro *)realloc(repositorio, (MAX_LIBROS + nuevo) * sizeof(libro));
+	
+	for(int n = MAX_LIBROS; n < MAX_LIBROS + nuevo; n++){
+		printf("Escriba el id: ");
+		scanf("%d", &id);
+		printf("Escriba el título: ");
+		scanf("%s", nombre);
+		printf("Escriba el autor: ");
+		scanf("%s", escritor);
+		printf("Escriba su costo: ");
+		scanf("%f", &costo);
+		printf("Escriba su genero: ");
+		scanf("%u", &clase);
+		printf("Escriba la cantidad: ");
+		scanf("%d", &cuantidad);
+		
+		inicializarLibro(&recatalogo[n], id, nombre, escritor, costo, clase, cuantidad);
+	}
+
+	MAX_LIBROS += nuevo;
+
+	return &recatalogo[0];
+}
+
+
 int main(int argc, char ** argv){
 	libro * catalogo = (libro *)malloc(MAX_LIBROS*sizeof(libro));
 	error(catalogo);
@@ -148,53 +189,93 @@ int main(int argc, char ** argv){
 	inicializarLibro(&catalogo[38], 39, "The Republic", "Plato", 16.00, ENSAYO, 6);
 	inicializarLibro(&catalogo[39], 40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10);
 
-	int escoger; 
-	printf("Bienvenido a la biblioteca de Pantheon. Escriba el número de una de las siguientes operaciones que deseas ejecutar:\n\
+	if(argc == 1){
+		int escoger; 
+		printf("Bienvenido a la biblioteca de Pantheon. Escriba el número de una de las siguientes operaciones que deseas ejecutar:\n\
 			1. Mostrar todos los libros.\n\
 			2. Mostrar el libro que escojas por ID.\n\
 			3. Aumentar el stock de un libro através de su ID.\n\
 			4. Mostrar todos los libros de una categoría.\n\
-			5. Mostrar los libros del autor.\n");
-	scanf("%d", &escoger);
+			5. Mostrar los libros del autor.\n\
+			6. Añadir libros\n");
+		scanf("%d", &escoger);
 	
-	switch(escoger){
-		case 1:
-			printf("Estos son todos los libros que tenemos disponibles:\n");
+		switch(escoger){
+			case 1:
+				printf("Estos son todos los libros que tenemos disponibles:\n");
+				ImprimirEstante(&catalogo[0]);
+				break;
+			case 2:
+				int id;
+
+				printf("Escriba el número del identificador del libro:\n");
+				scanf("%d", &id);
+
+				BuscarLibro(&catalogo[0], id);
+				break;
+			case 3:
+				int vinculo, nuevacantidad;
+				
+				printf("Escriba el número del identificador del libro:\n");
+				scanf("%d", &vinculo);
+				printf("Escriba la cantidad de libros a añadir: \n");
+				scanf("%d", &nuevacantidad);
+
+				AñadirLote(&catalogo[0], vinculo, nuevacantidad);
+				break;
+			case 4:
+				int tipo;
+
+				printf("Los género literarios están divididos en números:\n\
+				0 es FICCION;\n\
+				1 es NO FICCION;\n\
+				2 es POESIA;\n\
+				3 es TEATRO;\n\
+				4 es ENSAYO\n");
+				printf("¿Los libros de qué categoría deseas observar?\n");
+				scanf("%d", &tipo);
+
+				ImprimirCategoria(&catalogo[0], tipo);
+				break;
+			case 5:
+				char escritor[MAX_NOMBRE];
+
+				printf("Escriba el nombre del autor:\n");
+				scanf("%s", escritor);
+
+				BuscarAutor(&catalogo[0], escritor);
+				break;
+			case 6:
+				int maslibro;
+
+				printf("¿Cuántos libros quieres añadir?\n");
+				scanf("%d", &maslibro);
+
+				catalogo = AñadirLibro(&catalogo[0], maslibro);
+				break;
+		}
+	}else 
+	if(argc == 2){
+        	// Mostrar o en añadir
+        	if (strcmp(argv[1],"mostrar") == 0){
+            		// Llamo a la función mostrar todos los libros
+            		printf("Llamo a la función mostrar\n");
 			ImprimirEstante(&catalogo[0]);
-			break;
-		case 2:
-			int id;
-
-			printf("Escriba el número del identificador del libro:\n");
-			scanf("%d", &id);
-
-			BuscarLibro(&catalogo[0], id);
-			break;
-		case 3:
-			int vinculo, nuevacantidad;
-			
-			printf("Escriba el número del identificador del libro:\n");
-			scanf("%d", &vinculo);
-			printf("Escriba la cantidad de libros a añadir: \n");
-			scanf("%d", &nuevacantidad);
-
-			AñadirLote(&catalogo[0], vinculo, nuevacantidad);
-			break;
-		case 4:
-			int tipo;
-
-			printf("Los género literarios están divididos en números:\n\
-	0 es FICCION;\n\
-	1 es NO FICCION;\n\
-	2 es POESIA;\n\
-	3 es TEATRO;\n\
-	4 es ENSAYO\n");
-			printf("¿Los libros de qué categoría deseas observar?\n");
-			scanf("%d", &tipo);
-
-			ImprimirCategoria(&catalogo[0], tipo);
-			break;
-	}
+        	}
+		else
+		if (strcmp(argv[1],"añadir") == 0){
+            		printf("Llamo a la función añadir\n");
+			catalogo = AñadirLibro(&catalogo[0]);
+        	}
+    	}
+	else 
+	if(argc == 3){
+        	// Distinguir mostrar 
+    	}
+	else
+	if (argc == 4){
+        	// ...
+    	}
 
 	free(catalogo);
 
