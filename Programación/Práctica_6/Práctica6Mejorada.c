@@ -107,7 +107,7 @@ void ImprimirCategoria(libro * estante, const int clase){
 
 void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
 	for(int m = 0; m < MAX_LIBROS; m++, libreria++){
-		if(strcmp(libreria -> autor, literato) == false){
+		if(strcmp(libreria -> autor, literato) == 0){
 			ImprimirLibro(libreria);
 		}
 	}
@@ -265,7 +265,7 @@ int main(int argc, char ** argv){
 		else
 		if (strcmp(argv[1],"añadir") == 0){
             		printf("Llamo a la función añadir\n");
-			catalogo = AñadirLibro(&catalogo[0]);
+			// catalogo = AñadirLibro(&catalogo[0]);
         	}
     	}
 	else 
