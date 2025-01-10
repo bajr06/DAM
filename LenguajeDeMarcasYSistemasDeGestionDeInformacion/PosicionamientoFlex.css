@@ -4,7 +4,7 @@ body{
 
 #cajaRoja{
 	display: flex;
-	flex-direction: row; /* Ponerlo siempre */
+	flex-direction: row; /* Ponerlo siempre en filas */
 	flex-wrap: wrap; /* Decide que hacer si los elementos no caben */
 	/* flex-flow: row wrap; Lo mismo de lo anterior */
 	justify-content: space-between; /* Justificar div que están dentro */

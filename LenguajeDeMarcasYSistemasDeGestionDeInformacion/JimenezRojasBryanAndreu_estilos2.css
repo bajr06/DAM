@@ -1,0 +1,74 @@
+body{
+	font-family: "Gill Sans", sans-serif;
+}
+
+h1{
+	font-family: "Georgia";
+	color: green;
+}
+
+table, tr, th, td{
+	border: 1px solid green;
+	border-collapse: collapse;
+}
+
+#cajarosa{
+	background-color: pink;
+	position: absolute;
+	left: 25%;
+	width: 30vw;
+	height: 20vh;
+}
+
+#cajaamarilla{
+	background-color: yellow;
+	position: absolute;
+	right: 2%;
+}
+
+#cajacyan{
+	background-color: cyan;
+	height: 50vh;
+}
+
+#cajanaranja{
+	background-color: orange;
+	position: absolute;
+	right: 0%;
+	width: 50vw;
+}
+
+#cajaroja{
+	background-color: red;
+	width: 50vw;
+	height: 30vh;
+	display: flex;
+	gap: 10px;
+}
+
+.cajalightcyan{
+	background: lightcyan;
+	height: 10vh;
+	width: 30vw;
+}
+
+#cajaverde{
+	background-color: greenyellow;
+	width: 30vw;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.caja{
+	background-color: white;
+	height: 10vh;
+	width: 30vw;
+}
+
+#cajavioleta{
+	background-color: violet;
+	grid-row: span 2;
+	width: 30vw;
+}
