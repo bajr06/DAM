@@ -3,17 +3,26 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define MAX_NOMBRE 50
-int MAX_LIBROS = 40;
+/*
+ *	Autor: Bryan Andreu Jiménez Rojas.
+ *	Curso: Grado Superior de Desarrollo de Aplicaciones Multiplataforma 1.
+*/
 
+#define MAX_NOMBRE 50 // Cantidad máxima de carácteres para nombre de libro o autor.
+int MAX_LIBROS = 40; // Cantidad máxima de libros, definida como variable local tras posibilidad de ver cambiado su número.
+
+
+// Macro definido para exponer errores por falta de memoria en la función main.
 #define error(memoria){ \
 	if(memoria == NULL){ \
 		printf("Error, memoria insuficiente\n"); \
 		return EXIT_FAILURE; \
 	} \
 } \
+// Solo se ejecutará si el valor es nulo, mientras no se cumpla esa condición pasará totalmente desapercibida.
 
 
+// Definimos los valores para los géneros de cada libro.
 typedef enum{
 	FICCION,
 	NO_FICCION,
@@ -22,6 +31,7 @@ typedef enum{
 	ENSAYO,
 } genero;
 
+// Definimos la variable libro para cada libro que vayamos a usar.
 typedef struct{
 	int identificador;
 	char titulo[MAX_NOMBRE];
@@ -32,6 +42,14 @@ typedef struct{
 } libro;
 
 
+/*
+ *
+ *	FUNCIONES DEL PROGRAMA.
+ *
+*/
+
+// Esta es la función encargada de guardar todos los libros dentro del espacio que hemos reservador con anterioridad.
+// Le pasamos la dirección de memoria del espacio reservador, en conjunto con los datos de cada libro.
 void InicializarLibro(libro * inventario, int id, char * nombre, char * escritor, float costo, genero clase, int cuantidad){
 	inventario -> identificador = id;
 	strcpy(inventario -> titulo, nombre);
