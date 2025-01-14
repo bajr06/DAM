@@ -8,18 +8,27 @@
  *	Curso: Grado Superior de Desarrollo de Aplicaciones Multiplataforma 1.
 */
 
+
+/*
+ *----------------------------------------------------------
+ *------DEFINICIÓN VARIABLES Y TIPO DE DATOS GLOBALES.------
+ *----------------------------------------------------------
+ *
+*/
+
+
 #define MAX_NOMBRE 50 // Cantidad máxima de carácteres para nombre de libro o autor.
 int MAX_LIBROS = 40; // Cantidad máxima de libros, definida como variable local tras posibilidad de ver cambiado su número.
 
 
 // Macro definido para exponer errores por falta de memoria en la función main.
+// Solo se ejecutará si el valor es nulo, mientras no se cumpla esa condición pasará totalmente desapercibida.
 #define error(memoria){ \
 	if(memoria == NULL){ \
 		printf("Error, memoria insuficiente\n"); \
 		return EXIT_FAILURE; \
 	} \
 } \
-// Solo se ejecutará si el valor es nulo, mientras no se cumpla esa condición pasará totalmente desapercibida.
 
 
 // Definimos los valores para los géneros de cada libro.
@@ -43,9 +52,9 @@ typedef struct{
 
 
 /*
- *
- *	FUNCIONES DEL PROGRAMA.
- *
+ *-----------------------------------
+ *------FUNCIONES DEL PROGRAMA.------
+ *-----------------------------------
 */
 
 // Esta es la función encargada de guardar todos los libros dentro del espacio que hemos reservador con anterioridad.
@@ -110,51 +119,66 @@ int BuscarLibro(libro * imprimir, const int numero){ // Recibe un puntero a libr
 
 	ImprimirLibro(imprimir); // Al salir del bucle tras encontrar un libro que si sea igual, lo imprimirá.
 
-	return pasos; // Y retornará el valor usado para la fuinción AñadirLotes.
+	return pasos; // Y retornará el valor usado para la fuinción AñadirLotes().
 }
 
-
-void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){
-	int vueltas;
+// Con esta función, dado el identificador del libro, podemos aumentar la cantidad de libros que hay en uno de manera específica.
+void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){ // Recibe la dirección de memoria en 0, el número de identificador, y la nueva cantidad que necesita.
+	int vueltas; // Variable encargada de guardas el valor de retorno de la función BuscarLibro().
 	
 	printf("Este es el libro que has seleccionado:\n");
-	vueltas = BuscarLibro(añadir, numero);
+	vueltas = BuscarLibro(añadir, numero); // Se le asigna a la variable creada con aterioridad la cantidad de vueltas dadas.
 
-	añadir[vueltas].cantidad += nuevacantidad;
-	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad);
+	añadir[vueltas].cantidad += nuevacantidad; // Nos posicionamos momentaneamente en la dirección de memoria en la que vamos a modificar la cantidad, y la incrementamos.
+	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad); // Por último la imprimimos.
 }
 
-void ImprimirCategoria(libro * estante, const int clase){
-	for(int k = 0; k < MAX_LIBROS; k++, estante++){
-		if(estante -> literario == clase){
-			ImprimirLibro(estante);
+// Dependiendo de la la categoría literaria que haya en cada libro, se imprimiran uno u otros
+void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posición de la variable catálogo en 0, en conjunto con el número de la categoría especificado con aterioridad.
+	for(int k = 0; k < MAX_LIBROS; k++, estante++){ // Creamos un bucle que pase por todos los libros.
+		if(estante -> literario == clase){ // Y si el número coincide con el valor especificado anteriorimente en el enum "categoría".
+			ImprimirLibro(estante); // Se imprimirá.
+		}
+		else
+		if(clase < 0 || clase > 4){ // Si no se cumple lo anterior, y además, la clase no existe.
+			printf("No existe ese género literario en esta biblioteca.\n"); // Imprimirá esto.
+			break; // Y saldrá del bucle.
 		}
 	}
 }
 
-void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
-	for(int m = 0; m < MAX_LIBROS; m++, libreria++){
-		for(int n = 0; n < MAX_NOMBRE; n++){
+// Con el nombre dado de un autor, se puede imprimir el libro en el que haya participado o creado ese autor.
+void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){ // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
+	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro.
+		for(int n = 0; n < MAX_NOMBRE; n++){ // Y otro bucle para pasar letra por letra en cada uno de los nombres de los autores.
+			// Y cumpliendo la condición en la que compares el nombre del autor de un libro (empezando desde una sílaba dada con la letra 'n') con la de la variable literato, dada con el tamaño que tiene el nombre del autor dado por el usuario.
 			if(strncmp(libreria -> autor + n, literato, strlen(literato)) == 0){
-				ImprimirLibro(libreria);
+				ImprimirLibro(libreria); // Imprimirá eñ libro.
 			}
 		}
 	}
 }
 
-libro * AñadirLibro(libro * repositorio, const int nuevo){
+// Esta función es la encargada de añadir un libro al catálogo, con todos su datos posibles, y mostrando como se guardaría. 
+libro * AñadirLibro(libro * repositorio, const int nuevo){ // Creamos un puntero a libro para que, al terminar la función, regrese una dirección de memoria al primer libro del catálogo.
+	// Creamos las variables para poder asginarlas en el bucle.
 	int id, cuantidad;
 	float costo;
 	char nombre[MAX_NOMBRE], escritor[MAX_NOMBRE];
 	genero clase;
-
+	
+	// Realizamos un realoc al catálogo, para volver a reservar espacio, pero con más espacio; reservado para los nuevos libros.
+	// Creamos un puntero a libro llamado recatalogo, donde guardaremos el nuevo catálogo.
+	// Libera el primer catálogo, reserva un nuevo espacio del tamaño de la cantidad de libros más los nuevos a añadir.
+	// Y el tamaño en bits que tendrán serán del sizeof(libro).
 	libro * recatalogo = (libro *)realloc(repositorio, (MAX_LIBROS + nuevo) * sizeof(libro));
-	if(recatalogo == NULL){
-		printf("Error, no hay memoria disponible.\n");
-		exit(EXIT_FAILURE);
+	if(recatalogo == NULL){ // Si no es posible reservar espacio por falta de memoria.
+		printf("Error, memoria insuficiente.\n"); // Imprimirá el programa.
+		exit(EXIT_FAILURE); // Y terminará el programa al completo
 	}
 
-	for(int o = MAX_LIBROS; o < MAX_LIBROS + nuevo; o++){
+	for(int o = MAX_LIBROS; o < MAX_LIBROS + nuevo; o++){ // Creamos un bucle que empiece en la primera posición del libro nuevo, y que termine después de llegar al último libro a rellenar
+		// Le pasamos todos los datos del libro, uno por uno.
 		printf("Escriba el id: ");
 		scanf("%d", &id);
 		printf("Escriba el título: ");
@@ -168,23 +192,30 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 		printf("Escriba la cantidad: ");
 		scanf("%d", &cuantidad);
 		
+		// Le pasamos la posición en el catálogo en conjunto con todos los datos del libro a la función Inicializar para que los guarde en ese sitio asignado.
 		InicializarLibro(&recatalogo[o], id, nombre, escritor, costo, clase, cuantidad);
 		
 		printf("Has añadido el siguiente libro:\n");
-		ImprimirLibro(&recatalogo[o++]);
+		ImprimirLibro(&recatalogo[o++]); // Y lo mostramos por pantalla.
 
 	}
 
-	MAX_LIBROS += nuevo;	
+	MAX_LIBROS += nuevo; // Incrementamos la cantidad de Libros que hay en total, para evitar que no tome en cuenta los nuevos libros.
 
-	return &recatalogo[0];
+	return &recatalogo[0]; // Y retornamos la nueva dirección de memoria del catálogo, debido que al hacer un realoc, esta desapareció en main y solo existe en esta función (pero no se borra al terminar el programa).
 }
 
 
-int main(int argc, char ** argv){
-	libro * catalogo = (libro *)malloc(MAX_LIBROS*sizeof(libro));
-	error(catalogo);
-
+/*
+ *------------------------
+ *------FUNCION MAIN------
+ *------------------------
+*/
+int main(int argc, char ** argv){ // Variables necesarias para poder probar el programa desde las líneas de comandos.
+	libro * catalogo = (libro *)malloc(MAX_LIBROS*sizeof(libro)); // Reservamos el espacio de memoria para el puntero a libro "catálogo", del tamaño de MAX_LIBROS multiplicado por los bits de la variable de tipo libro.
+	error(catalogo); // Si da error, el programa terminará al instante,
+	
+	// Guardamos cada uno de los datos de cada libro en un espacio de libro asignado.
 	InicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10);
 	InicializarLibro(&catalogo[1], 2, "1984", "George Orwell", 12.49, FICCION, 5);
 	InicializarLibro(&catalogo[2], 3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICCION, 8);
@@ -226,120 +257,182 @@ int main(int argc, char ** argv){
 	InicializarLibro(&catalogo[38], 39, "The Republic", "Plato", 16.00, ENSAYO, 6);
 	InicializarLibro(&catalogo[39], 40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ENSAYO, 10);
 
-	if(argc == 1){
-		int escoger; 
+	if(argc == 1){ // Si solamente se ejecuta el programa sin línea de comandos, aparecerá el siguiente menú.
+		int escoger; // Creamos la variable escoger para poder utilizar una de las 6 funciones existentes (sin contar el salir como función).
 		printf("Bienvenido a la biblioteca de Pantheon. Escriba el número de una de las siguientes operaciones que deseas ejecutar:\n\
 			1. Mostrar todos los libros.\n\
 			2. Mostrar el libro que escojas por ID.\n\
 			3. Aumentar el stock de un libro através de su ID.\n\
 			4. Mostrar todos los libros de una categoría.\n\
 			5. Mostrar los libros del autor.\n\
-			6. Añadir libros\n");
+			6. Añadir libros\n\
+			7. Salir.\n");
 		scanf("%d", &escoger);
-	
-		switch(escoger){
-			case 1:
-				printf("Estos son todos los libros que tenemos disponibles:\n");
-				ImprimirEstante(&catalogo[0]);
-				break;
-			case 2:
-				int id;
 
-				printf("Escriba el número del identificador del libro:\n");
-				scanf("%d", &id);
+		// Creamos un bucle que solo ocurra si la variable escoger se encuentra dentro del las 6 posibilidades dadas.
+		do{
+			switch(escoger){
+				case 1: // Si el valor de escoger es 1
+					printf("Estos son todos los libros que tenemos disponibles:\n");
+					ImprimirEstante(&catalogo[0]); // Imprime todos los libros.
 
-				BuscarLibro(&catalogo[0], id);
-				break;
-			case 3:
-				int vinculo, nuevacantidad;
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger); // Y escanea otra respuesta en caso de que el usuario quiera ejecitar otra funciñon (así en todos los casos).
+					
+					printf("\n");
+
+					break; // Sale del switch.
+				case 2:
+					int id; // Creamos la variable donde se guardará el identificador del libro a buscar.
+
+					printf("Escriba el número del identificador del libro:\n");
+					scanf("%d", &id); // La escaneamos por panatalla.
+
+					BuscarLibro(&catalogo[0], id); // Ejecutamos la función mandandole la dirección de memoria del catálogo junto con su ID.
+
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger);
+					
+					printf("\n");
+
+					break;
+				case 3:
+					int vinculo, nuevacantidad; // Identificador y la nueva cantidad a añadir al libro
 				
-				printf("Escriba el número del identificador del libro:\n");
-				scanf("%d", &vinculo);
-				printf("Escriba la cantidad de libros a añadir: \n");
-				scanf("%d", &nuevacantidad);
+					// Las añadimos.
+					printf("Escriba el número del identificador del libro:\n");
+					scanf("%d", &vinculo);
+					printf("Escriba la cantidad de libros a añadir: \n");
+					scanf("%d", &nuevacantidad);
 
-				AñadirLote(&catalogo[0], vinculo, nuevacantidad);
-				break;
-			case 4:
-				int tipo;
+					AñadirLote(&catalogo[0], vinculo, nuevacantidad); // Le mandamos la información pertienente a la función
+					
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger);
+					
+					printf("\n");
 
-				printf("Los género literarios están divididos en números:\n\
-				0 es FICCION;\n\
-				1 es NO FICCION;\n\
-				2 es POESIA;\n\
-				3 es TEATRO;\n\
-				4 es ENSAYO\n");
-				printf("¿Los libros de qué categoría deseas observar?\n");
-				scanf("%d", &tipo);
+					break;
+				case 4:
+					int tipo; // Género literario a buscar
+	
+					printf("Los género literarios están divididos en números:\n\
+					0 es FICCION;\n\
+					1 es NO FICCION;\n\
+					2 es POESIA;\n\
+					3 es TEATRO;\n\
+					4 es ENSAYO\n");
+					printf("¿Los libros de qué categoría deseas observar?\n");
+					scanf("%d", &tipo);
 
-				ImprimirCategoria(&catalogo[0], tipo);
-				break;
-			case 5:
-				char escritor[MAX_NOMBRE];
+					ImprimirCategoria(&catalogo[0], tipo); // Le mandamos su información, en conjunto conuna explicación para evitar problemas de ejecución.
 
-				printf("Escriba el nombre del autor:\n");
-				scanf(" ");
-				fgets(escritor, MAX_NOMBRE, stdin);
-				escritor[strlen(escritor) - 1] = '\0';
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger);
+					
+					printf("\n");
 
-				BuscarAutor(&catalogo[0], escritor);
-				break;
-			case 6:
-				int maslibro;
+					break;
+				case 5:
+					char escritor[MAX_NOMBRE]; // Creamos la variable donde guardaremos el nombre del escritor que le demos.
 
-				printf("¿Cuántos libros quieres añadir?\n");
-				scanf("%d", &maslibro);
+					printf("Escriba el nombre del autor:\n");
+					scanf(" "); // Escaneamos un espacio en blanco antes debido a que el fgets pilla el "\n" del último printf.
+					fgets(escritor, MAX_NOMBRE, stdin); // Lo escaneamos con el tamaño máximo de letras.
+					escritor[strlen(escritor) - 1] = '\0'; // Y, tomando en cuenta que fgets escanea hasta enter, nos posicionamos en el último sitio usando el tamaño usar en la variable (restandole 1 para posicionarlos justo en el "\n", y lo cambiamos por el "\0", para que termine de leer la cadena justo ahí.)
 
-				catalogo = AñadirLibro(&catalogo[0], maslibro);
-				break;
-		}
+					BuscarAutor(&catalogo[0], escritor); // Le pasamos la posición de memoria, en conjunyo con la variable.
+					
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger);
+
+					printf("\n");
+
+					break;
+				case 6:
+					int maslibro; // Cantidad de libros a añadir.
+
+					printf("¿Cuántos libros quieres añadir?\n");
+					scanf("%d", &maslibro); // Escaneamos la cantidad deseada.
+					
+					// Y le mandamos los valores necesarios a la función creada.
+					// Cabe recalcar que al realizar un realoc en la función Añadir Libro, el catalogo está apuntando a un espacio de memoria libre, sin reservar (que puede llegar a dar problemas), que nos puede dar errores.
+					// Es por ello que retornamos la dirección de memoria creado con el realoc en la posición 0, y le posicionamos en el primer libro del nuevo espacio reservado.
+					catalogo = AñadirLibro(&catalogo[0], maslibro);
+
+					printf("¿Qué función deseas ejecutar?\n");
+					scanf("%d", &escoger);
+					
+					printf("\n");
+
+					break;
+				}
+		} while(escoger == 1 || escoger == 2 || escoger == 3 || escoger == 4 || escoger == 5 || escoger == 6);
+		
+		// Si el usuario no escoge ninguna de las posibilidades, imprimir este printf, y el programa termina.
+		printf("Muchas gracias por usar nuestro programa de inventario, ¡Hasta la próxima!\n");
 	}else 
-	if(argc == 2){
-		if (strcmp(argv[1],"mostrar") == false){
-			ImprimirEstante(&catalogo[0]);
+	if(argc == 2){ // Si se recibe 2 argumenos por línea de argumentos.
+		if (strcmp(argv[1],"mostrar") == false){ // Y la palabra dada es "mostrar".
+			printf("Ejecutamos ImprimirEstante().\n");
+			
+			ImprimirEstante(&catalogo[0]); // Se ejecuta la función.
 		}
 		else
-		if (strcmp(argv[1],"añadir") == false){
-			catalogo = AñadirLibro(&catalogo[0], 1);
+		if (strcmp(argv[1],"añadir") == false){ // Si la palabra es "añadir"
+			printf("Ejecutamos AñadirLibro().\n");
+			
+			catalogo = AñadirLibro(&catalogo[0], 1); // Realizamos esta función, recordando la esplicación anteriormente dada.
+
 		}
 	}
 	else 
-	if(argc == 3){
-		if(strcmp(argv[1], "mostrar") == false){
-			int id = atoi(argv[2]);
+	if(argc == 3){ // Si recibe 3 argumentos por línea de comandos.
+		if(strcmp(argv[1], "mostrar") == false){ // Y recibe "mostrar"
+			int id = atoi(argv[2]); // Además del identificador.
+			
+			printf("Ejecutamos BuscarLibro().\n");
 
-			BuscarLibro(&catalogo[0], id);
+			BuscarLibro(&catalogo[0], id); // Realiza la función
 		}
 		else
-		if(strcmp(argv[1], "categoria") == false){
-			int categoria = atoi(argv[2]);
+		if(strcmp(argv[1], "categoria") == false){ // Recibe "categoria"
+			int categoria = atoi(argv[2]); // Y el número del género del libro
+			
+			printf("Ejecutamos ImprimirCategoria().\n");
 
-			ImprimirCategoria(&catalogo[0], categoria);
+			ImprimirCategoria(&catalogo[0], categoria); // Ejecutado.
 		}
 		else
-		if(strcmp(argv[1], "autor") == false){
-			char * productor = argv[2];
+		if(strcmp(argv[1], "autor") == false){ // Recibe "autor"
+			char * productor = argv[2]; // Y el nombre del autor
+			
+			printf("Ejecutamos BuscarAutor().");
 
 			BuscarAutor(&catalogo[0], productor);
 		}
 		else
-		if(strcmp(argv[1],"añadir") == false){
-			int porcion = atoi(argv[2]);
+		if(strcmp(argv[1],"añadir") == false){ // Recibe "añadir"
+			int porcion = atoi(argv[2]); // Pero con la cantidad de libros a procesar
+			
+			printf("Ejecutamos AñadirLibro().\n");
 
 			catalogo = AñadirLibro(&catalogo[0], porcion);
 		}
 	}
 	else
-	if (argc == 4){
-		if(strcmp(argv[1], "cantidad") == false){
-			int registro = atoi(argv[2]);
-			int suma = atoi(argv[3]);
+	if (argc == 4){ // Si recibe un total de 4 argumentos
+		if(strcmp(argv[1], "cantidad") == false){ // Y lo que escanea es igual a "cantidad"
+			int registro = atoi(argv[2]); // Recibiendo tanto el identificador del libro
+			int suma = atoi(argv[3]); // Como la cantidad a sumar.
 
-			AñadirLote(&catalogo[0], registro, suma);
+			printf("Ejecutamos la función AñadirLote().\n");
+
+			AñadirLote(&catalogo[0], registro, suma); // Ejecuta la función.
 		}
 	}
 
-	free(catalogo);
+	free(catalogo); // Siempre que termine el programa, se liberará la memoria reservada.
 
-	return EXIT_SUCCESS;
+	return EXIT_SUCCESS; // Y finalizaremos el programa.
 }
