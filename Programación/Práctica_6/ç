@@ -19,6 +19,7 @@
 #define MAX_NOMBRE 50 // Cantidad máxima de carácteres para nombre de libro o autor.
 int MAX_LIBROS = 40; // Cantidad máxima de libros, definida como variable local tras posibilidad de ver cambiado su número.
 
+
 // Macro definido para exponer errores por falta de memoria en la función main.
 // Solo se ejecutará si el valor es nulo, mientras no se cumpla esa condición pasará totalmente desapercibida.
 #define error(memoria){ \
@@ -27,6 +28,7 @@ int MAX_LIBROS = 40; // Cantidad máxima de libros, definida como variable local
 		return EXIT_FAILURE; \
 	} \
 } \
+
 
 // Definimos los valores para los géneros de cada libro.
 typedef enum{
@@ -147,14 +149,15 @@ void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posic
 // Con el nombre dado de un autor, se puede imprimir el libro en el que haya participado o creado ese autor.
 void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){ // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
 	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro.
-	// 
-		if(strstr(libreria -> autor, literato) != NULL){
-			ImprimirLibro(libreria); // Imprimirá eñ libro.
-			break;
+		for(int n = 0; n < MAX_NOMBRE; n++){ // Y otro bucle para pasar letra por letra en cada uno de los nombres de los autores.
+			// Y cumpliendo la condición en la que compares el nombre del autor de un libro (empezando desde una sílaba dada con la letra 'n') con la de la variable literato, dada con el tamaño que tiene el nombre del autor dado por el usuario.
+			if(strncmp(libreria -> autor + n, literato, strlen(literato)) == 0){
+				ImprimirLibro(libreria); // Imprimirá eñ libro.
+				break;
+			}
 		}
 	}
 }
-
 
 // Esta función es la encargada de añadir un libro al catálogo, con todos su datos posibles, y mostrando como se guardaría. 
 libro * AñadirLibro(libro * repositorio, const int nuevo){ // Creamos un puntero a libro para que, al terminar la función, regrese una dirección de memoria al primer libro del catálogo.
@@ -404,7 +407,7 @@ int main(int argc, char ** argv){ // Variables necesarias para poder probar el p
 		if(strcmp(argv[1], "autor") == false){ // Recibe "autor"
 			char * productor = argv[2]; // Y el nombre del autor
 			
-			printf("Ejecutamos BuscarAutor().\n");
+			printf("Ejecutamos BuscarAutor().");
 
 			BuscarAutor(&catalogo[0], productor);
 		}
