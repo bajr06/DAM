@@ -1,0 +1,48 @@
+
+		printf("¿Cuántos libros quieres añadir?\n");
+		scanf("%d", &maslibro); // Escaneamos la cantidad deseada.
+
+		printf("Escriba el id: ");
+		scanf("%d", &id);
+		
+
+		printf("Escriba el título: ");
+		fgets(nombre, MAX_NOMBRE, stdin);
+		nombre[strlen(nombre) - 1] = '\0';
+		
+
+		printf("Escriba el autor: ");
+		fgets(escritor, MAX_NOMBRE, stdin);
+		escritor[strlen(escritor) - 1] = '\0';
+
+
+
+		No escanea el título ni el autor. Al ejecutarlo, pide el id y al llegar al título no lo escanea.
+
+
+printf("Escriba el id:");
+		scanf("%d", &id);
+		//getchar(); // Limpiar el salto de línea en el búfer de entrada
+		scanf(" ");
+		
+		printf("Escriba el título:");
+		fgets(nombre, MAX_NOMBRE, stdin);
+		//scanf("%s", nombre);
+		nombre[strlen(nombre) - 1] = '\0';
+
+
+
+
+
+
+printf("Escriba el id:");
+		scanf("%d", &id);
+		//getchar(); // Limpiar el salto de línea en el búfer de entrada
+		getchar();
+		
+		printf("Escriba el título:");
+		fgets(nombre, MAX_NOMBRE, stdin);
+		//scanf("%s", nombre);
+		nombre[strlen(nombre) - 1] = '\0';
+
+		

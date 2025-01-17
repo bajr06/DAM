@@ -10,9 +10,9 @@
 
 
 /*
- *----------------------------------------------------------
- *------DEFINICIÓN VARIABLES Y TIPO DE DATOS GLOBALES.------
- *----------------------------------------------------------
+ *------------------------------------------------------------
+ *------ DEFINICIÓN VARIABLES Y TIPO DE DATOS GLOBALES. ------
+ *------------------------------------------------------------
  *
 */
 
@@ -47,165 +47,46 @@ typedef struct{
 	int cantidad;
 } libro;
 
-
 /*
- *-----------------------------------
- *------FUNCIONES DEL PROGRAMA.------
- *-----------------------------------
+ *------------------------------------------------
+ *------ LLAMADA DE FUNCIONES DEL PROGRAMA. ------
+ *------------------------------------------------
 */
 
 // Esta es la función encargada de guardar todos los libros dentro del espacio que hemos reservador con anterioridad.
 // Le pasamos la dirección de memoria del espacio reservado, en conjunto con los datos de cada libro.
-void InicializarLibro(libro * inventario, int id, char * nombre, char * escritor, float costo, genero clase, int cuantidad){
-	inventario -> identificador = id; // Guardamos en x dirección de memoria el identificador.
-	strcpy(inventario -> titulo, nombre); // Lo mismo que lo anterior, pero debido a que son cadenas de carácteres, es necesario copiar y pegar carácter con carácter (arreglable con la librería string.h)-
-	strcpy(inventario -> autor, escritor);
-	inventario -> precio = costo;
-	inventario -> literario = clase;
-	inventario -> cantidad = cuantidad;
-}
+void InicializarLibro(libro * inventario, int id, char * nombre, char * escritor, float costo, genero clase, int cuantidad);
 
 // Función encargada de casting para imprimir la catégoría real del libro (y no un número).
-char * gen(genero * literario){ // Un puntero a genero.
-	switch(*literario){ // Dependiendo de el número que se le haya asignado.
-		case 0:
-			return "FICCION"; // Retornará un valor u otro.
-			break;
-		case 1:
-			return "NO FICCION";
-			break;
-		case 2:
-			return "POESIA";
-			break;
-		case 3:
-			return "TEATRO";
-			break;
-		case 4:
-			return "ENSAYO";
-			break;
-		default:
-			return "NO IDENTIFICADO"; // Si no existe, se le asignará un "NO IDENTIDICADO"
-	}
-}
+char * gen(genero * literario); // Un puntero a genero.
 
 // Al usar esta función, imprimiremos el contenido que hay en un espacio de memoria dado con antelación.
-void ImprimirLibro(libro * contenido){ // Se envia con anterioridad una dirección de memoria apuntando a un libro en especiífico.
-	printf("%d, %s, %s, %.2f, %s[%d], %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> literario ,contenido -> cantidad); // Directamente lo imprimimos, haciendo uso de la función de casting hecha con anterioridad para mostrar el género real.
-}
+void ImprimirLibro(libro * contenido); // Se envia con anterioridad una dirección de memoria apuntando a un libro en especiífico.
 
 // Imprime todos libros que hayan en la dirección de memoria.
-void ImprimirEstante(libro * inventario){ // Le pasamos la posición 0 del catálogo con todos los libros.
-	for(int i = 0; i < MAX_LIBROS; i++, inventario++){ // Dependiendo de la cantidad máxima de libros, se ejecutará este bucle que posicionará el bucle en un espacio del catálogo
-		ImprimirLibro(inventario); // Y haciendo uso de la anterior función creada, imprimeros cada uno de los libros.
-	}
-}
+void ImprimirEstante(libro * inventario); // Le pasamos la posición 0 del catálogo con todos los libros.
 
 // Busca un libro basándose en el ID que este posee.
-int BuscarLibro(libro * imprimir, const int numero){ // Recibe un puntero a libro en la posición 0 del catálogo, en conjunto con el número del identificador que estamos buscando.
-	int pasos = 0; // Creamos una varibale que mida las veces que pasamos por el bucle (para usarla en una función que está más adelante), y un límite para que pase libro por libro.
-
-	while(imprimir -> identificador != numero){ // Creamos un bucle que ocurra siempre y cuando el identificador del libro en que está posicionado no sea igual.
-		imprimir++; // Si se cumple la condición, se incrementa una posición en el catálogo (pasamos al siguiente libro).
-		pasos++; // Guardamos la cantidad de pasos que hace el bucle.
-
-		if(pasos > MAX_LIBROS){ // Si se da el caso que el bucle se ejecuta más veces de la cantidad de libros que hay.
-			printf("No existe ese libro.\n"); // Imprimirá esto.
-			return EXIT_FAILURE; // Y terminará el programa totalmente.
-		}
-	}
-
-	ImprimirLibro(imprimir); // Al salir del bucle tras encontrar un libro que si sea igual, lo imprimirá.
-
-	return pasos; // Y retornará el valor usado para la fuinción AñadirLotes().
-}
+int BuscarLibro(libro * imprimir, const int numero); // Recibe un puntero a libro en la posición 0 del catálogo, en conjunto con el número del identificador que estamos buscando.
 
 // Con esta función, dado el identificador del libro, podemos aumentar la cantidad de libros que hay en uno de manera específica.
-void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){ // Recibe la dirección de memoria en 0, el número de identificador, y la nueva cantidad que necesita.
-	int vueltas; // Variable encargada de guardas el valor de retorno de la función BuscarLibro().
-	
-	printf("Este es el libro que has seleccionado:\n");
-	vueltas = BuscarLibro(añadir, numero); // Se le asigna a la variable creada con aterioridad la cantidad de vueltas dadas.
-
-	añadir[vueltas].cantidad += nuevacantidad; // Nos posicionamos momentaneamente en la dirección de memoria en la que vamos a modificar la cantidad, y la incrementamos.
-	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad); // Por último la imprimimos.
-}
+void AñadirLote(libro * añadir, const int numero, const int nuevacantidad); // Recibe la dirección de memoria en 0, el número de identificador, y la nueva cantidad que necesita.
 
 // Dependiendo de la la categoría literaria que haya en cada libro, se imprimiran uno u otros
-void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posición de la variable catálogo en 0, en conjunto con el número de la categoría especificado con aterioridad.
-	for(int k = 0; k < MAX_LIBROS; k++, estante++){ // Creamos un bucle que pase por todos los libros.
-		if(estante -> literario == clase){ // Y si el número coincide con el valor especificado anteriorimente en el enum "categoría".
-			ImprimirLibro(estante); // Se imprimirá.
-		}
-		else
-		if(clase < 0 || clase > 4){ // Si no se cumple lo anterior, y además, la clase no existe.
-			printf("No existe ese género literario en esta biblioteca.\n"); // Imprimirá esto.
-			break; // Y saldrá del bucle.
-		}
-	}
-}
+void ImprimirCategoria(libro * estante, const int clase); // Se le pasa la posición de la variable catálogo en 0, en conjunto con el número de la categoría especificado con aterioridad.
 
 // Con el nombre dado de un autor, se puede imprimir el libro en el que haya participado o creado ese autor.
-void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){ // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
-	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro.
-	// 
-		if(strstr(libreria -> autor, literato) != NULL){
-			ImprimirLibro(libreria); // Imprimirá eñ libro.
-			break;
-		}
-	}
-}
+void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]); // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
 
 
 // Esta función es la encargada de añadir un libro al catálogo, con todos su datos posibles, y mostrando como se guardaría. 
-libro * AñadirLibro(libro * repositorio, const int nuevo){ // Creamos un puntero a libro para que, al terminar la función, regrese una dirección de memoria al primer libro del catálogo.
-	// Creamos las variables para poder asginarlas en el bucle.
-	int id, cuantidad;
-	float costo;
-	char nombre[MAX_NOMBRE], escritor[MAX_NOMBRE];
-	genero clase;
-	
-	// Realizamos un realoc al catálogo, para volver a reservar espacio, pero con más espacio; reservado para los nuevos libros.
-	// Creamos un puntero a libro llamado recatalogo, donde guardaremos el nuevo catálogo.
-	// Libera el primer catálogo, reserva un nuevo espacio del tamaño de la cantidad de libros más los nuevos a añadir.
-	// Y el tamaño en bits que tendrán serán del sizeof(libro).
-	libro * recatalogo = (libro *)realloc(repositorio, (MAX_LIBROS + nuevo) * sizeof(libro));
-	if(recatalogo == NULL){ // Si no es posible reservar espacio por falta de memoria.
-		printf("Error, memoria insuficiente.\n"); // Imprimirá el programa.
-		exit(EXIT_FAILURE); // Y terminará el programa al completo
-	}
-
-	for(int o = MAX_LIBROS; o < MAX_LIBROS + nuevo; o++){ // Creamos un bucle que empiece en la primera posición del libro nuevo, y que termine después de llegar al último libro a rellenar
-		// Le pasamos todos los datos del libro, uno por uno.
-		printf("Escriba el id: ");
-		scanf("%d", &id);
-		printf("Escriba el título: ");
-		scanf("%s", nombre);
-		printf("Escriba el autor: ");
-		scanf("%s", escritor);
-		printf("Escriba su costo: ");
-		scanf("%f", &costo);
-		printf("Escriba su genero: ");
-		scanf("%u", &clase);
-		printf("Escriba la cantidad: ");
-		scanf("%d", &cuantidad);
-		
-		// Le pasamos la posición en el catálogo en conjunto con todos los datos del libro a la función Inicializar para que los guarde en ese sitio asignado.
-		InicializarLibro(&recatalogo[o], id, nombre, escritor, costo, clase, cuantidad);
-		
-		printf("Has añadido el siguiente libro:\n");
-		ImprimirLibro(&recatalogo[o++]); // Y lo mostramos por pantalla.
-	}
-
-	MAX_LIBROS += nuevo; // Incrementamos la cantidad de Libros que hay en total, para evitar que no tome en cuenta los nuevos libros.
-
-	return &recatalogo[0]; // Y retornamos la nueva dirección de memoria del catálogo, debido que al hacer un realoc, esta desapareció en main y solo existe en esta función (pero no se borra al terminar el programa).
-}
+libro * AñadirLibro(libro * repositorio, const int nuevo); // Creamos un puntero a libro para que, al terminar la función, regrese una dirección de memoria al primer libro del catálogo.
 
 
 /*
- *------------------------
- *------FUNCION MAIN------
- *------------------------
+ *--------------------------
+ *------ FUNCION MAIN ------
+ *--------------------------
 */
 
 int main(int argc, char ** argv){ // Variables necesarias para poder probar el programa desde las líneas de comandos.
@@ -363,8 +244,15 @@ int main(int argc, char ** argv){ // Variables necesarias para poder probar el p
 					printf("\n");
 
 					break;
+				default:
+					printf("El apartado que deseas ejecutar no existe\n");
+
+					printf("¿Estás seguro de salir del programa? Introduce 7 para salir, o un número de una de las funciones disponibles.\n");
+					scanf("%d", &escoger);
+
+					printf("\n");
 				}
-		} while(escoger == 1 || escoger == 2 || escoger == 3 || escoger == 4 || escoger == 5 || escoger == 6);
+		} while(escoger != 7);
 		
 		// Si el usuario no escoge ninguna de las posibilidades, imprimir este printf, y el programa termina.
 		printf("Muchas gracias por usar nuestro programa de inventario, ¡Hasta la próxima!\n");
@@ -432,4 +320,157 @@ int main(int argc, char ** argv){ // Variables necesarias para poder probar el p
 	free(catalogo); // Siempre que termine el programa, se liberará la memoria reservada.
 
 	return EXIT_SUCCESS; // Y finalizaremos el programa.
+}
+
+
+/*
+ *-----------------------------------
+ *------FUNCIONES DEL PROGRAMA.------
+ *-----------------------------------
+*/
+
+void InicializarLibro(libro * inventario, int id, char * nombre, char * escritor, float costo, genero clase, int cuantidad){
+	inventario -> identificador = id; // Guardamos en x dirección de memoria el identificador.
+	strcpy(inventario -> titulo, nombre); // Lo mismo que lo anterior, pero debido a que son cadenas de carácteres, es necesario copiar y pegar carácter con carácter (arreglable con la librería string.h)-
+	strcpy(inventario -> autor, escritor);
+	inventario -> precio = costo;
+	inventario -> literario = clase;
+	inventario -> cantidad = cuantidad;
+}
+
+char * gen(genero * literario){ // Un puntero a genero.
+	switch(*literario){ // Dependiendo de el número que se le haya asignado.
+		case 0:
+			return "FICCION"; // Retornará un valor u otro.
+			break;
+		case 1:
+			return "NO FICCION";
+			break;
+		case 2:
+			return "POESIA";
+			break;
+		case 3:
+			return "TEATRO";
+			break;
+		case 4:
+			return "ENSAYO";
+			break;
+		default:
+			return "NO IDENTIFICADO"; // Si no existe, se le asignará un "NO IDENTIDICADO"
+	}
+}
+
+void ImprimirLibro(libro * contenido){ // Se envia con anterioridad una dirección de memoria apuntando a un libro en especiífico.
+	printf("%d, %s, %s, %.2f, %s[%d], %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> literario ,contenido -> cantidad); // Directamente lo imprimimos, haciendo uso de la función de casting hecha con anterioridad para mostrar el género real.
+}
+
+void ImprimirEstante(libro * inventario){ // Le pasamos la posición 0 del catálogo con todos los libros.
+	for(int i = 0; i < MAX_LIBROS; i++, inventario++){ // Dependiendo de la cantidad máxima de libros, se ejecutará este bucle que posicionará el bucle en un espacio del catálogo
+		ImprimirLibro(inventario); // Y haciendo uso de la anterior función creada, imprimeros cada uno de los libros.
+	}
+}
+
+int BuscarLibro(libro * imprimir, const int numero){ // Recibe un puntero a libro en la posición 0 del catálogo, en conjunto con el número del identificador que estamos buscando.
+	int pasos = 0; // Creamos una varibale que mida las veces que pasamos por el bucle (para usarla en una función que está más adelante), y un límite para que pase libro por libro.
+
+	while(imprimir -> identificador != numero){ // Creamos un bucle que ocurra siempre y cuando el identificador del libro en que está posicionado no sea igual.
+		imprimir++; // Si se cumple la condición, se incrementa una posición en el catálogo (pasamos al siguiente libro).
+		pasos++; // Guardamos la cantidad de pasos que hace el bucle.
+
+		if(pasos > MAX_LIBROS){ // Si se da el caso que el bucle se ejecuta más veces de la cantidad de libros que hay.
+			printf("No existe ese libro.\n"); // Imprimirá esto.
+			return EXIT_FAILURE; // Y terminará el programa totalmente.
+		}
+	}
+
+	ImprimirLibro(imprimir); // Al salir del bucle tras encontrar un libro que si sea igual, lo imprimirá.
+
+	return pasos; // Y retornará el valor usado para la fuinción AñadirLotes().
+}
+
+void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){ // Recibe la dirección de memoria en 0, el número de identificador, y la nueva cantidad que necesita.
+	int vueltas; // Variable encargada de guardas el valor de retorno de la función BuscarLibro().
+	
+	printf("Este es el libro que has seleccionado:\n");
+	vueltas = BuscarLibro(añadir, numero); // Se le asigna a la variable creada con aterioridad la cantidad de vueltas dadas.
+
+	añadir[vueltas].cantidad += nuevacantidad; // Nos posicionamos momentaneamente en la dirección de memoria en la que vamos a modificar la cantidad, y la incrementamos.
+	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad); // Por último la imprimimos.
+}
+
+void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posición de la variable catálogo en 0, en conjunto con el número de la categoría especificado con aterioridad.
+	for(int k = 0; k < MAX_LIBROS; k++, estante++){ // Creamos un bucle que pase por todos los libros.
+		if(estante -> literario == clase){ // Y si el número coincide con el valor especificado anteriorimente en el enum "categoría".
+			ImprimirLibro(estante); // Se imprimirá.
+		}
+		else
+		if(clase < 0 || clase > 4){ // Si no se cumple lo anterior, y además, la clase no existe.
+			printf("No existe ese género literario en esta biblioteca.\n"); // Imprimirá esto.
+			break; // Y saldrá del bucle.
+		}
+	}
+}
+
+void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){ // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
+	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro.
+	// 
+		if(strstr(libreria -> autor, literato) != NULL){
+			ImprimirLibro(libreria); // Imprimirá eñ libro.
+			break;
+		}
+	}
+}
+
+libro * AñadirLibro(libro * repositorio, const int nuevo){ // Creamos un puntero a libro para que, al terminar la función, regrese una dirección de memoria al primer libro del catálogo.
+	// Creamos las variables para poder asginarlas en el bucle.
+	int id, cuantidad;
+	float costo;
+	char nombre[MAX_NOMBRE], escritor[MAX_NOMBRE];
+	genero clase;
+	
+	// Realizamos un realoc al catálogo, para volver a reservar espacio, pero con más espacio; reservado para los nuevos libros.
+	// Creamos un puntero a libro llamado recatalogo, donde guardaremos el nuevo catálogo.
+	// Libera el primer catálogo, reserva un nuevo espacio del tamaño de la cantidad de libros más los nuevos a añadir.
+	// Y el tamaño en bits que tendrán serán del sizeof(libro).
+	libro * recatalogo = (libro *)realloc(repositorio, (MAX_LIBROS + nuevo) * sizeof(libro));
+	if(recatalogo == NULL){ // Si no es posible reservar espacio por falta de memoria.
+		printf("Error, memoria insuficiente.\n"); // Imprimirá el programa.
+		exit(EXIT_FAILURE); // Y terminará el programa al completo
+	}
+
+	for(int o = MAX_LIBROS; o < MAX_LIBROS + nuevo; o++){ // Creamos un bucle que empiece en la primera posición del libro nuevo, y que termine después de llegar al último libro a rellenar
+		// Le pasamos todos los datos del libro, uno por uno.
+		printf("Escriba el id: ");
+		scanf("%d", &id);
+		getchar(); // Limpiar el salto de línea en el búfer de entrada
+
+		printf("Escriba el título: ");
+		fgets(nombre, MAX_NOMBRE, stdin);
+		//scanf("%s", nombre);
+		nombre[strlen(nombre) - 1] = '\0';
+
+		printf("Escriba el autor: ");
+		fgets(escritor, MAX_NOMBRE, stdin);
+		escritor[strlen(escritor) - 1] = '\0';
+		
+
+		printf("Escriba su costo: ");
+		scanf("%f", &costo);
+
+		printf("Escriba su genero: ");
+		scanf("%u", &clase);
+
+		printf("Escriba la cantidad: ");
+		scanf("%d", &cuantidad);
+		
+		// Le pasamos la posición en el catálogo en conjunto con todos los datos del libro a la función Inicializar para que los guarde en ese sitio asignado.
+		InicializarLibro(&recatalogo[o], id, nombre, escritor, costo, clase, cuantidad);
+		
+		printf("Has añadido el siguiente libro:\n");
+		ImprimirLibro(&recatalogo[o++]); // Y lo mostramos por pantalla.
+	}
+
+	MAX_LIBROS += nuevo; // Incrementamos la cantidad de Libros que hay en total, para evitar que no tome en cuenta los nuevos libros.
+
+	return &recatalogo[0]; // Y retornamos la nueva dirección de memoria del catálogo, debido que al hacer un realoc, esta desapareció en main y solo existe en esta función (pero no se borra al terminar el programa).
 }
