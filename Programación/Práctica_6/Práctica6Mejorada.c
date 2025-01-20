@@ -316,6 +316,9 @@ int main(int argc, char ** argv){ // Variables necesarias para poder probar el p
 			AñadirLote(&catalogo[0], registro, suma); // Ejecuta la función.
 		}
 	}
+	else{
+		printf("No existe lo que tratas de ejecutar.\n");
+	}
 
 	free(catalogo); // Siempre que termine el programa, se liberará la memoria reservada.
 
@@ -379,7 +382,7 @@ int BuscarLibro(libro * imprimir, const int numero){ // Recibe un puntero a libr
 
 		if(pasos > MAX_LIBROS){ // Si se da el caso que el bucle se ejecuta más veces de la cantidad de libros que hay.
 			printf("No existe ese libro.\n"); // Imprimirá esto.
-			return EXIT_FAILURE; // Y terminará el programa totalmente.
+			return EXIT_FAILURE; // Y terminará la función totalmente.
 		}
 	}
 
@@ -391,11 +394,16 @@ int BuscarLibro(libro * imprimir, const int numero){ // Recibe un puntero a libr
 void AñadirLote(libro * añadir, const int numero, const int nuevacantidad){ // Recibe la dirección de memoria en 0, el número de identificador, y la nueva cantidad que necesita.
 	int vueltas; // Variable encargada de guardas el valor de retorno de la función BuscarLibro().
 	
-	printf("Este es el libro que has seleccionado:\n");
-	vueltas = BuscarLibro(añadir, numero); // Se le asigna a la variable creada con aterioridad la cantidad de vueltas dadas.
+	if(nuevacantidad >= 0){
+		printf("Este es el libro que has seleccionado:\n");
+		vueltas = BuscarLibro(añadir, numero); // Se le asigna a la variable creada con aterioridad la cantidad de vueltas dadas.
 
-	añadir[vueltas].cantidad += nuevacantidad; // Nos posicionamos momentaneamente en la dirección de memoria en la que vamos a modificar la cantidad, y la incrementamos.
-	printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad); // Por último la imprimimos.
+		añadir[vueltas].cantidad += nuevacantidad; // Nos posicionamos momentaneamente en la dirección de memoria en la que vamos a modificar la cantidad, y la incrementamos.
+		printf("Ahora la cantidad total de existencias de este libro son %d.\n", añadir[vueltas].cantidad); // Por último la imprimimos.
+	}
+	else{
+		printf("El valor que has introducido no es válido.\n");
+	}
 }
 
 void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posición de la variable catálogo en 0, en conjunto con el número de la categoría especificado con aterioridad.
@@ -412,10 +420,9 @@ void ImprimirCategoria(libro * estante, const int clase){ // Se le pasa la posic
 }
 
 void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){ // Le pasamos la posición 0 del catálogo en conjunto con el nombre del catálogo
-	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro.
-	// 
+	for(int m = 0; m < MAX_LIBROS; m++, libreria++){ // Creamos un bucle para que vaya pasando libro por libro. 
 		if(strstr(libreria -> autor, literato) != NULL){
-			ImprimirLibro(libreria); // Imprimirá eñ libro.
+			ImprimirLibro(libreria); // Imprimirá el libro.
 			break;
 		}
 	}
