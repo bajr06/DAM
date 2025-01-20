@@ -394,6 +394,8 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 	float costo;
 	char nombre[MAX_NOMBRE], escritor[MAX_NOMBRE];
 	genero clase;
+
+	bool control[6] = {true, true, true, true, true, true};
 	
 	libro * recatalogo = (libro *)realloc(repositorio, (MAX_LIBROS + nuevo) * sizeof(libro));
 	if(recatalogo == NULL){
@@ -403,34 +405,40 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 
 	for(int o = MAX_LIBROS; o < MAX_LIBROS + nuevo; o++){
 		printf("Escriba el id: ");
-		scanf("%d", &id);
+		control[0] = scanf("%d", &id);
 		getchar();
 
 		printf("Escriba el título: ");
-		fgets(nombre, MAX_NOMBRE, stdin);
+		control[1] = fgets(nombre, MAX_NOMBRE, stdin);
 		nombre[strlen(nombre) - 1] = '\0';
 
 		printf("Escriba el autor: ");
-		fgets(escritor, MAX_NOMBRE, stdin);
+		control[2] = fgets(escritor, MAX_NOMBRE, stdin);
 		escritor[strlen(escritor) - 1] = '\0';
-		
 
 		printf("Escriba su costo: ");
-		scanf("%f", &costo);
+		control[3] = scanf("%f", &costo);
 
 		printf("Escriba su genero: ");
-		scanf("%u", &clase);
+		control[4] = scanf("%u", &clase);
 
 		printf("Escriba la cantidad: ");
-		scanf("%d", &cuantidad);
-		
-		InicializarLibro(&recatalogo[o], id, nombre, escritor, costo, clase, cuantidad);
-		
-		printf("Has añadido el siguiente libro:\n");
-		ImprimirLibro(&recatalogo[o++]);
-	}
+		control[5] = scanf("%d", &cuantidad);
 
-	MAX_LIBROS += nuevo;
+		printf("\n");
+			
+		if(control[0] && control[1] && control[2] && control[3] && control[4] && control[5]){
+			InicializarLibro(&recatalogo[o], id, nombre, escritor, costo, clase, cuantidad);
+			
+			printf("Has añadido el siguiente libro:\n");
+			ImprimirLibro(&recatalogo[o++]);
+
+			MAX_LIBROS += nuevo;
+		}
+		else{
+			printf("Hay datos erroneos, no podemos proseguir con el añadido de libro\n");
+		}
+	}
 
 	return &recatalogo[0];
 }
