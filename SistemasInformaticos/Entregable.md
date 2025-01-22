@@ -77,5 +77,18 @@ less archivo # Te permite irte moviendo por el archivo si es muy grande.
 Enlazar comandos **PIPES**
 
 ```bash
-cat archivo | grep "Nombre$"
+cat archivo | grep "Nombre$" # Concatenar comandos.
+grep "error" file1.txt | wc --word < archivo # Concatenar y crear archivo con el contenido de la salida de los comandos.
 ```
+
+Comandos **sed**
+
+```bash
+sed 's/Palabra a remplazar/Remplazo/g' archivo # Reemplaza una palabra por otra de un archivo.
+```
+
+Comandos **wc**
+
+![image.png](image.png)
+
+![gatito.jpg](gatito.jpg)
