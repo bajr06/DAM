@@ -1,0 +1,81 @@
+# Bash
+
+Comandos **ls**
+
+```bash
+ls # Muestra los archivos no ocultos de un directorio.
+ls -a # Muestra todos los archivos, inclusive los ocultos.
+ls -l # Muestra los datos del archivo (tipo, cantidad de carpetas, fecha de creación, nombre).
+ls -la # 
+```
+
+Comandos **cd**
+
+```bash
+cd directorio # Cambiar de directorio
+cd # Cambia al directorio inicial.
+```
+
+Comandos **rm**
+
+```bash
+rm * # Borra todo lo que se encuentre en el directorio en el que estes situado.
+rm *.extension # Borra todo lo que termine en alguna extension (.py, .c, .cpp, .css, .html, etc).
+```
+
+Comandos **cat**
+
+```bash
+cat archivo # Mostrar contenido del archivo.
+```
+
+Comandos **diff**
+
+```bash
+diff archivo1 archivo2 # Comparar el contenido del archivo.
+```
+
+Comandos **grep** (funciona con cualquier archivo de texto).
+
+```bash
+grep "Nombre" archivo # Buscar en el contenido del archivo una palabra en específico.
+grep "^Nombre" archivo # Busca la las lineas del archivo que empiezan por esa palabra.
+grep "Nombre$" archivo # Busca la las lineas del archivo que terminan por esa palabra.
+```
+
+Añadido **—help**
+
+```bash
+comando --help # la ayuda del comando
+```
+
+Comando **man**
+
+```bash
+man comando # manual de un comando
+```
+
+Comando **head**
+
+```bash
+head archivo # Te muestra el principio de un archivo.
+head -n 2 archivo # Te muestra las dos primeras lineas de un archivo.
+```
+
+Comando **tail**
+
+```bash
+tail archivo # Te muestra el final de un archivo.
+```
+
+Comando **less**
+
+```bash
+less archivo # Te permite irte moviendo por el archivo si es muy grande.
+```
+
+Enlazar comandos **PIPES**
+
+```bash
+cat archivo | grep "Nombre$"
+```
