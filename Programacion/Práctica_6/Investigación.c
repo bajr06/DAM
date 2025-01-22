@@ -373,7 +373,7 @@ void ImprimirCategoria(libro * estante, const int clase){
 	}
 }
 
-void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
+bool BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
 	bool control = false;
 	
 	for(int m = 0; m < MAX_LIBROS; m++, libreria++){
@@ -387,6 +387,8 @@ void BuscarAutor(libro * libreria, const char literato[MAX_NOMBRE]){
 	if(!control){
 		printf("Autor no encontrado.\n");
 	}
+
+	return true;
 }
 
 libro * AñadirLibro(libro * repositorio, const int nuevo){
@@ -442,3 +444,4 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 
 	return &recatalogo[0];
 }
+
