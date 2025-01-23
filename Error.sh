@@ -20,7 +20,7 @@ if [ "$control" = "Si" ]; then
 
 	find .git -type f -empty -delete -print
 
-	tail -n 2 .git/logs/heads/main #Cambia a main o master dependiendo del nombre que se encuentre en su ordenador en esa carpeta.
+	tail -n 2 .git/logs/refs/heads/main #Cambia a main o master dependiendo del nombre que se encuentre en su ordenador en esa carpeta.
 
 	echo "Copie el segundo valor de la línea mostrada:"
 	read encabezado # Se le da el valor del anterior commit para poder reiniciar el encabezado donde está.
