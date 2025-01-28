@@ -36,5 +36,5 @@ Los humanos manejamos la información mediante **cifras decimales y letras**, pe
 Este es el lenguaje que tiene el ordenador para comunicarse, enviar y recibir señales. Cuando hace una de estas acciones, lo hace a través de señales eléctricas.
 
 El sistema se compone de 2 cifras: 0 y 1.
-    - El 0: indica que existe corriente en el circuito.
-    - El 1: indica que no existe corriente en el circuito.
+    1. El 0: indica que existe corriente en el circuito.
+    2. El 1: indica que no existe corriente en el circuito.
