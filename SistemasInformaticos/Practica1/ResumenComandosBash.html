@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ResumenComandosBash.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="bash">Bash</h1>
+<ul>
+<li>Comandos <strong>ls</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>ls <span class="hljs-comment"># Muestra los archivos no ocultos de un directorio.</span>
+ls -a <span class="hljs-comment"># Muestra todos los archivos, inclusive los ocultos.</span>
+ls -l <span class="hljs-comment"># Muestra los datos del archivo (tipo, cantidad de carpetas, fecha de creación, nombre).</span>
+ls -la <span class="hljs-comment"># Funciona igual que el "ls -l", pero muestra las carpetas anteriores a esta (con . o ..).</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>cd</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> directorio <span class="hljs-comment"># Cambiar de directorio</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-comment"># Cambia al directorio inicial.</span>
+<span class="hljs-built_in">cd</span> .. <span class="hljs-comment"># Retrocede al directorio anterior.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>rm</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>rm * <span class="hljs-comment"># Borra todo lo que se encuentre en el directorio en el que estes situado.</span>
+rm *.extension <span class="hljs-comment"># Borra todo lo que termine en alguna extension (.py, .c, .cpp, .css, .html, etc).</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>cat</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>cat archivo <span class="hljs-comment"># Mostrar contenido del archivo.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>diff</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>diff archivo1 archivo2 <span class="hljs-comment"># Comparar el contenido del archivo.</span>
+diff -y archivo1 archivo2 <span class="hljs-comment"># Mustra las diferencias entre dos archivos linea a linea.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>grep</strong> (funciona con cualquier archivo de texto).</li>
+</ul>
+<pre class="hljs"><code><div>grep <span class="hljs-string">"Nombre"</span> archivo <span class="hljs-comment"># Buscar en el contenido del archivo una palabra en específico.</span>
+grep <span class="hljs-string">"^Nombre"</span> archivo <span class="hljs-comment"># Busca la las lineas del archivo que empiezan por esa palabra.</span>
+grep <span class="hljs-string">"Nombre$"</span> archivo <span class="hljs-comment"># Busca la las lineas del archivo que terminan por esa palabra.</span>
+grep <span class="hljs-string">"^$"</span> archivo <span class="hljs-comment"># Busca las lineas vacias.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>find</strong> (funciona con cualquier archivo de texto).</li>
+</ul>
+<pre class="hljs"><code><div>find . -<span class="hljs-built_in">type</span> d <span class="hljs-comment"># Busca recursivamente en el directorio en el que estes los subdirectorios</span>
+</div></code></pre>
+<ul>
+<li>Añadido <strong>—help</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>comando --<span class="hljs-built_in">help</span> <span class="hljs-comment"># la ayuda del comando</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>man</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>man comando <span class="hljs-comment"># Manual de un comando.</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>head</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>head archivo <span class="hljs-comment"># Te muestra el principio de un archivo.</span>
+head -n 2 archivo <span class="hljs-comment"># Te muestra las dos primeras lineas de un archivo (el número puede variar dependiendo de las líneas que quieras selecionar).</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>tail</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>tail archivo <span class="hljs-comment"># Te muestra el final de un archivo.</span>
+tail -n 19 <span class="hljs-comment"># Muestra las 19 últimas líneas.</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>less</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>less archivo <span class="hljs-comment"># Te permite irte moviendo por el archivo si es muy grande.</span>
+</div></code></pre>
+<ul>
+<li>Enlazar comandos <strong>PIPES</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>cat archivo | grep <span class="hljs-string">"Nombre$"</span> <span class="hljs-comment"># Ejemplo de concatenaciónon de comandos.</span>
+grep <span class="hljs-string">"error"</span> file1.txt | wc --word &lt; archivo <span class="hljs-comment"># Concatenar y crear archivo con el contenido de la salida de los comandos.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>sed</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'s/Palabra a remplazar/Remplazo/g'</span> archivo <span class="hljs-comment"># Reemplaza una palabra por otra de un archivo.</span>
+sed <span class="hljs-string">'/^$/d'</span> archivo <span class="hljs-comment"># Borra las líneas vacias</span>
+sed <span class="hljs-string">'/^$/d'</span> | uniq archivo <span class="hljs-comment"># Borra dos lineas seguidas que esten vacias</span>
+sed <span class="hljs-string">'/^$/d'</span> archivo | sort | uniq <span class="hljs-comment"># Ordenas y borras las lineas vacias que esten seguidas</span>
+sed <span class="hljs-string">'5,95d'</span> archivo <span class="hljs-comment"># Borra las lineas que hay entre las lineas 5 y 95 del archivo.</span>
+</div></code></pre>
+<ul>
+<li>Comandos <strong>wc</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>wc -w archivo <span class="hljs-comment"># Cuenta la cantidad de palabras que hay en un archivo.</span>
+wc -l archivo <span class="hljs-comment"># Cuenta la cantidad de líneas.</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>sort</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>sort archivo <span class="hljs-comment"># Ordena alfabeticamente las líneas del archivo.</span>
+sort -b archivo <span class="hljs-comment"># Cuentas las líneas de un archivo, ignorando los espacios en blanco</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>uniq</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>uniq archivo <span class="hljs-comment"># Borra las líneas duplicadas del archivo.</span>
+uniq -D archivo <span class="hljs-comment"># Muestra las líneas duplicadas.</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>pwd</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-built_in">pwd</span> <span class="hljs-comment"># Ruta entera de donde te encuetras.</span>
+</div></code></pre>
+<ul>
+<li>Comando <strong>&gt;</strong>.</li>
+</ul>
+<pre class="hljs"><code><div>archivo1 &gt; archivo2 <span class="hljs-comment"># Pasa la informacion del archivo1 al archivo2 (sobreescribe).</span>
+archivo3 &gt;&gt; archivo2 <span class="hljs-comment"># Añade la informacion del archivo3 al archivo2 (a continuación))</span>
+</div></code></pre>
+<h1 id="ejercicios-de-la-pr%C3%A1ctica-1">Ejercicios de la Práctica 1</h1>
+<ol>
+<li>Encuentra todas las líneas que terminen con &quot;error&quot; en el archivo <code>file1.txt</code> y guarda el resultado en <code>output1.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>grep <span class="hljs-string">"error"</span> file1.txt &gt; output1.txt
+</div></code></pre>
+<p><img src="Imagenes/output1.png" alt="output1.png"></p>
+<ol start="2">
+<li>Reemplaza todas las ocurrencias de &quot;DEBUG&quot; por &quot;INFO&quot; en el archivo <code>file1.txt</code> y guarda el resultado en <code>output2.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'s/DEBUG/INFO/g'</span> file1.txt &gt; output2.txt
+</div></code></pre>
+<p><img src="Imagenes/output2.png" alt="output2.png"></p>
+<ol start="3">
+<li>Muestra las primeras 5 líneas de <code>file1.txt</code> que contengan &quot;ERROR&quot; y guarda el resultado en <code>output3.txt.</code></li>
+</ol>
+<pre class="hljs"><code><div>head -n 5 file1.txt | grep <span class="hljs-string">"error"</span> &gt; output3.txt
+</div></code></pre>
+<p><img src="Imagenes/output3.png" alt="output3.png"></p>
+<ol start="4">
+<li>Cuenta el número de archivos <code>.txt</code> en el directorio actual y guarda el resultado en <code>output4.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>ls *.txt | wc -l &gt; output4.txt
+</div></code></pre>
+<p><img src="Imagenes/output4.png" alt="output4.png"></p>
+<ol start="5">
+<li>Ordena las líneas del archivo <code>file1.txt</code> alfabéticamente, elimina duplicados, y guarda el resultado en <code>output5.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sort file1.txt | uniq &gt; output5.txt
+</div></code></pre>
+<p><img src="Imagenes/output5.png" alt="output5.png"></p>
+<ol start="6">
+<li>Divide el archivo <code>file6_large.txt</code> en dos archivos: uno con las primeras 100 líneas (<code>out6.1.txt</code>) y otro con el resto (<code>out.6.txt</code>).</li>
+</ol>
+<pre class="hljs"><code><div>head -n 100 file6_large.txt &gt; out6.1.txt | sed <span class="hljs-string">'1,100d'</span> file6_large.txt &gt; out.6.txt
+</div></code></pre>
+<p><img src="Imagenes/out6.1.png" alt="out6.1.png">
+<img src="Imagenes/out.6.png" alt="out6.png"></p>
+<ol start="7">
+<li>Elimina todas las líneas en blanco del archivo <code>file4.txt</code> y guarda el resultado en <code>output7.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'/^$/d'</span> file4.txt | uniq &gt; output7.txt
+</div></code></pre>
+<p><img src="Imagenes/output7.png" alt="output7.png"></p>
+<ol start="8">
+<li>Reemplaza todas las comas por tabulaciones en el archivo <code>file2.csv</code> y guarda el resultado en <code>output8.csv</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'s/'</span>,<span class="hljs-string">'/\t/g'</span> file2.csv &gt; output8.csv 
+</div></code></pre>
+<p><img src="Imagenes/output8.png" alt="output8.png"></p>
+<ol start="9">
+<li>Inserta el prefijo &quot;INICIO:&quot; antes de cada línea que comience con una vocal en el archivo <code>file5.txt</code> y guarda el resultado en <code>output9.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'/^[aeiouAEIOU]/s/^/INICIO:/'</span> file5.txt &gt; output9.txt
+</div></code></pre>
+<p><img src="Imagenes/output9.png" alt="output9.png"></p>
+<ol start="10">
+<li>Cuenta cuántas líneas en el archivo <code>file1.txt</code> contienen la palabra &quot;ERROR&quot; y guarda el resultado en <code>output10.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>grep <span class="hljs-string">"error"</span> file1.txt | wc -l &gt; output10.txt
+</div></code></pre>
+<p><img src="Imagenes/output10.png" alt="output10.png"></p>
+<ol start="11">
+<li>Crea un script que muestre el número total de archivos en el directorio actual y escribe el resultado en <code>output11.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>ls *.* -A | wc -l &gt; output11.txt
+</div></code></pre>
+<p><img src="Imagenes/output11.png" alt="output11.png"></p>
+<ol start="12">
+<li>Encuentra líneas duplicadas en el archivo <code>file7_duplicates.txt</code>, muestra cuántas veces se repiten, y guarda el resultado en <code>output12.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>uniq -D file7_duplicates.txt &gt; output12.txt
+</div></code></pre>
+<p><img src="Imagenes/output12.png" alt="output12.png"></p>
+<ol start="13">
+<li>Extrae las primeras 100 líneas del archivo <code>file6_large.txt</code> y guarda el resultado en <code>output13.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>head -n 100 file6_large.txt &gt; output13.txt
+</div></code></pre>
+<p><img src="Imagenes/output13.png" alt="output13.png"></p>
+<ol start="14">
+<li>Busca todas las líneas que contengan números en el archivo <code>file1.txt</code> y guarda el resultado en <code>output14.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>grep <span class="hljs-string">'[0-9]'</span> file1.txt &gt; output14.txt
+</div></code></pre>
+<p><img src="Imagenes/output14.png" alt="output14.png"></p>
+<ol start="15">
+<li>Convierte el archivo <code>file2.csv</code> en un archivo delimitado por punto y coma y guarda el resultado en <code>output15.csv</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'s/$/;/g'</span> file2.csv &gt; output15.csv
+</div></code></pre>
+<p><img src="Imagenes/output15.png" alt="output15.png"></p>
+<ol start="16">
+<li>Inserta un prefijo &quot;MODIFICADO:&quot; antes de las líneas que contengan la palabra &quot;ERROR&quot; en el archivo <code>file1.txt</code> y guarda el resultado en <code>output16.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>sed <span class="hljs-string">'/error/s/^/MODIFICADO: /'</span> file1.txt &gt; output16.txt
+</div></code></pre>
+<p><img src="Imagenes/output16.png" alt="output16.png"></p>
+<ol start="17">
+<li>Extrae las líneas del archivo <code>file3.txt</code> que contengan números pares y guarda el resultado en <code>output17.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>grep [02468]$ file3.txt &gt; output17.txt
+</div></code></pre>
+<p><img src="Imagenes/output17.png" alt="output17.png"></p>
+<ol start="18">
+<li>Busca recursivamente en todos los subdirectorios del directorio actual archivos que contengan la palabra &quot;ERROR&quot; y guarda las coincidencias en <code>output18.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>grep -r <span class="hljs-string">"error"</span> ./sub* &gt; output18.txt
+</div></code></pre>
+<p><img src="Imagenes/output18.png" alt="output18.png"></p>
+<ol start="19">
+<li>Extrae las últimas 50 líneas del archivo <code>file6_large.txt</code> y guarda el resultado en <code>output19.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>tail -n 50 file6_large.txt &gt; output19.txt
+</div></code></pre>
+<p><img src="Imagenes/output19.png" alt="output19.png"></p>
+<ol start="20">
+<li>Lista todos los archivos, incluidos los ocultos, de forma recursiva desde el directorio actual y guarda el resultado en <code>output20.txt</code>.</li>
+</ol>
+<pre class="hljs"><code><div>find | wc -l &gt; output20.txt
+</div></code></pre>
+<p><img src="Imagenes/output20.png" alt="output20.png"></p>
+
+</body>
+</html>
