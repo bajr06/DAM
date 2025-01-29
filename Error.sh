@@ -1,11 +1,15 @@
 #!/bin/bash
 
-echo "¿Seguro que quieres ejecutar el arreglo de encabezado para GitHub?"
-read control # Escaneamos lo que el usuario de como resultado (Solamente es válido Si, caso contrario se ejecutará el else)
+echo "Antes de ejecutar este script, revisemos si tienes error en el repositorio."
 
-if [ "$control" = "Si" ]; then
-	git status # TODO (Hay que cambiar esto de orden).
-	
+git status
+
+echo "Si tienes error con HEAD, escriba si para ejecutar el programa:"
+
+read control
+
+if [ "$control" = "Si" ];
+then
 	ls -al | grep .git
 	cp -a .git /tmp/ # Copia la carpeta temporal de los commits.
 	
