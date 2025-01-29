@@ -9,16 +9,12 @@ Un ordenador es una maquina capaz de **procesar unos datos de entrada** y **gene
 
 - Sistema Informático
 Conjunto de **elementos o partes que se integran** o relacionan **para producir un resultado**. Esta compuesto por:
-    1. Hardware
-    2. Software
-    3. Datos
-    4. Humano
 
 1. Hardware
 Área más conocida de la informática. Hace referencia a **todo aquello que se puede ver y tocar**: ordenadores y periféricos (impresoras, monitores, altavoces, lectores de DVD, etc).
 
-2. Software
-**Programas y datos, o conjunto de recursos lógicos** que se pueden sacar partido a los ordenadores y periféricos: sistema operativo, lenguajes de programación, programas de aplicación específicos, ficheros de datos, páginas Web, etc.
+2.  Software
+    **Programas y datos, o conjunto de recursos lógicos** que se pueden sacar partido a los ordenadores y periféricos: sistema operativo, lenguajes de programación, programas de aplicación específicos, ficheros de datos, páginas Web, etc.
 
 3. Datos
 Conjunto de instrucciones o programas usandos por una computadora para hacer una determinada tarea.
