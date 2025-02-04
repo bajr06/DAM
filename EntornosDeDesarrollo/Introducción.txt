@@ -1,4 +1,0 @@
-Introducción
-Ficheros: conjunto de datos que tienen un sentido entre si.
-Binario: 00101010 = 1 Byte
-Bit: 0,1
