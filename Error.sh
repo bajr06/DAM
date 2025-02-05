@@ -24,9 +24,9 @@ then
 	echo "Copie el segundo valor de la línea mostrada:"
 	read encabezado # Se le da el valor del anterior commit para poder reiniciar el encabezado donde está.
 
-	git show $encabezado
+	git show "$encabezado"
 
-	git update-ref HEAD $encabezado
+	git update-ref HEAD "$encabezado"
 	rm .git/index
 	git reset
 	
