@@ -4,7 +4,7 @@
 #define error(memoria){ \
 	if(memoria == NULL){ \
 		puts("ERROR: Falta de Memoria."); \
-		return EXIT_FAILURE; \
+		exit(EXIT_FAILURE); \
 	} \
 } \
 
@@ -18,11 +18,11 @@ void rellenar(int * lista, const int cantidad, const int multiplo){
 int * sumarlista(int * lista, int *lista1, const int cantidad, const int cantidad1){
 	int max;
 
-	if(cantidad > cantidad1 || cantidad1 < cantidad){
+	if(cantidad > cantidad1){
 		max = cantidad;
 	}
 	else
-	if(cantidad1 > cantidad || cantidad < cantidad1){
+	if(cantidad1 > cantidad){
 		max = cantidad1;
 	}
 	else
@@ -35,10 +35,10 @@ int * sumarlista(int * lista, int *lista1, const int cantidad, const int cantida
 	error(nuevalista);
 
 	for(int j = 0; j < max; j++){
-		if(cantidad < j && cantidad1 < j){
+		if(cantidad > j || cantidad1 > j){
 			nuevalista[j] = lista[j] + lista1[j];
 		}
-		else
+		else	
 		if(j > cantidad && j < cantidad1){
 			nuevalista[j] = lista1[j];
 		}
@@ -47,29 +47,42 @@ int * sumarlista(int * lista, int *lista1, const int cantidad, const int cantida
 			nuevalista[j] = lista[j];
 		}
 		else{
-			puts("Error");
+			puts("Error.");
 		}
 
-		printf("Lista[%d]: %d\n", j, nuevalista[j]);
+		printf("Nueva_Lista[%d]: %d\n", j, nuevalista[j]);
 	}
 
 	return &nuevalista[0];
 }
 
-int * concatenarlistas(int * lista, int * lista1, const int cantidad, const int cantidad1, const int nuevacantidad){
+int * concatenarlistas(int * lista, int * lista1, const int cantidad, const int cantidad1){
+	int nuevacantidad = cantidad + cantidad1;
+
 	int * nuevalista1 = (int *)malloc(nuevacantidad * sizeof(int));
 
 	error(nuevalista1);
 
-	/*
-	 * for(int k = 0; k < nuevacantidad; k++){
-		if(k < cantidad){
-			nuevalista[k] = lista[k];
+	for(int k = 0; k < nuevacantidad; k++){
+		if(k < cantidad && k < cantidad1){
+			nuevalista1[k] = lista[k];
 		}
 		else
-		if(k > cantidad ){}
+		if(k >= cantidad || k < cantidad1){
+			nuevalista1[k] = lista1[k - cantidad];
+		}
+		else
+		if(k >= cantidad1 || k < cantidad){
+			nuevalista1[k] = lista[k - cantidad1];
+		}
+		else{
+			puts("Error.");
+		}
+
+		printf("Nueva_Lista1[%d]: %d\n", k, nuevalista1[k]);
 	}
-	*/
+
+	return &nuevalista1[0];
 }
 
 
@@ -111,19 +124,18 @@ int main(){
 	int escoger;
 
 	printf("¿Qué proceso deseas hacer?\n\
-	\t 1. Concatenar los números de cada lista\n\
-	\t 2. Sumar los números de cada lista\n");
+	\t 1. Sumar los números de cada lista\n\
+	\t 2. Concatenar los números de cada lista\n");
 	scanf("%d", &escoger);
 
 	switch(escoger){
 		case 1:
 			int * nuevalista = sumarlista(&lista[0], &lista1[0], cantidad, cantidad1);
+			
 			free(nuevalista);
 			break;
 		case 2:
-			int nuevacantidad = cantidad + cantidad1;
-			
-			int nuevalista1 = concatenarlistas(&lista[0], &lista1[0], cantidad, cantidad1, nuevacantidad);
+			int * nuevalista1 = concatenarlistas(&lista[0], &lista1[0], cantidad, cantidad1);
 
 			free(nuevalista1);
 			break;

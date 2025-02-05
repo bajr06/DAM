@@ -5,7 +5,6 @@ echo "Antes de ejecutar este script, revisemos si tienes error en el repositorio
 git status
 
 echo "Si tienes error con HEAD, escriba si para ejecutar el programa:"
-
 read control
 
 if [ "$control" = "Si" ];
@@ -13,14 +12,10 @@ then
 	ls -al | grep .git
 	cp -a .git /tmp/ # Copia la carpeta temporal de los commits.
 	
-	clear # Borrar lo que se encuentre en la terminal.
-	
 	sudo cp -a .git /tmp/ # Al no permitir el anterior copiado (al ser archivos protegidos), se ejecuta con los permisos de adminstrador.
 	
 	ls /tmp/ 
 	ls -a /tmp/
-	
-	clear
 
 	find .git -type f -empty -delete -print
 
@@ -29,11 +24,9 @@ then
 	echo "Copie el segundo valor de la línea mostrada:"
 	read encabezado # Se le da el valor del anterior commit para poder reiniciar el encabezado donde está.
 
-	git show "$encabezado"
+	git show $encabezado
 
-	clear
-
-	git update-ref HEAD "$encabezado"
+	git update-ref HEAD $encabezado
 	rm .git/index
 	git reset
 	
