@@ -24,7 +24,7 @@
     done
     ```
 
-    ![captura1.png](Capturas/captura1.png)
+    ![captura1.png](img/image-1.png)
 
 <br>
 
@@ -49,7 +49,7 @@
     done
     ```
 
-    ![captura2.png](Capturas/captura2.png)
+    ![captura2.png](img/image-2.png)
 
 <br>
 
@@ -75,7 +75,7 @@
     done
     ```
 
-    ![captura3.png](Capturas/captura3.png)
+    ![captura3.png](img/image-3.png)
 
 <br>
 
@@ -101,7 +101,7 @@
     done
     ```
 
-    ![captura4.png](Capturas/captura4.png)
+    ![captura4.png](img/image-4.png)
 
 <br>
 
@@ -127,7 +127,7 @@
     done
     ```
 
-    ![captura5.png](Capturas/captura5.png)
+    ![captura5.png](img/image-5.png)
 
 <br>
 
@@ -152,7 +152,7 @@
     done
     ```
 
-    ![captura6.png](Capturas/captura6.png)
+    ![captura6.png](img/image-6.png)
 
 <br>
 
@@ -175,7 +175,7 @@
     done
     ```
 
-    ![captura7.png](Capturas/captura7.png)
+    ![captura7.png](img/image-7.png)
 
 <br>
 
@@ -185,3 +185,56 @@
 2. Utiliza un bucle `for` para leer los nombres del archivo `test8/usuarios.txt`
 3. En el interior, si el usuario se llama `"maria"`, muestra `"Hola maria"`.De lo contrario, muestra `"Hola, USUARIO"`.
 4. Ejecuta y revisa la salida.
+    
+    ```bash
+    #!/bin/bash
+    
+    for archivo in $(cat usuarios.txt)
+    do
+    
+    done
+    ```
+
+    ![captura8.png](img/image-8.png)
+
+<br>
+
+## **9. Búsqueda en subdirectorios (Bucles anidados)**
+
+1. Crea un script `ej9.sh`.
+2. Haz un bucle para recorrer todo lo que hay en `test9/`.
+3. Con un `if`, verifica si `SUBDIR` es un directorio (opción `d`).
+4. Dentro del `if`, crea **otro bucle** que recorra los archivos `.txt` de ese subdirectorio.
+5. Al ejecutar el script, deberías ver la primera línea de cada archivo `.txt` en `folder1` y `folder2`.
+    
+    ```bash
+    
+    ```
+
+    ![captura9.png](img/image-9.png)
+
+<br>
+
+## **10. Verificar procesos en ejecución con `ps`**
+
+**Explicación de comando**:
+
+- `ps` es un comando que muestra los procesos en ejecución.
+    - `ps aux` en particular lista **todos** los procesos del sistema con información detallada.
+
+**Objetivo**:
+
+1. Crea un script `ej10.sh`.
+2. Ejecuta `ps aux` para sacar una lista de todos los procesos activos y añádelo (sin sobreescribir) en el archivo `processes.txt`
+3. Haz un bucle `for` que recorra cada línea (proceso) de `processes.txt`.
+4. En el interior, verifica si `ps aux | grep -q "$PROC"`.
+    - Si retorna verdadero (estado 0), significa que el proceso `PROC` está corriendo.
+    - Muestra `"El proceso PROC está en ejecución"`.
+    - Si no se encuentra, muestra `"El proceso PROC no está en ejecución"`.
+5. Ejecuta el script y prueba añadiendo o quitando procesos en `processes.txt` para ver la diferencia.
+    
+    ```bash
+    
+    ```
+
+    ![captura10.png](img/image-10.png)
