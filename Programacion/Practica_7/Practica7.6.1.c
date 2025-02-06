@@ -10,6 +10,39 @@
 } \
 
 
+int cifrado_cesar (char * clave, const int saltos){
+	printf("Cadena actual: %s\n", clave);
+
+
+	for(int i = 0; i < strlen(clave); i++){
+		clave[i] = (int)clave[i];
+
+
+		printf("Número [%d]: %d\n", i, clave[i]);
+		
+		if((clave[i] >= 65 && clave[i] <= 90) || (clave[i] >= 97 && clave[i] <= 122)){
+			clave[i] += saltos;
+			
+			if(clave[i] > 90){
+				clave[i] -= 25;
+			}
+			else if (clave[i] > 122){
+				clave[i] -= 25;
+			}
+		}
+		else{
+			puts("ERROR: Caracter no identificado");
+			return EXIT_FAILURE;
+		}
+
+		printf("Número modificado [%d]: %d\n", i, clave[i]);
+	}
+
+	printf("Cadena cifrada: %s\n", clave);
+
+	return EXIT_SUCCESS;
+}
+
 
 int main(){
 	int cantidad, control;
@@ -31,10 +64,18 @@ int main(){
 	puts("Introduzca la clave:");
 	fgets(clave, cantidad, stdin);
 	clave[strlen(clave) - 1] = '\0';
+	
+	puts("");
 
-	printf("Esta es tu clave actualmente: %s\n", clave);
+	int saltos;
+	printf("¿De cuantos saltos quieres que sea el cifrado?");
+	scanf("%d", &saltos);
 
-	// cifrado_cesar(&clave[0]);
+	printf("\n");
+
+	cifrado_cesar(&clave[0], saltos);
+
+	puts("");
 
 	free(clave);
 
