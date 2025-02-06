@@ -4,10 +4,23 @@
 
 2. Π CodProducto (σ CodProducto = Descripción (PRODUCTO))
 
-3. Π Nombre, IdVenta, Cantidad (σ Cantidad > 500 (CLIENTE ⋈ NºCliente, VENTA))
+3. T1 <- (Π Nombre (FK), IdVenta, Cantidad (σ Cantidad > 500 (VENTA)))
+   Π Nombre, IdVenta, Cantdad (Π NºCliente, Nombre (CLIENTE) ⋈ T1 (Cliente.NºCliente = T1.NºCliente))
 
-4. Π Nombre (CLIENTE) - Π Nombre (CLIENTE ⋈ NºCliente VENTA)
+4. T1 <- Π NºCliente (CLIENTE) - Π NºCliente (VENTA)
+   Π Nombre (T1 ⋈ Cliente)
+   T1.NºCliente = Cliente.NºCliente
 
-5. Π Nombre (σ Distanciat(CodProducto) = CantidadP (CLIENTES ⋈ NºCliente VENTA))
+5. T1 <- Π NºCliente (VENTAS)
+   T1.X.CLIENTE (T1.NºCliente = Cliente.NºCliente )  
 
-6. Π IdVenta (σ Cantidad > (Select Cantidad From VENTA Where IdVenta = 18)(VENTA))
+6. T1 <- Π Cantidad (σ IdVenta = 18 (VENTA))
+   Π IdVenta (σ VENTA Cantidad > T1.Cantidad (T1 X VENTA))
+
+7. ...
+
+8. T1 <- Π NºCliente (σ Poblacion = 'Palencia' (CLIENTE))
+   T2 <- Π CodProducto (T1 ⋈ VENTA)
+   T1.NºCLIENTE = VENTA.NºCliente 
+   Π Descripcion (T2 ⋈ Producto)
+   T2.CodProducto > Producto.CodProducto

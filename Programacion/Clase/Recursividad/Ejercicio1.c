@@ -1,21 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int contar(char * palabra, int cantidad){
-	if(palabra[cantidad] == '\0'){
-		return cantidad;
+int contar(char * pal, int vul, int cant){
+	if(pal[vul] == '\0'){
+		return cant;
 	}
-	
-	cantidad++;
-	return contar(palabra, cantidad);
+
+	if(pal[vul] == 'a' || pal[vul] == 'e' || pal[vul] == 'i' || pal[vul] == 'o' || pal[vul] == 'u' || pal[vul] == 'A' || pal[vul] == 'E' || pal[vul] == 'I' || pal[vul] == 'O' || pal[vul] == 'U'){
+		return contar(pal, vul + 1, cant + 1);
+	}
+	else{
+		return contar(pal, vul + 1, cant);
+	}
 }
 
 
 int main(){
-	char str[10] = "Hola";
+	char str[10] = "Dinero";
+	int vueltas = 0;
 	int cantidad = 0;
 
-	printf("La palabra %s tiene %d letras\n", str, contar(str, cantidad));
+	printf("La palabra %s tiene %d consonates\n", str, contar(str, vueltas, cantidad));
 
 	return EXIT_SUCCESS;
 }
