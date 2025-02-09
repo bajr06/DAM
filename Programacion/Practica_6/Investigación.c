@@ -318,7 +318,13 @@ char * gen(genero * literario){
 }
 
 void ImprimirLibro(libro * contenido){
-	printf("%d, %s, %s, %.2f, %s[%d], %d\n", contenido -> identificador, contenido -> titulo, contenido -> autor, contenido -> precio, gen(&contenido -> literario), contenido -> literario ,contenido -> cantidad);
+	printf("Identificador: %d\n", contenido -> identificador);
+	printf("Título: %s\n", contenido -> titulo);
+	printf("Autor: %s\n", contenido -> autor);
+	printf("Precio: %.2f\n", contenido -> precio);
+	printf("Género: %s\n", gen(&contenido -> literario));
+	printf("Cantidad: %d\n", contenido -> cantidad);
+	puts("");
 }
 
 void ImprimirEstante(libro * inventario){

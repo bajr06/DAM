@@ -14,7 +14,7 @@
     ```bash
     #!/bin/bash
 
-    for archivo in *.txt
+    for archivo in test1/*.txt
     do
         if grep -q '.' "$archivo"; then
             echo "El archivo $archivo NO está vacio."
@@ -64,7 +64,7 @@
     ```bash
     #!/bin/bash
 
-    for ARCHIVO in l
+    for ARCHIVO in test3/log.*
     do
         if grep -q "ERROR" "$ARCHIVO";
         then
@@ -118,7 +118,7 @@
     ```bash
     #!/bin/bash
 
-    for archivo in *.*
+    for archivo in test5/*.*
     do
         if [[ $archivo == *.jpg ]];
         then
@@ -191,7 +191,12 @@
     
     for archivo in $(cat usuarios.txt)
     do
-    
+        if [ $USUARIO == "maria" ];
+        then
+                echo "Hola, $USUARIO"
+        else
+                echo "Hola, USUARIO"
+        fi
     done
     ```
 
@@ -208,7 +213,25 @@
 5. Al ejecutar el script, deberías ver la primera línea de cada archivo `.txt` en `folder1` y `folder2`.
     
     ```bash
-    
+    #!/bin/bash
+
+    for SUBDIR in test9/*
+    do
+	    if [ -d $SUBDIR ];
+	    then
+		
+        cd $SUBDIR
+		
+		for archivo in *.txt
+		do
+			head -n 1 $archivo
+		done
+
+		cd ../..
+	    else
+		    echo "Este archivo no es txt."
+	    fi
+    done
     ```
 
     ![captura9.png](img/image-9.png)
@@ -234,7 +257,19 @@
 5. Ejecuta el script y prueba añadiendo o quitando procesos en `processes.txt` para ver la diferencia.
     
     ```bash
-    
+    #!/bin/bash
+
+    ps aux > processes.txt
+
+    for PROC in $(cat processes.txt)
+    do
+	    if ps aux | grep -q "$PROC" ;
+	    then
+		    echo "El proceso $PROC está en ejecución"
+	    else
+		    echo "El proceso $PROC no está en ejecución"
+	    fi
+    done
     ```
 
     ![captura10.png](img/image-10.png)

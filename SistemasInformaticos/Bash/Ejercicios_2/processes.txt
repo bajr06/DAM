@@ -1,0 +1,41 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0  21688 13052 ?        Ss   13:17   0:01 /sbin/init
+root           2  0.0  0.0   2616  1508 ?        Sl   13:17   0:00 /init
+root           6  0.0  0.0   2644   132 ?        Sl   13:17   0:00 plan9 --control-socket 6 --log-level 4 --server-fd 7 --pipe-fd 9 --log-truncate
+root          52  0.0  0.1  66828 17624 ?        S<s  13:17   0:00 /usr/lib/systemd/systemd-journald
+root          97  0.0  0.0  23984  5972 ?        Ss   13:17   0:00 /usr/lib/systemd/systemd-udevd
+systemd+     148  0.0  0.0  21452 11944 ?        Ss   13:17   0:00 /usr/lib/systemd/systemd-resolved
+systemd+     149  0.0  0.0  91020  6520 ?        Ssl  13:17   0:00 /usr/lib/systemd/systemd-timesyncd
+root         160  0.0  0.0   4236  2588 ?        Ss   13:17   0:00 /usr/sbin/cron -f -P
+message+     161  0.0  0.0   9664  5264 ?        Ss   13:17   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         174  0.0  0.0  17976  8272 ?        Ss   13:17   0:00 /usr/lib/systemd/systemd-logind
+root         177  0.0  0.0 1756096 13984 ?       Ssl  13:17   0:00 /usr/libexec/wsl-pro-service -vv
+root         194  0.0  0.0   3160  1228 hvc0     Ss+  13:17   0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud - 115200,38400,9600 vt220
+root         202  0.0  0.0   3116  1080 tty1     Ss+  13:17   0:00 /sbin/agetty -o -p -- \u --noclear - linux
+syslog       203  0.0  0.0 222508  5176 ?        Ssl  13:17   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         216  0.0  0.1 107012 23184 ?        Ssl  13:17   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         305  0.0  0.0   6820  4632 pts/1    Ss   13:17   0:00 /bin/login -f
+songoku      364  0.0  0.0  20256 11532 ?        Ss   13:17   0:00 /usr/lib/systemd/systemd --user
+songoku      365  0.0  0.0  21148  1728 ?        S    13:17   0:00 (sd-pam)
+songoku      380  0.0  0.0   6072  5280 pts/1    S+   13:17   0:00 -bash
+root        1287  0.0  0.0   2624   124 ?        Ss   13:21   0:00 /init
+root        1288  0.0  0.0   2624   128 ?        S    13:21   0:01 /init
+songoku     1289  0.0  0.0   6336  5604 pts/2    Ss   13:21   0:00 -bash
+polkitd     1555  0.0  0.0 308160  9240 ?        Ssl  13:21   0:00 /usr/lib/polkit-1/polkitd --no-debug
+root       10412  0.0  0.0   2620   124 ?        Ss   14:24   0:00 /init
+root       10413  0.0  0.0   2620   128 ?        S    14:24   0:00 /init
+songoku    10414  0.0  0.0   2800  1052 pts/0    Ss+  14:24   0:00 sh -c "$VSCODE_WSL_EXT_LOCATION/scripts/wslServer.sh" 33fc5a94a3f99ebe7087e8fe79fbe1d37a251016 stable code-server .vscode-server --host=127.0.0.1 --port=0 --connection-token=1132114345-333192574-2912896580-3396887642 --use-host-proxy --without-browser-env-var --disable-websocket-compression --accept-server-license-terms --telemetry-level=all
+songoku    10415  0.0  0.0   2800  1024 pts/0    S+   14:24   0:00 sh /mnt/c/Users/bryan/.vscode/extensions/ms-vscode-remote.remote-wsl-0.88.5/scripts/wslServer.sh 33fc5a94a3f99ebe7087e8fe79fbe1d37a251016 stable code-server .vscode-server --host=127.0.0.1 --port=0 --connection-token=1132114345-333192574-2912896580-3396887642 --use-host-proxy --without-browser-env-var --disable-websocket-compression --accept-server-license-terms --telemetry-level=all
+songoku    10420  0.0  0.0   2800  1112 pts/0    S+   14:24   0:00 sh /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/bin/code-server --host=127.0.0.1 --port=0 --connection-token=1132114345-333192574-2912896580-3396887642 --use-host-proxy --without-browser-env-var --disable-websocket-compression --accept-server-license-terms --telemetry-level=all
+songoku    10424  0.1  0.5 11803180 92736 pts/0  Sl+  14:24   0:04 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/out/server-main.js --host=127.0.0.1 --port=0 --connection-token=1132114345-333192574-2912896580-3396887642 --use-host-proxy --without-browser-env-var --disable-websocket-compression --accept-server-license-terms --telemetry-level=all
+songoku    10474  0.0  0.3 11727888 57580 pts/0  Sl+  14:24   0:00 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/out/bootstrap-fork --type=fileWatcher
+songoku    10486  1.6  0.9 32822268 151952 pts/0 Sl+  14:24   0:39 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node --dns-result-order=ipv4first /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/out/bootstrap-fork --type=extensionHost --transformURIs --useHostProxy=true
+songoku    10880  0.0  0.4 1007452 64780 pts/0   Sl+  14:26   0:01 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/extensions/markdown-language-features/dist/serverWorkerMain --node-ipc --clientProcessId=10486
+root       12239  0.0  0.0   2616   124 ?        Ss   14:33   0:00 /init
+root       12240  0.0  0.0   2616   124 ?        S    14:33   0:00 /init
+songoku    12242  0.0  0.3 990348 48612 pts/3    Ssl+ 14:33   0:00 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node -e const net = require('net'); process.stdin.pause(); const client = net.createConnection({ host: '127.0.0.1', port: 39765 }, () => { client.pipe(process.stdout); process.stdin.pipe(client); }); client.on('close', function (hadError) { console.error(hadError ? 'Remote close with error' : 'Remote close'); process.exit(hadError ? 1 : 0); }); client.on('error', function (err) { process.stderr.write(err && (err.stack || err.message) || String(err)); });
+root       12249  0.0  0.0   2616   124 ?        Ss   14:33   0:00 /init
+root       12250  0.0  0.0   2616   124 ?        S    14:33   0:00 /init
+songoku    12251  0.0  0.2 990292 46680 pts/4    Ssl+ 14:33   0:00 /home/songoku/.vscode-server/bin/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/node -e const net = require('net'); process.stdin.pause(); const client = net.createConnection({ host: '127.0.0.1', port: 39765 }, () => { client.pipe(process.stdout); process.stdin.pipe(client); }); client.on('close', function (hadError) { console.error(hadError ? 'Remote close with error' : 'Remote close'); process.exit(hadError ? 1 : 0); }); client.on('error', function (err) { process.stderr.write(err && (err.stack || err.message) || String(err)); });
+songoku    18056  0.0  0.0   4752  3272 pts/2    S+   15:04   0:00 bash ./ej10.sh
+songoku    18057  0.0  0.0   8280  4172 pts/2    R+   15:04   0:00 ps aux

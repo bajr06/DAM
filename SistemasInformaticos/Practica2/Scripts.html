@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scripts.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="pr%C3%A1ctica-2">Práctica 2</h1>
+<h2 id="1-detectar-si-un-archivo-est%C3%A1-vac%C3%ADo-o-no"><strong>1. Detectar si un archivo está vacío o no</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej1.sh</code>.</p>
+</li>
+<li>
+<p>Usa un bucle <code>for</code> que recorra todos los archivos <code>.txt</code> dentro de <code>test1/</code>.</p>
+</li>
+<li>
+<p>Para cada archivo, comprueba (con un <code>if</code>) si <strong>contiene</strong> algo.</p>
+<ul>
+<li>Si grep encuentra un carácter (.) en el archivo, significa que no está vacío.</li>
+<li>Si no encuentra nada, el archivo está vacío.</li>
+</ul>
+</li>
+<li>
+<p>Muestra por pantalla un mensaje distinto en cada caso:</p>
+<ul>
+<li>Si no está vacío: echo &quot;El archivo X NO está vacío&quot;</li>
+<li>Si está vacío: echo &quot;El archivo X está vacío&quot;</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> test1/*.txt
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> grep -q <span class="hljs-string">'.'</span> <span class="hljs-string">"<span class="hljs-variable">$archivo</span>"</span>; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$archivo</span> NO está vacio."</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$archivo</span> está vacio."</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-1.png" alt="captura1.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="2-bucle-num%C3%A9rico-con-n%C3%BAmeros-pares-e-impares"><strong>2. Bucle numérico con números pares e impares</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej2.sh</code>.</p>
+</li>
+<li>
+<p>En él, escribe un bucle <code>for</code> que vaya del <strong>1 al 5</strong> (puedes usar <code>{1..5}</code> o la forma C <code>for (( i=1; i&lt;=5; i++ ))</code>).</p>
+</li>
+<li>
+<p>En cada iteración, usa un <code>if</code> para comprobar si <code>i</code> es par o impar</p>
+</li>
+<li>
+<p>Ejecuta y verifica que el script diferencie correctamente pares e impares.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> (( i=1; i&lt;=5; i++ ))
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> (( i % 2 == 0 ));
+    <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El número <span class="hljs-variable">$i</span> es par"</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El número <span class="hljs-variable">$i</span> es impar"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-2.png" alt="captura2.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="3-comprobar-si-un-log-contiene-la-palabra-%22error%22"><strong>3. Comprobar si un <code>.log</code> contiene la palabra &quot;ERROR&quot;</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej3.sh</code>.</p>
+</li>
+<li>
+<p>Haz un bucle <code>for</code> que recorra todos los archivos que contengan la palabra <code>log</code> dentro de <code>test3/</code>.</p>
+</li>
+<li>
+<p>Usa un <code>if</code> con <code>grep -q &quot;ERROR&quot;</code> para determinar si hay líneas que contienen la palabra <code>&quot;ERROR&quot;</code>.</p>
+<ul>
+<li>Si existe <code>&quot;ERROR&quot;</code>, muestra <code>&quot;El log ARCH tiene errores&quot;</code>.</li>
+<li>En caso contrario, muestra <code>&quot;El log ARCH no tiene errores&quot;</code>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> ARCHIVO <span class="hljs-keyword">in</span> test3/<span class="hljs-built_in">log</span>.*
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> grep -q <span class="hljs-string">"ERROR"</span> <span class="hljs-string">"<span class="hljs-variable">$ARCHIVO</span>"</span>;
+    <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$ARCHIVO</span> contiene errores"</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$ARCHIVO</span> está limpio"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-3.png" alt="captura3.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="4-bucle-estilo-c-con-continue"><strong>4. Bucle estilo C con <code>continue</code></strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej4.sh</code>.</p>
+</li>
+<li>
+<p>Implementa un bucle.</p>
+</li>
+<li>
+<p>Dentro del bucle, si <code>i</code> es igual a <strong>3</strong>, usa <code>continue</code> para saltarte esa iteración. Muestra un mensaje indicando que se ha <strong>saltado</strong> ese valor.</p>
+</li>
+<li>
+<p>Para el resto de iteraciones, imprime <code>&quot;i = valor&quot;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> (( i=1; i&lt;=5; i++ ))
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> (( i == 3 ));
+    <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"Saltamos el numero 3"</span>
+        <span class="hljs-built_in">continue</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"i = <span class="hljs-variable">$i</span> "</span>
+<span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-4.png" alt="captura4.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="5-renombrar-archivos-jpg-a-old"><strong>5. Renombrar archivos <code>.jpg</code> a <code>.old</code></strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej5.sh</code>.</p>
+</li>
+<li>
+<p>Haz un bucle <code>for</code> que recorra todos los archivos dentro de <code>test5/</code>.</p>
+</li>
+<li>
+<p>Para cada archivo, comprueba con un <code>if</code> si <strong>termina</strong> en <code>.jpg</code>.</p>
+<ul>
+<li>Una forma sencilla es usar <code>[[ $archivo == *.jpg ]]</code>.</li>
+</ul>
+</li>
+<li>
+<p>Si se cumple, renómbralo para que la extensión <code>.jpg</code> se convierta en <code>.old</code>.</p>
+<ul>
+<li>Puedes usar <code>sed</code> para crear el nuevo nombre:</li>
+</ul>
+</li>
+<li>
+<p>Si el archivo <strong>no</strong> acaba en <code>.jpg</code>, no hagas nada.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> test5/*.*
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$archivo</span> == *.jpg ]];
+    <span class="hljs-keyword">then</span>
+        mv <span class="hljs-variable">$archivo</span> `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$archivo</span> | sed <span class="hljs-string">'sed/\(.*\.\)jpg/\1old'</span>`
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-5.png" alt="captura5.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="6-contar-l%C3%ADneas-y-decidir-seg%C3%BAn-longitud"><strong>6. Contar líneas y decidir según longitud</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej6.sh</code>.</p>
+</li>
+<li>
+<p>Haz un <code>for</code> para iterar sobre todos los <code>.txt</code> en <code>test6/</code>.</p>
+</li>
+<li>
+<p>Cuenta cuántas líneas tiene cada archivo usando <code>grep</code>.</p>
+</li>
+<li>
+<p>Si el número de líneas es mayor a 3, muestra un mensaje <code>&quot;El archivo X tiene más de 3 líneas&quot;</code> .De lo contrario, <code>&quot;El archivo X tiene 3 líneas o menos&quot;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> test6/*.txt;
+<span class="hljs-keyword">do</span>
+    TOTAL_LINEAS=$(grep -c <span class="hljs-string">'^'</span> <span class="hljs-string">"<span class="hljs-variable">$archivo</span>"</span>)
+    <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$TOTAL_LINEAS</span>"</span> -gt 3 ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$archivo</span> tiene más de 3 líneas"</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"El archivo <span class="hljs-variable">$archivo</span> tiene 3 líneas o menos"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-6.png" alt="captura6.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="7-reemplazar-%22localhost%22-en-archivos-conf"><strong>7. Reemplazar &quot;localhost&quot; en archivos <code>.conf</code></strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej7.sh</code>.</p>
+</li>
+<li>
+<p>Haz un bucle <code>for</code> que recorra <code>test7/*</code>.</p>
+</li>
+<li>
+<p>Si el archivo termina en <code>.conf</code>, usa <code>sed</code> para reemplazar todas las ocurrencias de <code>&quot;localhost&quot;</code> por <code>&quot;127.0.0.1&quot;</code> <strong>in place</strong></p>
+</li>
+<li>
+<p>Imprime un mensaje confirmando que se ha modificado ese archivo.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> test7/*;
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> [[ <span class="hljs-string">"<span class="hljs-variable">$archivo</span>"</span> == *.conf ]]; <span class="hljs-keyword">then</span>
+        sed -i <span class="hljs-string">'s/localhost/127.0.0.1/g'</span> <span class="hljs-string">"<span class="hljs-variable">$archivo</span>"</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"Se ha modificado el archivo <span class="hljs-variable">$archivo</span>"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-7.png" alt="captura7.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="8-saludar-a-usuarios-espec%C3%ADficos"><strong>8. Saludar a usuarios específicos</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej8.sh</code>.</p>
+</li>
+<li>
+<p>Utiliza un bucle <code>for</code> para leer los nombres del archivo <code>test8/usuarios.txt</code></p>
+</li>
+<li>
+<p>En el interior, si el usuario se llama <code>&quot;maria&quot;</code>, muestra <code>&quot;Hola maria&quot;</code>.De lo contrario, muestra <code>&quot;Hola, USUARIO&quot;</code>.</p>
+</li>
+<li>
+<p>Ejecuta y revisa la salida.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> $(cat usuarios.txt)
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$USUARIO</span> == <span class="hljs-string">"maria"</span> ];
+    <span class="hljs-keyword">then</span>
+            <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hola, <span class="hljs-variable">$USUARIO</span>"</span>
+    <span class="hljs-keyword">else</span>
+            <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hola, USUARIO"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-8.png" alt="captura8.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="9-b%C3%BAsqueda-en-subdirectorios-bucles-anidados"><strong>9. Búsqueda en subdirectorios (Bucles anidados)</strong></h2>
+<ol>
+<li>
+<p>Crea un script <code>ej9.sh</code>.</p>
+</li>
+<li>
+<p>Haz un bucle para recorrer todo lo que hay en <code>test9/</code>.</p>
+</li>
+<li>
+<p>Con un <code>if</code>, verifica si <code>SUBDIR</code> es un directorio (opción <code>d</code>).</p>
+</li>
+<li>
+<p>Dentro del <code>if</code>, crea <strong>otro bucle</strong> que recorra los archivos <code>.txt</code> de ese subdirectorio.</p>
+</li>
+<li>
+<p>Al ejecutar el script, deberías ver la primera línea de cada archivo <code>.txt</code> en <code>folder1</code> y <code>folder2</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> SUBDIR <span class="hljs-keyword">in</span> test9/*
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> [ -d <span class="hljs-variable">$SUBDIR</span> ];
+    <span class="hljs-keyword">then</span>
+	
+    <span class="hljs-built_in">cd</span> <span class="hljs-variable">$SUBDIR</span>
+	
+	<span class="hljs-keyword">for</span> archivo <span class="hljs-keyword">in</span> *.txt
+	<span class="hljs-keyword">do</span>
+		head -n 1 <span class="hljs-variable">$archivo</span>
+	<span class="hljs-keyword">done</span>
+
+	<span class="hljs-built_in">cd</span> ../..
+    <span class="hljs-keyword">else</span>
+	    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Este archivo no es txt."</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-9.png" alt="captura9.png"></p>
+</li>
+</ol>
+<br>
+<h2 id="10-verificar-procesos-en-ejecuci%C3%B3n-con-ps"><strong>10. Verificar procesos en ejecución con <code>ps</code></strong></h2>
+<p><strong>Explicación de comando</strong>:</p>
+<ul>
+<li><code>ps</code> es un comando que muestra los procesos en ejecución.
+<ul>
+<li><code>ps aux</code> en particular lista <strong>todos</strong> los procesos del sistema con información detallada.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Objetivo</strong>:</p>
+<ol>
+<li>
+<p>Crea un script <code>ej10.sh</code>.</p>
+</li>
+<li>
+<p>Ejecuta <code>ps aux</code> para sacar una lista de todos los procesos activos y añádelo (sin sobreescribir) en el archivo <code>processes.txt</code></p>
+</li>
+<li>
+<p>Haz un bucle <code>for</code> que recorra cada línea (proceso) de <code>processes.txt</code>.</p>
+</li>
+<li>
+<p>En el interior, verifica si <code>ps aux | grep -q &quot;$PROC&quot;</code>.</p>
+<ul>
+<li>Si retorna verdadero (estado 0), significa que el proceso <code>PROC</code> está corriendo.</li>
+<li>Muestra <code>&quot;El proceso PROC está en ejecución&quot;</code>.</li>
+<li>Si no se encuentra, muestra <code>&quot;El proceso PROC no está en ejecución&quot;</code>.</li>
+</ul>
+</li>
+<li>
+<p>Ejecuta el script y prueba añadiendo o quitando procesos en <code>processes.txt</code> para ver la diferencia.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash
+</span>
+ps aux &gt; processes.txt
+
+<span class="hljs-keyword">for</span> PROC <span class="hljs-keyword">in</span> $(cat processes.txt)
+<span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> ps aux | grep -q <span class="hljs-string">"<span class="hljs-variable">$PROC</span>"</span> ;
+    <span class="hljs-keyword">then</span>
+	    <span class="hljs-built_in">echo</span> <span class="hljs-string">"El proceso <span class="hljs-variable">$PROC</span> está en ejecución"</span>
+    <span class="hljs-keyword">else</span>
+	    <span class="hljs-built_in">echo</span> <span class="hljs-string">"El proceso <span class="hljs-variable">$PROC</span> no está en ejecución"</span>
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p><img src="img/image-10.png" alt="captura10.png"></p>
+</li>
+</ol>
+
+</body>
+</html>
