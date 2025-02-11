@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 int main(){
-    puts("FALTA CÓDIGO AQUI AAAAAAAAHHHHHH");
+	puts("FALTA CÓDIGO AQUI AAAAAAAAHHHHHH");
 	return EXIT_FAILURE;
 }
 ```
