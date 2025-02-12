@@ -2,13 +2,52 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\title{Ejercicio 2}
+\title{04.2 Ejercicios de Álgebra Relacional}
 \author{Bryan Andreu Jiménez Rojas}
 \date{Febrero 2025}
 
 \begin{document}
 \maketitle
 
-\section
+\section{Parte 1}
+\text{1. Selecciona todas las personas que sean jefes e ingenieros.}
+\begin{equation*}
+	Ingenieros \cap Jefes
+\end{equation*}
+
+\text{2. Selecciona el nombre de todos los ingenieros que sean jefes.}
+\begin{equation*}
+	\Pi_{Nombre} \left(Ingenieros \cap Jefes\right)
+\end{equation*}
+
+\text{3. Selecciona el código de los ingenieros que no sean jefes}
+\begin{equation*}
+	\Pi_{\#E} \left(Ingenieros - Jefes\right)
+\end{equation*}
+
+\text{4. Selecciona la edad de todos los ingenieros que sean mayores de 30 que no sean jefes}
+\begin{equation*}
+	\Pi_{Edad} \left(\sigma_{edad>30} (Ingenieros - Jefes )\right)
+\end{equation*}
+
+
+\section{Parte 2}
+\text{1. Selecciona todos los proyectos en los que los ingenieros se llama José.}
+\begin{equation*}
+\begin{split}
+	\Pi_{Proyecto} \left(\sigma \text{Nombre} = \text{José} \left(Ingenieros\right)\bowtie Departamentos \right) \\
+	T1.D\# = Departamentos.D\#
+\end{split}
+\end{equation*}
+
+\text{2. Selecciona todos los proyectos que tengan mayor duración en tiempo de 30.}
+\begin{equation*}
+	\Pi_{Proyecto} \left(\sigma_{Tiempo > 30} \left(Proyecto\right)\right)
+\end{equation*}
+
+\text{3. Selecciona el nombre de todos los ingenieros y el código del departamento.}
+\begin{equation*}
+	\Pi_{Nombre},\#\left(Ingenieros\right)
+\end{equation*}
 
 \end{document}

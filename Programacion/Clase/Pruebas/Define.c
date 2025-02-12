@@ -12,7 +12,7 @@ int main(){
 	
 	printf("El cambio es %d\n", cambio);
 
-	cambio++;
+	scanf("%d", &cambio);
 
 #undef LIM
 #ifndef LIM

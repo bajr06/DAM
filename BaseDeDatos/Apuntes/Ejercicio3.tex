@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{04.2 Ejercicios de Álgebra Relacional}
+\author{Bryan Andreu Jiménez Rojas}
+\date{Febrero 2025}
+
+\begin{document}
+\maketitle
+
+\section{Parte 1}
+\textnormal{1. Obtener datos de todas las clases}
+\begin{equation*}
+\begin{split}
+        T1 \leftarrow Clases \bowtie Asistencia \\
+        Clases.Código = Asistencia.Código_{Clase}
+        \\\\
+        T2 \leftarrow T1 \bowtie Asignatura \\
+        T1.Código_{Asignatura} = Asignatura.Código_{Asignatura}
+        \\\\
+        T3 \leftarrow T2 \bowtie Profesor \\
+        T2.Código_Profesor = Profesor.Código_Profesor \\
+        \Pi_{Nombre}\left(Nombre = Nombre_{Profesor}\left(T3\right)\right)
+\end{split}
+\end{equation*}
+
+\textnormal{2. Obtener datos de todas las clases ubicadas en el primer piso}
+\begin{equation*}
+\begin{split}
+        T1 \leftarrow \Pi_{Código_{Clase}, Bloque} \left(\sigma_{Piso = 1}\left(Clases\right)\right)
+        \\\\
+        T2 \leftarrow \Pi_{Bloque, Código_{Profesor}, Código_{Asignatura}, Código_{Clase}}\left(T1 \bowtie Asistencia\right) \\
+        T1.Código_{Clase} = Asistencia.Código_{Clase}
+        \\\\
+        \Pi_{Código_{Profesor}}\left(T2 \bowtie Profesor\right) \\
+        T2.Código_{Profesor} = Profesor.Código_{Profesor}
+\end{split}
+\end{equation*}
+
+\end{document}

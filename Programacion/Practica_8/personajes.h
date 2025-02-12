@@ -1,6 +1,6 @@
 #define MIN 25
 #define MAX 200
-#define cantidad 5
+#define cantidad 2
 
 typedef enum{
 	luchador,
@@ -21,4 +21,6 @@ typedef struct{
 
 void inicializar_personaje(personaje * campeon, const int identificador, const char * nombre, const char * descripcion, const int salud, const int daño, const clase tipo, const float suerte);
 
-void imprimprir_personaje(personaje * campeon);
+void imprimir_personaje(personaje * campeon);
+
+void imprimir_personajes(personaje * campeon);
