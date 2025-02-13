@@ -1,41 +1,100 @@
 \documentclass{article}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\title{04.2 Ejercicios de Álgebra Relacional}
+\title{04.4 Ejercicios de Álgebra Relacional}
 \author{Bryan Andreu Jiménez Rojas}
 \date{Febrero 2025}
 
 \begin{document}
 \maketitle
 
-\section{Parte 1}
 \textnormal{1. Obtener datos de todas las clases}
 \begin{equation*}
-\begin{split}
-        T1 \leftarrow Clases \bowtie Asistencia \\
-        Clases.Código = Asistencia.Código_{Clase}
-        \\\\
-        T2 \leftarrow T1 \bowtie Asignatura \\
-        T1.Código_{Asignatura} = Asignatura.Código_{Asignatura}
-        \\\\
-        T3 \leftarrow T2 \bowtie Profesor \\
-        T2.Código_Profesor = Profesor.Código_Profesor \\
-        \Pi_{Nombre}\left(Nombre = Nombre_{Profesor}\left(T3\right)\right)
-\end{split}
+	\begin{split}
+		T1 \leftarrow Clases \bowtie Asistencia \\
+		Clases.Código = Asistencia.Código_{Clase}
+		\\\\
+		T2 \leftarrow T1 \bowtie Asignatura \\
+		T1.Código_{Asignatura} = Asignatura.Código_{Asignatura}
+		\\\\
+		T3 \leftarrow T2 \bowtie Profesor \\
+		T2.Código_Profesor = Profesor.Código_Profesor \\
+		\Pi_{Nombre}\left(Nombre = Nombre_{Profesor}\left(T3\right)\right)
+	\end{split}
 \end{equation*}
 
 \textnormal{2. Obtener datos de todas las clases ubicadas en el primer piso}
 \begin{equation*}
-\begin{split}
-        T1 \leftarrow \Pi_{Código_{Clase}, Bloque} \left(\sigma_{Piso = 1}\left(Clases\right)\right)
-        \\\\
-        T2 \leftarrow \Pi_{Bloque, Código_{Profesor}, Código_{Asignatura}, Código_{Clase}}\left(T1 \bowtie Asistencia\right) \\
-        T1.Código_{Clase} = Asistencia.Código_{Clase}
-        \\\\
-        \Pi_{Código_{Profesor}}\left(T2 \bowtie Profesor\right) \\
-        T2.Código_{Profesor} = Profesor.Código_{Profesor}
-\end{split}
+	\begin{split}
+		T1 \leftarrow \Pi_{Código_{Clase}, Bloque} \left(\sigma_{Piso = 1}\left(Clases\right)\right)
+		\\\\
+		T2 \leftarrow \Pi_{Bloque, Código_{Profesor}, Código_{Asignatura}, Código_{Clase}}\left(T1 \bowtie Asistencia\right) \\
+		T1.Código_{Clase} = Asistencia.Código_{Clase}
+		\\\\
+		\Pi_{Código_{Profesor}}\left(T2 \bowtie Profesor\right) \\
+		T2.Código_{Profesor} = Profesor.Código_{Profesor}
+	\end{split}
+\end{equation*}
+
+\textnormal{3. Obtener los profesores que imparten clase en la clase C1}
+\begin{equation*}
+	\begin{split}
+		T1 \leftarrow \Pi Código_{Profesor}\left(\sigma Código_{close = 'C1'}(Asistencia)\right) \\
+		\Pi Nombre \left(T1 \bowtie Profesor\right) \\
+		T1.Código_{Profesor} = Profesor.Código.Profesor
+	\end{split}
+\end{equation*}
+
+\textnormal{4. Obtener los valores de piso y bloque para las clases que imparte el profesor con el código 1.}
+ \begin{equation*}
+	 \begin{split}
+		T1 \leftarrow \Pi Código_{Clase} \left(\sigma Código_{Profesor = '1'}(Asistencia)\right) \\
+		\Pi Piso, Bloque \left(T1 \bowtie Clases\right) \\
+		T1.Código_{Clase} = Clases.Código_{Clases}
+	\end{split}
+\end{equation*}
+
+\textnormal{5. Obtener los valores de piso y bloque para las clases que imparte la profesora Rosa.}
+\begin{equation*}
+	\begin{split}
+		T1 \leftarrow \Pi Código_{Profesor} \left(\sigma Nombre = "Rosa" (Profesor)\right) \\
+		T2 \leftarrow \Pi Código_{Clase} \left(T1 \bowtie Asistencia\right) \\
+		T1.Código_{Profesor} = Asistencia.Código_{Profesor}
+		\\\\
+		\Pi Piso, Bloque \left(T2 \bowtie \text{Clases} \right) \\
+		T2.Código_{Clase} = Clases.Código_{Clase}
+	\end{split}
+\end{equation*}
+
+\textnormal{6. Obtener el código de profesor para los profesores que imparten clase en C1 pero que imparten la asignatura de física.}
+\begin{equation*}
+	\begin{split} % Considerar que la manera en que escriba esta ecuación se tendra que aplicar al resto de ejercicios.
+		T1 \leftarrow \Pi \text{Código\_Asignatura} \left(\sigma \text{Nombre = "Física"}\left(\text{Asignatura}\right)\right) \\
+		\Pi \text{Código\_Profesor}\left(\sigma \text{Código\_Clases = "C1"} \left(T1 \bowtie \text{Asistencia}\right)\right) \\
+		\text{T1.Código\_Asignatura = Asistencia.Código\_Asistencia}
+	\end{split}
+\end{equation*}
+
+\textnormal{7. Obtener los nombres de los profesores que imparten clase en C1 o C2}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi \text{Código\_Profesor} \left(\sigma \text{Código\_Clase = 'C1'} \wedge (or) \text{Código\_Clase = 'C2'} \left(\text{Asistencia}\right)\right) \\
+		& \Pi \left(T1 \bowtie \text{Profesor}\right) \\
+		& \text{T1.Código\_Profesor = Profesor.Código\_Profesor}
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{8. Obtener los nombres de los profesores que imparten clase en C2 y C3}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi \text{Código\_Profesor} \left(\sigma \text{Código\_Clase = 'C2'} \left(\text{Asistencia}\right)\right) \\
+		& T2 \leftarrow \Pi \text{Código\_Profesor} \left(\sigma \text{Código\_Clase = 'C3'} \left(\text{Asistencia}\right)\right) \\
+		& T3 \leftarrow \left( T1 \cap T2\right) \leftright 3 \\
+		& \Pi \text{Nombre} \left( T3 \bowtie \text{Profesor} \right) \\
+		& \text{T3.Código\_Profesor = Profesor.Código\_Profesor}
+	\end{flalign*}
 \end{equation*}
 
 \end{document}

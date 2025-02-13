@@ -1,6 +1,6 @@
 # Tema 3. Realización de consultas. Algebra relacional 
 
-1. Π Nombre (σ Población = 'Palencia' (CLIENTE.)).
+1. $\Pi Nombre (σ Población = 'Palencia' (CLIENTE.)).$
 
 2. Π CodProducto (σ CodProducto = Descripción (PRODUCTO)).
 
