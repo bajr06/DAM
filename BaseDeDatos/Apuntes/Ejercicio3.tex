@@ -97,4 +97,34 @@
 	\end{flalign*}
 \end{equation*}
 
+\textnormal{9. }
+\begin{equation*}
+	\begin{flaling*}
+		& T1 \leftarrow \Pi_{Código\_Clase} \left(\sigma_{Bloque = '1'} \left(\text{Clase}\right)\right) \\
+		& T2 \leftarrow \Pi_{Código\_Profesor} \left(T1 \bowtie \text{Asistencia}\right) \\
+		& \text{T1.Código\_Clase = Asistencia.Código\_Clase} \\
+		& \Pi_{Nombre} \left(T2 \bowtie \text{Profesor} \right) \\
+		& \text{T2.Código\_Profesor = Profesor.Código\_Profesor}
+	\end{flaling*}
+\end{equation*}
+
+\textnormal{}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Código\_Asignatura, Código\_Clase} \left(\text{Asistencia}\right) \\
+		& \Pi_{Código\_Clase, Nombre} \left(T1 \bowtie \text{Asignatura}\right) \\
+		& \text{T1.Código\_Asignatura = Asignatura.Código\_Asignatura}
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{}
+\begin{equation*}
+	\begin{flalign*}
+		& & T1 \leftarrow \Pi_{Código\_Clase} \left(\sigma_{Bloque = '2'} \left(\text{Clase}\right)\right) \\
+		& T2 \leftarrow \Pi_{Código\_Asignatura, T1.Código\_Clase} \left(T1 \bowtie \text{Asistencia}\right) \\
+		& \text{T1.Código\_Clase = Asistencia.Código\_Clase}
+		% ESTO QUE COMPLETAR TODO
+	\end{flalign*}
+\end{equation*}
+
 \end{document}

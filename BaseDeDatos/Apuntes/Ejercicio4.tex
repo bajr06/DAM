@@ -1,0 +1,102 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{04.4 Ejercicios de Álgebra Relacional}
+\author{Bryan Andreu Jiménez Rojas}
+\date{Febrero 2025}
+
+\begin{document}
+\maketitle
+
+\textnormal{1. Obtener el nombre de las papelerías que se encuentran en Madrid}
+\begin{equation*}
+	\begin{flalign*}
+		& \Pi_{Nombre} \left(\sigma_{Ciudad = 'Madrid'} \left(\text{Papeleras}\right)\right)
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{2. Obtener el nombre de todas las editoriales que se encuentren en Barcelona}
+\begin{equation*}
+	\begin{flalign*}
+		& \Pi_{Nombre} \left(\sigma_{Ciudad = 'Barcelona'} \left(\text{Editoriales}\right)\right) \\
+		% Invención de Beatriz.
+		& T1 \leftarrow \Pi_{Ciudades} \left(\text{Editoriales}\right) \\
+		& T2 \leftarrow \Pi_{Ciudades} \left(\text{Papeleras}\right) \\
+		& \Pi_{Ciudades} \left(T1 \cap T2\right)
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{3. Obtener todos los autores que han publicado libros en el 2010}
+\begin{equation*}
+	\begin{flalign*}
+		& \Pi_{Autores} \left(\right) % TODO
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{4. Obtener el nombre de los libros que tiene ha publicado la editorial rama}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Código\_Editorial} \left(\sigma_{Nombre = 'Rama'} \left(\text{Editorial}\right)\right) \\
+		& T2 \leftarrow \Pi_{Identificador\_Libro} \left(T1 \bowtie ELP.\right) \\
+		& \text{T1.Código\_Editorial = ELP.Código\_Editorial} \\
+		& \Pi_{Titulo} \left(T2 \bowtie \text{Libro}\right) \\
+		& \text{T2.Identificador\_Libro = Libros.Identificador\_Libro}
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{5. Obtener todos los autores de las editoriales que están afincadas en Sevilla}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Nombre} \left(\sigma_{Ciudad = 'Sevilla'} \left(\text{Editoriales}\right)\right) \\
+		& T2 \leftarrow \Pi_{Identificador\_Libros} \left(T1 \bowtie ELP \right) \\
+		& \text{T1.Código\_Editorial = ELP.Código\_Editorial} \\\\
+		& \Pi_{Autor} \left(T2 \bowtie Libros\right)\\
+		& \text{T2.Identificador\_Libro = Libros.Identificador\_Libro}
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{6. Obtener los nombres de las papelerías que han sido abastecidas por alguna editorial de Madrid}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Código\_Editorial} \left(\sigma_{Ciudad = 'Madrid'}\right) \\
+		& T2 \leftarrow \left(T1 \bowtie ELP\right) \\
+		& \text{T1.Código\_Editorial = ELP.Código\_Editorial}
+		\\\\
+		& \Pi_{Nombre} \left(T2 \bowtie Papeleria\right) \\
+		& \text{T2.Código\_Identificador\_Papeleria = Papeleria.Identificador\_Papeleria}
+		\\\\\\
+		% Invención Beatriz
+		& T1 \leftarrow \Pi_{Precio} \left(\sigma_{Titulo = 'A} \left(\text{Libros}\right)\right) \\
+		& Libros \chi T1 \\
+		& \Pi_{Nombre} \left(\sigma_{Libros.Precios = T1.Precio}\left(Libros \chi \T1\right)\right)
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{7. Obtener los nombres de los libros que tienen las papelerías que están en Cáceres}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Identificador\_Papeleria} \left(\sigma_{Ciudad = "Cáceres"} \left(\text{Papeleria}\right)\right) \\
+		& \Pi_{Identificador\_Libro} \left(T1 \bowtie ELP\right) \\
+		& T2 \leftarrow \Pi_{Identificador\_Libro}\text{T1.Identificador\_Papeleria = ELP.Identificador\_Papeleria}
+		\\\\
+		& \Pi_{Nombre} \left(T2 \bowtie Libro\right) \\
+		& \text{T2.Identificador\_Libro = Libro.Identificador\_Libro}
+	\end{flalign*}
+\end{equation*}
+
+\textnormal{}
+\begin{equation*}
+	\begin{flalign*}
+		& T1 \leftarrow \Pi_{Identificador\_Papeleria}\left(\sigma_{Nombre = 'P1'}\left(\text{Papeleria}\right)\right) \\
+		& T2 \leftarrow \Pi_{Identificador\_Papeleria}\left(\sigma_{Nombre = 'P3'}\left(\text{Papeleria}\right)\right) \\
+		& T3 \leftarrow \Pi_{Código\_Editorial}\left(T1 \bowtie ELP\right) \\
+		& \text{T1.Identificador\_Papeleria = ELP.Indentificador\_Papeleria} \\
+		& T2 \cap \T4
+		& T4 \leftarrow \Pi_{Código\_Editorial} \left(T2 \bowtie ELP\right) \\
+		& \text{T2.Identificador\_Papeleria = ELP.Identificador\_Papeleria}
+	\end{flalign*}
+\end{equation*}
+
+\end{document}
