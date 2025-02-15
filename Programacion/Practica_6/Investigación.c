@@ -448,4 +448,3 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 
 	return &recatalogo[0];
 }
-
