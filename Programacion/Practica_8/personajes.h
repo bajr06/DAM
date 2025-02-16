@@ -1,6 +1,6 @@
 #define MIN 25
 #define MAX 200
-#define cantidad 2
+#define cantidad 3
 
 typedef enum{
 	luchador,
