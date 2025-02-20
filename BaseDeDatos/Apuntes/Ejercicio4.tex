@@ -86,17 +86,31 @@
 	\end{flalign*}
 \end{equation*}
 
-\textnormal{}
+\textnormal{8. Obtener los valores del código de la editorial que suministran a las papelerías P1 y P3}
 \begin{equation*}
 	\begin{flalign*}
 		& T1 \leftarrow \Pi_{Identificador\_Papeleria}\left(\sigma_{Nombre = 'P1'}\left(\text{Papeleria}\right)\right) \\
 		& T2 \leftarrow \Pi_{Identificador\_Papeleria}\left(\sigma_{Nombre = 'P3'}\left(\text{Papeleria}\right)\right) \\
 		& T3 \leftarrow \Pi_{Código\_Editorial}\left(T1 \bowtie ELP\right) \\
 		& \text{T1.Identificador\_Papeleria = ELP.Indentificador\_Papeleria} \\
-		& T2 \cap \T4
+		& T2 \cap T4
 		& T4 \leftarrow \Pi_{Código\_Editorial} \left(T2 \bowtie ELP\right) \\
 		& \text{T2.Identificador\_Papeleria = ELP.Identificador\_Papeleria}
 	\end{flalign*}
+\end{equation*}
+
+\textnormal{9. Obtener el nombre de las editoriales que hayan suministrado libros publicados en el 2001}
+\begin{equation*}
+	T1 \leftarrow \Pi Identificador\_Libro \left(\sigma_{año = '2001'}^{Libros}\right) \\
+	T2 \leftarrow \Pi Codigo\_Editorial \left(T1 \bowtie ELP \right)__{T1.Identificador\_Libro = ELP.Identificador\_Libro} \\
+	\Pi Nombre \left(T2 \bowtie Editoriales\right)__{T2.Codigo\_Editorial = Editorial.Codigo\_Editorial}
+\end{equation*}
+
+\textnormal{10. Obtener los calores de identificador de libros para todas las papelerías que no sean de Madrid}
+\begin{equation*}
+	T1 \leftarrow \Pi Identificador\_Papeleria \left(\sigma_{Ciudad \neq 'Madrid'}^{(Papelerias)}\right) \\
+	T2 \leftarroe \Pi Identificador\_Libro \left(T1 \bowtie ELP \right__{T1.Identificador\_Papeleria = ELP.Identificador\_Papeleria}) \\
+	\Pi \left(T2 \bowtie Libros \right)__{T2.Identificador\_Libro. = Libros_Identificador\_Libros}
 \end{equation*}
 
 \end{document}
