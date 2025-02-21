@@ -1,6 +1,6 @@
 # Preguntas de tipo Text para Sistemas Informáticos
 
-1. ¿Qué carácteristica tiene la Emulacion sobre los demás?
+1. Una de las carácteristicas que tiene la Emulacion sobre los demás tipos de virtualización es que...
     
     **A** El sistema operativo no sabe que esta virtualizado y tiene posibilidad de tener conexión directa con el Hardware.
     
@@ -8,16 +8,16 @@
     
     **C** No tiene una característica relevante sobre los demás.
     
-    **D** Puede tener una conexión directa con el Hardware.
+    **D** No tiene una conexión directa con el hardaware, ya que necesita simular una arquitectura distinta (que puede ser mucho menos avanzada) a la del hardware real.
 
 "La respuesta correcta es la **D**."
 <br> <br>
 
-2. ¿En qué se diferencian el Hipervisor 1 del 2?
+2. ¿Qué característica diferencia al Hipervisor de tipo 1 del de tipo 2?
     
-    **A** Se conecta directamente con el Hardware.
+    **A** Que tiene una conexión directa con el Hardware.
     
-    **B** Se ejecuta sobre un sistema operativo.
+    **B** Que el hipervisor se ejecuta sobre un sistema operativo.
     
     **C** Se conecta directamente con el Hardware, pero depende de un Sistema Operativo anfitrión.
     
@@ -38,13 +38,13 @@
 "La respuesta correcta es la **B**"
 <br> <br>
 
-4. ¿Qué caracterísitca tiene Paravirtualización?
+4. ¿Qué característica tiene Paravirtualización?
     
-    **A** El Sistema operativo invitado sustituye ciertas llamadas al hipervisor a través de una API.
+    **A** El Sistema operativo invitado ha sido modificado para sustituir algunas llamadas del sistema operativo por llamadas al hipervisor.
     
     **B** Es muy lento, pero permite la compatibilidad total del Sistema Operativo con el CPU.
     
-    **C** Consume menos recursos que una máquina virtual.
+    **C** Consume más recursos que una máquina virtual.
     
     **D** El Sistema Operativo se instala "como si" estuviera en un hardaware físico real.
 "La respuesta correcta es la **A**"
