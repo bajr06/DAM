@@ -2,18 +2,23 @@
 #include <stdlib.h>
 
 int main (){
-	FILE * archivo = fopen("Texto.txt", "r");
+	FILE * archivo = fopen("Texto.c", "a");
+	// r: abrirlo quiero verlo.
+	// w: abrirlo para escribir.
 	if(archivo == NULL){
 		fputs("File error", stderr);
-		exit(EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
 	
-	char caracteres[100];
+	/*
+	do{
+		int lectura = fgetc(archivo);
+		printf("%c\n", (char) lectura);
+	} while(!feof(archivo));
+	*/
 
-	fgets(caracteres, 100, archivo);
-	printf("%s",caracteres);
-	
-	printf("%d\n", EOF);
+	long pos = ftell(archivo);
+	printf("%ld\n", pos);
 
 	fclose(archivo);
 
