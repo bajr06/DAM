@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#include "colores.h"
 #include "personajes.h"
+
 
 int main(){
 	personaje * campeones = (personaje *)malloc(cantidad * sizeof(personaje));
@@ -16,22 +19,27 @@ int main(){
 	printf("\t2. Seleccionar un personaje.\n");
 	printf("\t3. Empezar partida.\n");
 	printf("\t4. Salir.\n");
-
+	
 	int escoger;
-
 	scanf("%d", &escoger);
+	
+	do{
+		switch(escoger){
+			case 1:
+				puts("Estos son los personajes disponibles:");
+				imprimir_personajes(&campeones[0]);
+				break;
+			case 2:
+				puts("Sus");
+				break;
+			default:
+				puts("No te recomiendo que ejecutes una función... ¡Qué no existe!");
+		}
 
-	switch(escoger){
-		case 1:
-			puts("Estos son los personajes disponibles:");
-			imprimir_personajes(&campeones[0]);
-			break;
-		case 2:
-			puts("Sus");
-			break;
-		default:
-			puts("No sé");
-	}
+		puts("Ahora seleccione otra opción.");
+		scanf("%d", &escoger);
+
+	} while(escoger >= 1 && escoger <= 3);
 
 	free(campeones);
 
