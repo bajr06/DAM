@@ -7,8 +7,6 @@
  * 	Curso: Primero de Desarrollo de Aplicaciones Multiplataforma.
 */ 	
 
-//Creamos el primer programa, encargado de detectar si la letra que insertamos es una vocal o no.
-
 void es_vocal(){
 	char letra;
 
