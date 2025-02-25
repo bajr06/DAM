@@ -1,12 +1,22 @@
 #!/bin/bash
 
-echo "Escriba el nombre del commit que quieres crea:"
-read Nombre # Escanea por pantalla el nombre a dar al Commit.
+git status
 
-git add .
+echo "¿Tienes que hacer un commit?"
+read opcion
 
-git commit -m "$Nombre"
+if [ "$opcion" = "Si" ];
+then
+	echo "Escriba el nombre del commit que quieres crea:"
+	read Nombre # Escanea por pantalla el nombre a dar al Commit.
 
-git push
+	git add .
 
-echo "Operación finalizada, ¡Vuelva Pronto!"
+	git commit -m "$Nombre"
+	
+	git push
+
+	echo "Operación finalizada, ¡Vuelva Pronto!"
+else
+	echo "Nos veremos en la próxima... Creo"
+fi
