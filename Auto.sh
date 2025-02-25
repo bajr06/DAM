@@ -5,7 +5,7 @@ git status
 echo "¿Tienes que hacer un commit?"
 read opcion
 
-if [ "$opcion" = "Si" ];
+if [ "$opcion" = "Si" ] || [ "$opcion" = "SI" ] || [ "$opcion" = "si" ];
 then
 	echo "Escriba el nombre del commit que quieres crea:"
 	read Nombre # Escanea por pantalla el nombre a dar al Commit.
@@ -17,6 +17,9 @@ then
 	git push
 
 	echo "Operación finalizada, ¡Vuelva Pronto!"
+elif [ "$opcion" = "No" ] || [ "$opcion" = "NO" ] || [ "$opcion" = "no"];
+then
+	echo "Nos veremos en la próxima... Creo."
 else
-	echo "Nos veremos en la próxima... Creo"
+	echo "Has introducido un valor no válido."
 fi
