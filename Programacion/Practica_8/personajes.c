@@ -4,6 +4,8 @@
 #include "colores.h"
 #include "personajes.h"
 
+extern int cantidad;
+
 void inicializar_personaje(personaje * campeon, const int identificador, const char * nombre, const char * descripcion, const int salud, const int daño, const clase tipo, const float suerte){
 	campeon -> identificador = identificador;
 	strcpy(campeon -> nombre, nombre);

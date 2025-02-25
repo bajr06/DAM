@@ -4,11 +4,14 @@
 
 #include "colores.h"
 #include "personajes.h"
-
+#include "utilidades.h"
+int cantidad = 3;
 
 int main(){
-	personaje * campeones = (personaje *)malloc(cantidad * sizeof(personaje));
-	
+	personaje * campeones;
+
+	reservar(personaje, campeones, cantidad);
+
 	inicializar_personaje(&campeones[0], 1, "Samira", "La Rosa del Desierto: tan intrépida como habilidosa.", 150, 12, luchador, 55.7);
 	inicializar_personaje(&campeones[1], 2, "Swain", "El Gran General de Noxus: ve lo que otros no ven.", 170, 7, tanque, 57.9);
 	inicializar_personaje(&campeones[2], 3, "Ambessa", "La Matriarca de la Guerra: Los Medarda no soportan a los inútiles.",130, 9, luchador, 60.2);
