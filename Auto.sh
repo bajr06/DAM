@@ -17,7 +17,7 @@ then
 	git push
 
 	echo "Operación finalizada, ¡Vuelva Pronto!"
-elif [ "$opcion" = "No" ] || [ "$opcion" = "NO" ] || [ "$opcion" = "no"];
+elif [ "$opcion" = "No" ] || [ "$opcion" = "NO" ] || [ "$opcion" = "no" ];
 then
 	echo "Nos veremos en la próxima... Creo."
 else
