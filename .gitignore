@@ -1,5 +1,6 @@
-#Excluimos los ejecutables de C
+# Excluimos los ejecutables de C
 *.out
+*.o
 
 # Excluir de C
 *.swp
