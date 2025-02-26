@@ -5,6 +5,7 @@
 #include "colores.h"
 #include "personajes.h"
 #include "utilidades.h"
+
 int cantidad = 3;
 
 int main(){
@@ -33,7 +34,7 @@ int main(){
 				imprimir_personajes(&campeones[0]);
 				break;
 			case 2:
-				puts("Sus");
+				puts("Iniciar la batalla");
 				break;
 			default:
 				puts("No te recomiendo que ejecutes una función... ¡Qué no existe!");

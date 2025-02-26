@@ -35,6 +35,7 @@ V = numero1 > numero2
 F = numero1 < numero2
 -->
 
+
 ## Ejercicio 2
 
 ```java
@@ -77,6 +78,7 @@ A = A -> 0
 'AZ' = 'Z' > 0
 -->
 
+
 ## Ejercicio 3
 
 ```java
@@ -112,6 +114,7 @@ public class Ejercicio07Potencia {
 | b >= 1 | V | - | 1 | - |
 | | F | V | 0 | 0 |
 | | | F | 0 | -1 |
+
 
 ## Ejercicio 4
 
