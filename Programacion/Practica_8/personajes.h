@@ -20,6 +20,8 @@ typedef struct{
 	float suerte;
 } personaje;
 
+char * categoria(clase * tipo);
+
 void inicializar_personaje(personaje * campeon, const int identificador, const char * nombre, const char * descripcion, const int salud, const int daño, const clase tipo, const float suerte);
 
 void imprimir_personaje(personaje * campeon);

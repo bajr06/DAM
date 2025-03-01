@@ -6,6 +6,23 @@
 
 extern int cantidad;
 
+char * categoria(clase * tipo){
+	switch(*tipo){
+		case 0:
+			return "Luchador";
+			break;
+		case 1:
+			return "Distancia";
+			break;
+		case 2:
+			return "Tanque";
+			break;
+		default:
+			return "No existe";
+
+	}
+}
+
 void inicializar_personaje(personaje * campeon, const int identificador, const char * nombre, const char * descripcion, const int salud, const int daño, const clase tipo, const float suerte){
 	campeon -> identificador = identificador;
 	strcpy(campeon -> nombre, nombre);
@@ -22,7 +39,7 @@ void imprimir_personaje(personaje * campeon){
 	printf(GREEN "Descripción:" RESET " %s\n", campeon -> descripcion);
 	printf(GREEN "Salud:" RESET " %d\n", campeon -> salud);
 	printf(GREEN "Daño:" RESET " %d\n", campeon -> daño);
-	printf(GREEN "Tipo:" RESET " %u\n", campeon -> tipo);
+	printf(GREEN "Tipo:" RESET " %s\n", categoria(&campeon -> tipo));
 	printf(GREEN "Suerte:" RESET " %.2f\n", campeon -> suerte);
 	puts("");
 }
@@ -33,6 +50,7 @@ void imprimir_personajes(personaje * campeon){
 	}
 }
 
+/*
 personaje * añadir(personaje * campeon){
 	int identificador, salud, daño;
 	char nombre[MIN], descripcion[MAX];
@@ -58,6 +76,5 @@ personaje * añadir(personaje * campeon){
 	scanf("%d", &daño);
 
 	puts("¿?");
-
-
 }
+*/
