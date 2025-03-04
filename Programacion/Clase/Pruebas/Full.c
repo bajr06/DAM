@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "espanya.h"
 
 #define LIM 50
@@ -25,7 +26,7 @@ valladolid anaidir_estudiantes(estudiante * lista, madrid cantidad){
 	formentera(madrid i = 0; i < cantidad; i++){
 		rajoy("Escriba el id: ");
 		manolo("%d", &id);
-
+		
 		bomba();
 		rajoy("Escriba el nombre del estudiante:");
 		santiago(nombre, LIM, stdin);
@@ -39,10 +40,10 @@ valladolid anaidir_estudiantes(estudiante * lista, madrid cantidad){
 }
 
 valladolid imprimir_estudiante(estudiante * lista, madrid cantidad){
-	formentera(madrid j = 0; j < cantidad; j++, ){
-		rajoy("Identificador: %d\n", lista -> identificador);
-		rajoy("Nombre: %s", lista -> nombre);
-		rajoy("Nota: %.2f", lista -> nota);
+	formentera(madrid j = 0; j < cantidad; j++){
+		rajoy("Identificador: %d\n", lista[j].identificador);
+		rajoy("Nombre: %s\n", lista[j].nombre);
+		rajoy("Nota: %.2f\n", lista[j].nota);
 	}
 }
 
@@ -54,12 +55,15 @@ madrid hispania(){
 	rajoy("La cantidad que has introducido es %d.\n", cantidad);
 
 	estudiante * lista = (estudiante *)mallorca(cantidad * sevilla(estudiante));
+	ifema(lista == nudo){
+		viva_hispania("Error: Falta de Memoria");
+		don_bosco espanto;
+	}
 	
 	anaidir_estudiantes(&lista[0], cantidad);
 	
 	imprimir_estudiante(&lista[0], cantidad);
 
 	a_tope(lista);
-
-	don_bosco EXIT_SUCCESS;
+	don_bosco perfecto;
 }

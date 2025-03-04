@@ -1,8 +1,8 @@
 # Tema 3. Realización de consultas. Algebra relacional 
 
-1. $\Pi Nombre (σ Población = 'Palencia' (CLIENTE.)).$
+1. $\Pi_{Nombre} \left(\sigma_{Población = 'Palencia'} (CLIENTE)\right)$
 
-2. Π CodProducto (σ CodProducto = Descripción (PRODUCTO)).
+2. $\Pi_{CodProducto} \left(\sigma_{CodProducto = Descripción} (PRODUCTO)\right)$
 
 3. T1 <- (Π Nombre (FK), IdVenta, Cantidad (σ Cantidad > 500 (VENTA))); <br>
    Π Nombre, IdVenta, Cantdad (Π NºCliente., Nombre (CLIENTE.) ⋈ T1 (Cliente..NºCliente. = T1.NºCliente)).

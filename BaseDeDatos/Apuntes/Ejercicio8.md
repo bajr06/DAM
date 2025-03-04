@@ -59,3 +59,8 @@
     $T6 \leftarrow T1 \cup T5$
 
     $\Pi_{ID\_Paciente, Nombre} \left(T6 \bowtie PACIENTE\right)_{T6.ID\_Paciente = PACIENTE.ID\_Paciente}$
+
+
+## Ejercicio 6
+6. ...
+    

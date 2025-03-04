@@ -26,3 +26,6 @@
 #define meco strcpy
 #define segovia strlen
 #define bomba getchar
+#define nudo NULL
+#define espanto EXIT_FAILURE
+#define perfecto EXIT_SUCCESS
