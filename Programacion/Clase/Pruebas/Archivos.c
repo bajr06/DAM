@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 int main (){
-	FILE * archivo = fopen("Texto.c", "a");
+	FILE * archivo = fopen("Prueba.c", "w");
 	// r: abrirlo quiero verlo.
 	// w: abrirlo para escribir.
 	if(archivo == NULL){
 		fputs("File error", stderr);
-		return EXIT_FAILURE;
+		return EOF;
 	}
 	
 	/*
