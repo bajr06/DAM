@@ -15,18 +15,18 @@ then
 	echo "Escriba el nombre que quieras que tenga el usuario:"
 	read nuevo
 
-	sudo adduser "$nombre"
+	sudo adduser "$nuevo"
 
 	echo "Escriba el grupo al que quieres añadir al usuario:"
 	read grupo
 
-	sudo usermod -aG "$grupo" "nombre$"
+	sudo usermod -aG "$grupo" "$nuevo"
 elif [ $opcion -eq 2 ];
 then
 	echo "Escriba el nombre del usuario al cual quieras eliminar:"
 	read borrar
 
-	sudo userdel -r "$nombre"
+	sudo userdel -r "$borrar"
 elif [ $opcion -eq 3 ];
 then
 	echo "Escriba el nombre del usuario al que le quieres ver la información:"
