@@ -51,7 +51,7 @@
 
 **Escribe la consulta que dé como resultado las siguientes tablas:**
 
-- $T1 \leftarrow \Pi_{Proveedor_ID, Nombre, Proveedor} (PROVEEDOR)$
+- $T1 \leftarrow \Pi_{Proveedor\_ID, Nombre, Proveedor} (PROVEEDOR)$
     $\left(T1 \bowtie Contacto\_Proveedor\right)$
     
     $\Pi_{Nombre\_Proveedor, Nombre}\left(T1.Proveedor\_ID = Contacto\_Proveedor\right)$
@@ -142,7 +142,9 @@
 - h.
 
     $T1 \leftarrow \Pi_{DNI} \left(Cliente\right) \cap \Pi_{DNI} (Contanco\_Proveedor)$
+
     <!-- La otra opcion es -->
+    
     $T1 \leftarrow \Pi_{DNI} \left(Cliente \bowtie Contacto\_Proveedor\right)_{Cliente.DNI = Contacto\_Proveedor.DNI}$
 
     $T2 \leftarrow \Pi_{ID\_Cliente} \left(Cliente \bowtie T1\right)_{Cliente.ID = T1.DNI}$
@@ -159,4 +161,24 @@
 
     $T1 \leftarrow \Pi_{Producto\_ID} \left(\sigma_{Cantidad <= 2} (Detalles\_Orden)\right)$
 
-    $\Pi_{Producto\_ID} \left(Detalle\_Orden\right) - T1$
+    $T2 \leftarrow \Pi_{Producto\_ID} \left(Detalle\_Orden\right) - T1$
+
+    $\Pi_{Nombre} \left(T2 \bowtie Producto\right)_{T2.Producto\_ID = Producto.Producto\_ID}$
+
+<br>
+
+- j.
+
+    $T1 \leftarrow \Pi_{Salario \;\varphi\; Salario\_Laura} \left(\sigma_{Nombre = 'Laura Gomez'}(Contacto\_Proveedores)\right)$
+
+    $T2 \leftarrow \Pi_{Proveedor\_ID}\left(\sigma_{Salario > Salario\_Laura}\left(T1 \;X\; Contacto\_Proveedores\right)\right)$
+
+    $T3 \leftarrow \Pi_{Proveedor\_ID}\left(Contacto\_Proveedor\right) - 2$
+
+    $T4 \leftarrow \Pi_{Nombre\_Proveedor, Ciudad\_Proveedor, Producto\_ID} \left(T3 \bowtie Proveedor\right)_{T3.Proveedor\_ID = Proveedor.Proveedor\_ID}$
+
+    $T5 \leftarrow \Pi_{Nombre\_Proveedor, Ciudad\_Proveedor, Orden\_ID} \left(T4 \bowtie Detalles\_Orden\right)_{T4.Producto\_ID = Detalles\_Orden.Producto\_ID}$
+
+    $T6 \leftarrow \Pi_{Nombre\_Proveedor, Ciudad\_Proveedor, Orden\_ID, Cliente\_ID, Fecha\_Orden, Total} \left(T5 \bowtie Orden\right)_{T6.Orden\_ID = Orden.Orden\_ID}$
+
+    $\Pi_{Orden\_ID, Fecha\_Orden, Total, Nombre\_Proveedor, Nombre\_Proveedor, Ciudad\_Proveedor} \left(T6 \bowtie Cliente\right)_{T6.Cliente\_ID = Cliente.Cliente\_ID}$
