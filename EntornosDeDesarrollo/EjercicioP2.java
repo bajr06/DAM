@@ -1,4 +1,4 @@
-public class SentenciaIf01{
+public class EjercicioP2{
 	public static void main(String[] args){
 		System.out.print("¿Cuál es la capital de Kiribati? ");
 		String respuesta = System.console().readLine();
