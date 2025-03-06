@@ -1,6 +1,5 @@
 #!/bin/bash
 
-t='	'
 afirmacion="Si"
 
 clear
@@ -10,9 +9,9 @@ echo "Bienvenido al script supremo"
 while [ "$afirmacion" = "Si" ] || [ "$afirmacion" = "si" ] || [ "$afirmacion" = "sI" ] || [ "$afirmacio" = "SI" ];
 do
 	echo "¿Cuál de las siguientes opciones quieres seleccionar?"
-	echo "$t 1. Crear un nuevo usuario y asignar a un grupo ya existente."
-	echo "$t 2. Eliminar usuario."
-	echo "$t 3. Listar los usuarios existentes y ver su información."
+	echo -e "\t1. Crear un nuevo usuario y asignar a un grupo ya existente."
+	echo -e "\t2. Eliminar usuario."
+	echo -e "\t3. Listar los usuarios existentes y ver su información."
 	echo "Después de usar cualquiera de las funciones dadas, puedes salir o volverlo a hacer."
 
 	read opcion
@@ -41,10 +40,10 @@ do
 
 		groups "$nombre" # Muestra las carácteristicas del usuario.
 	else
-		echo "No existe esa opción. Vuelva a ejecutar el script."
+		echo "No existe esa opción."
 	fi
 
-	echo "¿Quieres hacer otra opcion?"
+	echo "¿Quieres hacer otra opción?"
 	read afirmacion
 	
 	clear
