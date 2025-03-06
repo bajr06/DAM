@@ -19,14 +19,14 @@ then
 
 	echo "Escriba el grupo al que quieres añadir al usuario:"
 	read grupo
-
+	
 	sudo usermod -aG "$grupo" "$nuevo" # Lo añade a un grupo que ya exista con anterioridad
 elif [ $opcion -eq 2 ];
 then
 	echo "Escriba el nombre del usuario al cual quieras eliminar:"
 	read borrar
 
-	sudo userdel -r "$borrar" # Borra al usuario (que se haya creado con anterioridad, o que ya exista).
+	sudo deluser "$borrar" # Borra al usuario (que se haya creado con anterioridad, o que ya exista).
 elif [ $opcion -eq 3 ];
 then
 	echo "Escriba el nombre del usuario al que le quieres ver la información:"
@@ -36,3 +36,4 @@ then
 else
 	echo "No existe esa opción. Vuelva a ejecutar el script."
 fi
+
