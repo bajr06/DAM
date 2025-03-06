@@ -1,12 +1,15 @@
-# Excluimos los ejecutables de C
+# Excluimos los ejecutables de C.
 *.out
 *.o
 
-# Excluir de C
+# Excluimos los ejecutables de Java.
+*.class
+
+# Excluir de C.
 *.swp
 *.swo
 
-#Archivos varios no leibles
+# Archivos varios no legibles por terminal ni por GitHub.
 *.pdf
 *.docx
 *.zip

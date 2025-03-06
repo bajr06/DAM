@@ -1,4 +1,4 @@
-public class ComparacionCadena{
+public class EjercicioP1{
 	public static void main(String[] args){
 		String miFruta = "naranja";
 
