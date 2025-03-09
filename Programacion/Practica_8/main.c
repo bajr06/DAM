@@ -18,11 +18,11 @@ int main(){
 	inicializar_personaje(&campeones[2], 3, "Ambessa", "La Matriarca de la Guerra: Los Medarda no soportan a los inútiles.",130, 9, luchador, 60.2);
 	inicializar_personaje(&campeones[3], 4, "Darius", "La Mano de Noxus: No toleraré la cobardía", 160, 30, luchador, 55.2);
 
-	puts("Bienvenido a League of Legends: Wild Rift.");
+	puts(YELLOW "Bienvenido a League of Legends: Wild Rift." RESET);
 	puts("Escoga una de las siguientes opciones:");
 	printf("\t1. Mostrar todos los personajes disponibles para jugar.\n");
-	printf("\t2. Seleccionar un personaje.\n");
-	printf("\t3. Empezar partida.\n");
+	printf("\t2. Añadir nuevo campeon\n");
+	printf("\t3. Iniciar combate\n");
 	printf("\t4. Salir.\n");
 	
 	int escoger;
@@ -35,8 +35,12 @@ int main(){
 				imprimir_personajes(&campeones[0]);
 				break;
 			case 2:
-				puts("Iniciar la batalla");
+				puts("Escribe las características del nuevo personaje:");
+				campeones = añadir_personaje(&campeones[0]);
+
 				break;
+			case 3:
+				puts(º"");
 			default:
 				puts("No te recomiendo que ejecutes una función... ¡Qué no existe!");
 		}

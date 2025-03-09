@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "colores.h"
@@ -50,12 +51,19 @@ void imprimir_personajes(personaje * campeon){
 	}
 }
 
-/*
-personaje * añadir(personaje * campeon){
+personaje * añadir_personaje(personaje * campeon){
 	int identificador, salud, daño;
 	char nombre[MIN], descripcion[MAX];
 	clase tipo;
 	float suerte;
+	
+	cantidad++;
+	personaje * nuevos_campeones = (personaje *) realloc (campeon, cantidad * sizeof(personaje));
+	campeon = nuevos_campeones;
+	if(nuevos_campeones == NULL){
+		puts("Error: Falta de memoria");
+		return campeon;
+	}
 
 	puts("Inserte el identificador:");
 	scanf("%d", &identificador);
@@ -65,6 +73,7 @@ personaje * añadir(personaje * campeon){
 	fgets(nombre, MIN, stdin);
 	nombre[strlen(nombre) - 1] = '\0';
 
+	getchar();
 	puts("Escriba la descripción:");
 	fgets(descripcion, MAX, stdin);
 	descripcion[strlen(descripcion) - 1] = '\0';
@@ -75,6 +84,18 @@ personaje * añadir(personaje * campeon){
 	puts("¿Qué daño va a realizar?");
 	scanf("%d", &daño);
 
-	puts("¿?");
+	puts("¿Qué tipo de campeon quieres que sea? (tienes que insertarlo según su número correspondiente)");
+	printf("\t0: luchador\n");
+	printf("\t1: distancia\n");
+	printf("\t2: tanque\n");
+	printf("\t3: mago\n");
+	scanf("%u", &tipo);
+
+	puts("¿Qué porcentaje de suerte quieres que tenga?");
+	scanf("%f", &suerte);
+	
+	inicializar_personaje(&campeon[cantidad - 1], identificador, nombre, descripcion, salud, daño, tipo, suerte);
+
+	return campeon;
 }
-*/
+

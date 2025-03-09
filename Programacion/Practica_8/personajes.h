@@ -27,3 +27,5 @@ void inicializar_personaje(personaje * campeon, const int identificador, const c
 void imprimir_personaje(personaje * campeon);
 
 void imprimir_personajes(personaje * campeon);
+
+personaje * añadir_personaje(personaje * campeon);
