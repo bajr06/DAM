@@ -8,7 +8,7 @@
  *	Curso: Grado Superior de Desarrollo de Aplicaciones Multiplataforma 1.
 */
 
-#define MAX_NOMBRE 50
+#define MAX_NOMBRE 50 // Máximo de Carácteres, tanto para el nombre de los autores como para el título de los Libro.
 int MAX_LIBROS = 40;
 
 #define error(memoria){ \
