@@ -1,3 +1,6 @@
+CREATE DATABASE jardineria;
+USE jardineria;
+
 CREATE TABLE Oficinas (
   CodigoOficina varchar(10) NOT NULL,
   Ciudad varchar(30) NOT NULL,
@@ -194,7 +197,7 @@ INSERT INTO Pedidos VALUES (45,'2009-04-01','2009-03-04','2009-03-07','Entregado
 INSERT INTO Pedidos VALUES (46,'2009-04-03','2009-03-04','2009-03-05','Rechazado',NULL,23);
 INSERT INTO Pedidos VALUES (47,'2009-04-15','2009-03-17','2009-03-17','Entregado',NULL,23);
 INSERT INTO Pedidos VALUES (48,'2008-03-17','2008-03-30','2008-03-29','Entregado','Según el Cliente, el pedido llegó defectuoso',26);
-INSERT INTO Pedidos VALUES (49,'2008-07-12','2008-07-22','2008-07-230','Entregado','El pedido llegó 1 día tarde, pero no hubo queja por parte de la empresa compradora',26);
+INSERT INTO Pedidos VALUES (49,'2008-07-12','2008-07-22','2008-07-23','Entregado','El pedido llegó 1 día tarde, pero no hubo queja por parte de la empresa compradora',26);
 INSERT INTO Pedidos VALUES (50,'2008-03-17','2008-08-09',NULL,'Pendiente','Al parecer, el pedido se ha extraviado a la altura de Sotalbo (Ávila)',26);
 INSERT INTO Pedidos VALUES (51,'2008-10-01','2008-10-14','2008-10-14','Entregado','Todo se entregó a tiempo y en perfecto estado, a pesar del pésimo estado de las carreteras.',26);
 INSERT INTO Pedidos VALUES (52,'2008-12-07','2008-12-21',NULL,'Pendiente','El transportista ha llamado a Eva María para indicarle que el pedido llegará más tarde de lo esperado.',26);
@@ -233,7 +236,7 @@ INSERT INTO Pedidos VALUES (94,'2009-10-18','2009-11-01',NULL,'Pendiente','El pe
 INSERT INTO Pedidos VALUES (95,'2008-01-04','2008-01-19','2008-01-19','Entregado',NULL,35);
 INSERT INTO Pedidos VALUES (96,'2008-03-20','2008-04-12','2008-04-13','Entregado','La entrega se retraso un dia',35);
 INSERT INTO Pedidos VALUES (97,'2008-10-08','2008-11-25','2008-11-25','Entregado',NULL,35);
-INSERT INTO Pedidos VALUES (98,'2009-01-08','2009-02-13',NULL,'Pediente',NULL,35);
+INSERT INTO Pedidos VALUES (98,'2009-01-08','2009-02-13',NULL,'Pendiente',NULL,35);
 INSERT INTO Pedidos VALUES (99,'2009-02-15','2009-02-27',NULL,'Pendiente',NULL,16);
 INSERT INTO Pedidos VALUES (100,'2009-01-10','2009-01-15','2009-01-15','Entregado','El pedido llego perfectamente',16);
 INSERT INTO Pedidos VALUES (101,'2009-03-07','2009-03-27',NULL,'Rechazado','El pedido fue rechazado por el cliente',16);
