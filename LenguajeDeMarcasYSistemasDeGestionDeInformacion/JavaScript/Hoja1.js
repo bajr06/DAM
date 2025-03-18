@@ -72,7 +72,7 @@ function Ejercicio9(){
 		}
 	}
 
-	document.writeln("El número de a es: " + contador);
+	document.writeln("El número de a es: " + contador + "<br>");
 
 	// let cuenta = frase.split('a').lenght - 1; // Investigar sobre la funcion .split
 	
@@ -85,7 +85,95 @@ function Ejercicio9(){
 		}
 	}
 	*/
+
+	/*
+	for(let j = 0; i < frase.length; i++){
+		if(frase[i].includes(letra)){
+			contador++;
+		}
+	}
+	*/
+
+	/*
+	let letra='a';
+
+	for(let char of frase){
+		if(char.toLowerCase() === 'a'){
+			contador++;
+		}
+	}
+	*/
 	
+}
+
+function Ejercicio10(){
+	let frase = prompt("Escribe una frase cualquiera:");
+	let vocales = "aeiouAEIOU";
+	let vocales_encontradas = "";
+
+	for(let char of frase){
+		// if(!vocales_encontradas.includes(char))
+		if(vocales.includes(char)){
+			vocales_encontradas = vocales_encontradas + char;
+			// vocales_encontradas += char;
+		}
+	}
+
+	document.writeln("Vocales encontradas: " + vocales_encontradas + "<br>");
+}
+
+function Ejercicio11(){
+	let frase = prompt("Escribe una frase cualquiera:");
+	let vocales = "aeiouAEIOU";
+	let vocales_encontradas = "";
+	let contador;
+
+	for(let char of frase){
+	
+	
+		if(vocales.includes(char)){
+			vocales_encontradas += char;
+		}
+
+		contador++;
+	}
+
+	document.writeln("Vocales encontradas: " + vocales_encontradas + "<br>");
+}
+
+function Ejercicio12(){
+	let frase = prompt("Escribe una frase cualquiera:");
+	let vocales = "aeiou";
+	let vocales_encontradas = {a:0, e:0, i:0, o:0, u:0};
+
+	for(let char of frase){
+		if(vocales.includes(char)){
+			vocales_encontradas[char,toLowerCase()];
+		}
+	}
+
+	document.writeln("Vocales: " + JSON.stringify(vocales_encontradas) + "<br>");
+}
+
+function Ejercicio14(){
+	let num = parseInt(prompt("Escriba un número:"));
+	let divisibles = [];
+	 
+	if(num % 2 === 0){
+		divisibles.push("2");
+	} else if(num % 3 === 0){
+		divisibles.push("3");
+	} else if(num % 5 === 0){
+		divisibles.push("5");
+	} else if(num % 7 === 0){
+		divisibles.push("7");
+	}
+
+	if(divisibles.length > 0){
+		document.writeln(divisibles.join(", "));
+	} else {
+		document.writeln("No es divisible.");
+	}
 }
 
 
@@ -100,5 +188,9 @@ function carga(){
 	// Ejercicio7();
 	// Ejercicio8();
 	Ejercicio9();
+	Ejercicio10();
+	Ejercicio11();
+	Ejercicio12();
+	Ejercicio14();
 }
 window.addEventListener("DOMContentLoaded", carga, false); // Se puede omitir el false
