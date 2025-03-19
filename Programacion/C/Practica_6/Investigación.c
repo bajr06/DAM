@@ -117,12 +117,8 @@ int main(int argc, char ** argv){
 			switch(escoger){
 				case 1:
 					printf("Estos son todos los libros que tenemos disponibles:\n");
-					ImprimirEstante(&catalogo[0]);
-
-					printf("¿Qué función deseas ejecutar?\n");
-					scanf("%d", &escoger);
 					
-					printf("\n");
+					ImprimirEstante(&catalogo[0]);
 
 					break;
 				case 2:
@@ -130,13 +126,8 @@ int main(int argc, char ** argv){
 
 					printf("Escriba el número del identificador del libro:\n");
 					scanf("%d", &id);
-
-					BuscarLibro(&catalogo[0], id);
-
-					printf("¿Qué función deseas ejecutar?\n");
-					scanf("%d", &escoger);
 					
-					printf("\n");
+					BuscarLibro(&catalogo[0], id);
 
 					break;
 				case 3:
@@ -149,11 +140,6 @@ int main(int argc, char ** argv){
 
 					AñadirLote(&catalogo[0], vinculo, nuevacantidad);
 					
-					printf("¿Qué función deseas ejecutar?\n");
-					scanf("%d", &escoger);
-					
-					printf("\n");
-
 					break;
 				case 4:
 					int tipo;
@@ -169,11 +155,6 @@ int main(int argc, char ** argv){
 
 					ImprimirCategoria(&catalogo[0], tipo);
 
-					printf("¿Qué función deseas ejecutar?\n");
-					scanf("%d", &escoger);
-					
-					printf("\n");
-
 					break;
 				case 5:
 					char escritor[MAX_NOMBRE];
@@ -185,11 +166,6 @@ int main(int argc, char ** argv){
 
 					BuscarAutor(&catalogo[0], escritor);
 					
-					printf("¿Qué función deseas ejecutar?\n");
-					scanf("%d", &escoger);
-
-					printf("\n");
-
 					break;
 				case 6:
 					int maslibro;
@@ -213,19 +189,25 @@ int main(int argc, char ** argv){
 
 					if(escoger < 0 && escoger > 7){
 						puts("¡Nos vemos en la próxima!");
-						free(catalogo);
-
-						return EXIT_SUCCESS;
+						
+						continue;
 					}
 			}
 
-			bool control = false
+			bool control = true;
 			printf("¿Qué función deseas ejecutar?\n");
-			scanf("%d", &escoger);
+			control = scanf("%d", &escoger);
 
 			printf("\n");
 
-		} while(escoger != 7);
+			if(!control){
+				printf("Te has cargado el programa... No lo vuelvas a hacer.\n");
+				free(catalogo);
+
+				return EXIT_FAILURE;
+			}
+
+		} while(escoger > 0 && escoger < 8);
 		
 		printf("Muchas gracias por usar nuestro programa de inventario, ¡Hasta la próxima!\n");
 	}else 
@@ -347,6 +329,12 @@ void ImprimirEstante(libro * inventario){
 
 int BuscarLibro(libro * imprimir, const int numero){
 	int pasos = 0;
+	
+	if(numero < 0 || numero > MAX_LIBROS){
+		puts("Ese libro no existe");
+
+		return EXIT_FAILURE;
+	}
 
 	while(imprimir -> identificador != numero){
 		imprimir++;
