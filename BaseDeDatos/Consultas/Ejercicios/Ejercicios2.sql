@@ -1,11 +1,12 @@
 -- Ejercicio 1
-select CodigoOficina, Ciudad from Oficinas;
+select CodigoOficina, Ciudad from Oficinas; -- Solución correcta.
 
 -- Ejercicio 2
-select count(CodigoEmpleado) as Cantidad_Empleados from Empleados;
+select count(CodigoEmpleado) as Cantidad_Empleados from Empleados; -- Solución medianamente correcta.
+select count(*) as Numero_Empleados from Empleados; -- Solución correcta. 
 
 -- Ejercicio 3
-select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais;
+select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta. 
 
 -- Ejercicio 4
 select avg(Cantidad) as Media_2008 from Pagos where FechaPago like '2008%';
