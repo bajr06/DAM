@@ -219,6 +219,7 @@ int main(int argc, char ** argv){
 					}
 			}
 
+			bool control = false
 			printf("¿Qué función deseas ejecutar?\n");
 			scanf("%d", &escoger);
 
