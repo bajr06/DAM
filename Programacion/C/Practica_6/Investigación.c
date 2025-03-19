@@ -211,8 +211,19 @@ int main(int argc, char ** argv){
 					printf("¿Estás seguro de salir del programa? Introduce 7 para salir, o un número de una de las funciones disponibles.\n");
 					scanf("%d", &escoger);
 
-					printf("\n");
-				}
+					if(escoger < 0 && escoger > 7){
+						puts("¡Nos vemos en la próxima!");
+						free(catalogo);
+
+						return EXIT_SUCCESS;
+					}
+			}
+
+			printf("¿Qué función deseas ejecutar?\n");
+			scanf("%d", &escoger);
+
+			printf("\n");
+
 		} while(escoger != 7);
 		
 		printf("Muchas gracias por usar nuestro programa de inventario, ¡Hasta la próxima!\n");
@@ -443,6 +454,8 @@ libro * AñadirLibro(libro * repositorio, const int nuevo){
 		}
 		else{
 			printf("Hay datos erroneos, no podemos proseguir con el añadido de libro\n");
+			free(recatalogo);
+			exit(EXIT_FAILURE);
 		}
 	}
 

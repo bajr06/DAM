@@ -131,7 +131,7 @@ INSERT INTO Clientes VALUES (26,'Jardines y Mansiones CACTUS SL','Eva María','S
 INSERT INTO Clientes VALUES (27,'Jardinerías Matías SL','Matías','San Martín','916544147','917897474','C/Francisco Arce, Nº44','Bustarviejo','Madrid','Madrid','España','37845',9,100500);
 INSERT INTO Clientes VALUES (28,'Agrojardin','Benito','Lopez','675432926','916549264','C/Mar Caspio 43',NULL,'Getafe','Madrid','España','28904',30,8040);
 INSERT INTO Clientes VALUES (29,'Top Campo','Joseluis','Sanchez','685746512','974315924','C/Ibiza 32',NULL,'Humanes','Madrid','España','28574',5,5500);
-INSERT INTO Clientes VALUES (30,'Jardineria Sara','Sara','Marquez','675124537','912475843','C/Lima 1',NULL,'Fenlabrada','Madrid','España','27584',5,7500);
+INSERT INTO Clientes VALUES (30,'Jardineria Sara','Sara','Marquez','675124537','912475843','C/Lima 1',NULL,'Fuenlabrada','Madrid','España','27584',5,7500);
 INSERT INTO Clientes VALUES (31,'Campohermoso','Luis','Jimenez','645925376','916159116','C/Peru 78',NULL,'Fuenlabrada','Madrid','España','28945',30,3250);
 INSERT INTO Clientes VALUES (32,'france telecom','FraÃ§ois','Toulou','(33)5120578961','(33)5120578961','6 place d Alleray 15Ã¨me',NULL,'Paris',NULL,'France','75010',16,10000);
 INSERT INTO Clientes VALUES (33,'Musée du Louvre','Pierre','Delacroux','(33)0140205050','(33)0140205442','Quai du Louvre',NULL,'Paris',NULL,'France','75058',16,30000);

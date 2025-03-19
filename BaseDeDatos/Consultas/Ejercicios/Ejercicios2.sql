@@ -9,13 +9,16 @@ select count(*) as Numero_Empleados from Empleados; -- Solución correcta.
 select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta. 
 
 -- Ejercicio 4
-select avg(Cantidad) as Media_2008 from Pagos where FechaPago like '2008%';
+select avg(Cantidad) as Media_2008 from Pagos where FechaPago like '2008%'; -- Solución correcta.
+select avg(Cantidad) as Media from Pagos group by FormaPago having Media > 800; -- Otra solución.
 
 -- Ejercicio 5
-select Estado, count(CodigoPedido) as Cantidad from Pedidos group by Estado order by Cantidad desc;
+select Estado, count(CodigoPedido) as Cantidad from Pedidos group by Estado order by Cantidad desc; -- Solución medianamente correcta.
+select count(CodigoPedido) Numero from Pedidos group by Estado order by Numero asc; -- Solución correcta.
 
 -- Ejercicio 6
-select min(PrecioVenta) as Precio_bajo, max(PrecioVenta) as Precio_alto from Productos;
+select min(PrecioVenta) as Precio_bajo, max(PrecioVenta) as Precio_alto from Productos; -- Solución medianamente correcta.
+select Nombre from Productos where PrecioVentas = (select max(PrecioVenta) Mas_Caro from Productos); -- Solución correcta.
 
 -- Ejercicio 7
 select Ciudad, Telefono from Oficinas where Pais = 'EEUU';

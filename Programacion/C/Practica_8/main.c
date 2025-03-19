@@ -13,10 +13,10 @@ int main(){
 
 	reservar(personaje, campeones, cantidad);
 
-	inicializar_personaje(&campeones[0], 1, "Samira", "La Rosa del Desierto: tan intrépida como habilidosa.", 140, 12, luchador, 55.7);
-	inicializar_personaje(&campeones[1], 2, "Swain", "El Gran General de Noxus: veo lo que otros no ven.", 170, 7, tanque, 57.9);
-	inicializar_personaje(&campeones[2], 3, "Ambessa", "La Matriarca de la Guerra: Los Medarda no soportan a los inútiles.",130, 9, luchador, 60.2);
-	inicializar_personaje(&campeones[3], 4, "Darius", "La Mano de Noxus: No toleraré la cobardía", 160, 30, luchador, 55.2);
+	inicializar_personaje(&campeones[0], 1, "Samira", "La Rosa del Desierto", 140, 12, luchador, 55.7);
+	inicializar_personaje(&campeones[1], 2, "Swain", "El Gran General de Noxus", 170, 7, tanque, 57.9);
+	inicializar_personaje(&campeones[2], 3, "Ambessa", "La Matriarca de la Guerra",130, 9, luchador, 60.2);
+	inicializar_personaje(&campeones[3], 4, "Darius", "La Mano de Noxus", 160, 30, luchador, 55.2);
 
 	puts(YELLOW "Bienvenido a League of Legends: Wild Rift." RESET);
 	puts("Escoga una de las siguientes opciones:");
