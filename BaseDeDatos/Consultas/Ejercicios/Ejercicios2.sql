@@ -3,14 +3,14 @@ select CodigoOficina, Ciudad from Oficinas; -- Solución correcta.
 
 -- Ejercicio 2
 select count(CodigoEmpleado) as Cantidad_Empleados from Empleados; -- Solución medianamente correcta.
-select count(*) as Numero_Empleados from Empleados; -- Solución correcta. 
+select count(*) Numero_Empleados from Empleados; -- Solución correcta. 
 
 -- Ejercicio 3
 select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta. 
 
 -- Ejercicio 4
 select avg(Cantidad) as Media_2008 from Pagos where FechaPago like '2008%'; -- Solución correcta.
-select avg(Cantidad) as Media from Pagos group by FormaPago having Media > 800; -- Otra solución.
+select avg(Cantidad) Media from Pagos group by FormaPago having Media > 800; -- Otra solución.
 
 -- Ejercicio 5
 select Estado, count(CodigoPedido) as Cantidad from Pedidos group by Estado order by Cantidad desc; -- Solución medianamente correcta.
@@ -18,19 +18,23 @@ select count(CodigoPedido) Numero from Pedidos group by Estado order by Numero a
 
 -- Ejercicio 6
 select min(PrecioVenta) as Precio_bajo, max(PrecioVenta) as Precio_alto from Productos; -- Solución medianamente correcta.
-select Nombre from Productos where PrecioVentas = (select max(PrecioVenta) Mas_Caro from Productos); -- Solución correcta.
+select Nombre from Productos where PrecioVentas = (select max(PrecioVenta) Mas_Caro from Productos) T1, (select min(PrecioVenta) MasBarato from Productos) T2; -- Otra solución más o menos correcta.
+
+select * from (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasCaro from Productos) T1 on PrecioVenta = MasCaro) T3, (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasVenta from Productos) T1 on PrecioVenta = MasBarato) T4; -- Solución correcta.
 
 -- Ejercicio 7
-select Ciudad, Telefono from Oficinas where Pais = 'EEUU';
+select Ciudad, Telefono from Oficinas where Pais = 'EEUU'; -- Solución correcta.
 
 -- Ejercicio 8
-select Nombre, Apellido1, Apellido2, Email from Empleados where CodigoJefe = (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria');
+select Nombre, Apellido1, Apellido2, Email from Empleados where CodigoJefe = (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria'); -- Solución correcta 1
+select Nombre, Apellido1, Apellido2, Email from Empleados where inner join (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria') T1 on Empleados.CodigoJefe = T1.CodigoEmpleado; -- Solución más correcta.
 
 -- Ejercicio 9
-select Puesto, Nombre, Apellido1, Apellido2, Email from Empleados where Puesto = 'Director General';
+select Puesto, Nombre, Apellido1, Apellido2, Email from Empleados where Puesto = 'Director General'; -- Solución medianamente correcta.
+select Nombre, Apellido1, Apeliidos from Empleados where CodigoJefe is null; -- Solución Correcta.
 
 -- Ejercicio 10
-select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto != 'Representante Ventas';
+select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto != 'Representante Ventas'; -- Solución correcta.
 
 -- Ejercicio 11
 select count(CodigoCliente) as Cantidad_Clientes from Clientes;
