@@ -1,5 +1,5 @@
-public class Prueba1{
-	public static void main(String[] args){
+public class Prueba1 {
+	public static void main(String[] args) {
 		String fragmento_nombre_alumnos = "Victor";
 		String[] nombre_alumnos = {"Antonio", "Marta", "Victor Hugo", "David"};
 
@@ -7,16 +7,16 @@ public class Prueba1{
 		System.out.println("Total resultado: " + resultado);
 	}
 
-	private static int contar_usuarios(String fragmento_nombre_alumnos, String[] nombre_alumnos){
+	private static int contar_usuarios(String fragmento_nombre_alumnos, String[] nombre_alumnos) {
 		boolean encontrado = false;
 		int total_encontrados = 0;
 
-		for(String nombre_alumno_actual : nombre_alumnos){
-			if(nombre_alumno_actual.contains(fragmento_nombre_alumnos)){
+		for(String nombre_alumno_actual : nombre_alumnos) {
+			if(nombre_alumno_actual.contains(fragmento_nombre_alumnos)) {
 				encontrado = true;
 			}
 
-			if(encontrado){
+			if(encontrado) {
 				total_encontrados++;
 				encontrado = false;
 			}
