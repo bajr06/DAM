@@ -19,7 +19,6 @@ select count(CodigoPedido) Numero from Pedidos group by Estado order by Numero a
 -- Ejercicio 6
 select min(PrecioVenta) as Precio_bajo, max(PrecioVenta) as Precio_alto from Productos; -- Solución medianamente correcta.
 select Nombre from Productos where PrecioVentas = (select max(PrecioVenta) Mas_Caro from Productos) T1, (select min(PrecioVenta) MasBarato from Productos) T2; -- Otra solución más o menos correcta.
-
 select * from (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasCaro from Productos) T1 on PrecioVenta = MasCaro) T3, (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasVenta from Productos) T1 on PrecioVenta = MasBarato) T4; -- Solución correcta.
 
 -- Ejercicio 7
@@ -37,28 +36,34 @@ select Nombre, Apellido1, Apeliidos from Empleados where CodigoJefe is null; -- 
 select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto != 'Representante Ventas'; -- Solución correcta.
 
 -- Ejercicio 11
-select count(CodigoCliente) as Cantidad_Clientes from Clientes;
+select count(CodigoCliente) as Cantidad_Clientes from Clientes; -- Solución medianamente correcta.
+select count (*) TotalClientes from Clientes; -- Solución correcta.
 
 -- Ejercicio 12
-select NombreCliente from Clientes where Pais = 'España' or Pais = 'Spain';
+select NombreCliente from Clientes where Pais = 'España' or Pais = 'Spain'; -- Solución correcta 1.
+select NombreCliente from Clientes where Pais in ('España', 'Spain'); -- Solución correcta 2.
 
 -- Ejercicio 13
-select  Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais;
+select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta.
 
 -- Ejercicio 14
-select count(CodigoCliente) as Cantidad_Clientes from Clientes where Ciudad = 'Madrid';
+select count(CodigoCliente) as Cantidad_Clientes from Clientes where Ciudad = 'Madrid'; -- Solución correcta 1.
+select Pais, count(NombreCliente) TotalClientesPais from Clientis where Ciudad = 'Madrid'; -- Solución correcta 2.
 
 -- Ejercicio 15
-select count(CodigoCliente) as Cantidad_Clientes from Clientes where Ciudad like 'M%';
+select count(CodigoCliente) as Cantidad_Clientes_Ciudad from Clientes where Ciudad like 'M%'; -- Solución correcta.
 
 -- Ejercicio 16
-select CodigoEmpleadoRepVentas, count(CodigoCliente) as Representante_Venta from Clientes group by CodigoEmpleadoRepVentas;
+select CodigoEmpleadoRepVentas, count(CodigoCliente) as Representante_Venta from Clientes group by CodigoEmpleadoRepVentas; -- Solución medianamente correcta.
+select CodigoEmpleadoRepVentas, NumClientes from (select CodigoEmpleado from Empleados where Puesto = 'Representante Ventas') T1 inner join (select CodigoEmpleadoRepVentas, count(NombreCliente) NumClientes from Clientes group by CodigoEmpleadoRepVenta) T2 on T1.CodigoEmpleado = T2.CodigoEmpleadoRepVentas; --Solución correcta.
 
 -- Ejercicio 17
-select count(CodigoCliente) as Cantidad from Clientes where CodigoEmpleadoRepVentas = NULL;
+select count(CodigoCliente) as Cantidad from Clientes where CodigoEmpleadoRepVentas = NULL; -- Solución incorrecta.
+select NombreCliente, B from Clientes left join (select CodigoCliente A, NombreCliente B from Clientes inner join (select CodigoEmpleado from Empleados where Puesto = 'Representante Ventas') T1 on Clientes.CodigoEmpleadoRepVentas = T1.CodigoEmpleado) ClienteRep on Clientes.CodigoCliente = ClienteRep.A; -- En revisión.
 
 -- Ejercicio 18
-select min(FechaPago) as Primera_Venta, max(FechaPago) as Ultima_Venta from Pagos;
+select min(FechaPago) as Primera_Venta, max(FechaPago) as Ultima_Venta from Pagos; -- Medianamente correcto.
+select (*) from (select min(FechaPago) as Primera_Venta from Pagos), (select max(FechaPago) as Ultima_Venta from Pagos);
 
 -- Ejercicio 19
 select CodigoCliente from Pagos where FechaPago like '2008%';
