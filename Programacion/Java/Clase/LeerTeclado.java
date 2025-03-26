@@ -20,10 +20,15 @@ public class LeerTeclado{
 		Apellido = Entrada.nextLine();
 		System.out.println("Hola, " + Apellido);
 
+		boolean Alta[];
+		
+		Alta = AltaAlumnos(Entrada, Alta);
+
 		Entrada.close();
 	}
 
-	public void Alta_Alumnos(){
-		// Se escribirá próximamente este código.
+	public boolean Alta_Alumnos(){
+		System.out.println("Introduc");
+		return true;
 	}
 }
