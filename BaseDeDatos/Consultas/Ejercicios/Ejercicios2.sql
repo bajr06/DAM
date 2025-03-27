@@ -63,10 +63,25 @@ select NombreCliente, B from Clientes left join (select CodigoCliente A, NombreC
 
 -- Ejercicio 18
 select min(FechaPago) as Primera_Venta, max(FechaPago) as Ultima_Venta from Pagos; -- Medianamente correcto.
-select (*) from (select min(FechaPago) as Primera_Venta from Pagos), (select max(FechaPago) as Ultima_Venta from Pagos);
+select IDTransaccion from Pagos where FechaPago in ((select min(FechaPago) Primer from Pagos), (select max(FechaPago) Ultimo from Pagos)); -- Medianamente correcta 2.
+select * from (select IDTransaccion PrimerPago from Pagos where FechaPago = (select min(FechaPago) from Pagos)) T1,  (select IDTransaccion UltimoPago from Pagos where FechaPago = (select max(FechaPago) from Pagos)) T2; -- Solución Correcta.
+ select IDTransaccion, FechaPago from Pagos order by FechaPago asc limit 10; -- Correcta pero con desventajas.
 
 -- Ejercicio 19
-select CodigoCliente from Pagos where FechaPago like '2008%';
+select CodigoCliente from Pagos where FechaPago like '2008%'; -- Respuesta medianamente correcta.
+select distinct CodigoCliente from Pagos where FechaPago like '2008%'; -- Respuesta correcta.
 
 -- Ejercicio 20
-select distinct Estado from Pedidos;
+select distinct Estado from Pedidos; -- Solución correcta.
+
+-- Ejercicio 21
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega;
+
+-- Ejercicio 22
+select NumeroLinea, sum(Cantidad) Total from DetallePedidos group by NumeroLinea order by NumeroLinea asc;
+
+-- Ejercicio 23
+select CodigoProducto, sum(Cantidad) Total from DetallePedidos group by CodigoProducto order by Total desc limit 10;
+
+-- Ejercicio 24
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where (FechaEntrega + 2) = FechaEsperada;
