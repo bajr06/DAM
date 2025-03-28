@@ -72,16 +72,96 @@ select CodigoCliente from Pagos where FechaPago like '2008%'; -- Respuesta media
 select distinct CodigoCliente from Pagos where FechaPago like '2008%'; -- Respuesta correcta.
 
 -- Ejercicio 20
-select distinct Estado from Pedidos; -- Solución correcta.
+select distinct Estado from Pedidos; -- Solución medianamente correcta.
+select count(*) from (select distinct Estado from Pedidos) T; -- Solución correcta.
 
 -- Ejercicio 21
-select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega;
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega; -- Solucicón medianamente correcta.
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega or FechaEntrega is null; -- Solución correcta.
 
 -- Ejercicio 22
-select NumeroLinea, sum(Cantidad) Total from DetallePedidos group by NumeroLinea order by NumeroLinea asc;
+select NumeroLinea, sum(Cantidad) Total from DetallePedidos group by NumeroLinea order by NumeroLinea asc; -- Solución correcta.
 
 -- Ejercicio 23
-select CodigoProducto, sum(Cantidad) Total from DetallePedidos group by CodigoProducto order by Total desc limit 10;
+select CodigoProducto, sum(Cantidad) Total from DetallePedidos group by CodigoProducto order by Total desc limit 20; -- Solución correcta.
 
 -- Ejercicio 24
-select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where (FechaEntrega + 2) = FechaEsperada;
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where (FechaEntrega + 2) <= FechaEsperada; -- Solución medianamente correcta.
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where datediff(FechaEsperada, FechaEntrega) >= 2; -- Solución correcta.
+
+-- Ejercicio 25
+select BaseImponible, IVA, (BaseImponible + IVA) Total from (select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA from DetallePedidos) T; -- Solución correcta.
+select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from DetallePedidos; -- Solución correcta.
+
+-- Ejercicio 26
+select Codigo Producto, sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from DetallePedidos where CodigoProducto like 'FR%' group by CodigoProducto; -- Solución correcta.
+select Codigo Producto, sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from     DetallePedidos group by CodigoProducto having CodigoProducto like 'FR%'; -- Solución correcta.
+
+-- Ejercicio 27
+select Nombre, PrecioVenta from Producto where PrecioVentas = (select max(PrecioVenta) Maximo from Productos);
+
+-- Ejercicio 28
+select * from;
+
+-- Ejercicio 29
+
+-- Ejercicio 30
+
+-- Ejercicio 31
+
+-- Ejercicio 32
+
+-- Ejercicio 33
+
+-- Ejercicio 34
+
+-- Ejercicio 35
+
+-- Ejercicio 36
+
+-- Ejercicio 37
+
+-- Ejercicio 38
+
+-- Ejercicio 39
+
+-- Ejercicio 40
+
+-- Ejercicio 41
+
+-- Ejercicio 42
+
+-- Ejercicio 43
+
+-- Ejercicio 44
+
+-- Ejercicio 45
+
+-- Ejercicio 46
+
+-- Ejercicio 47
+
+-- Ejercicio 48
+
+-- Ejercicio 49
+
+-- Ejercicio 50
+
+-- Ejercicio 51
+
+-- Ejercicio 52
+
+-- Ejercicio 53
+
+-- Ejercicio 54
+
+-- Ejercicio 55
+
+-- Ejercicio 56
+
+-- Ejercicio 57
+
+-- Ejercicio 58
+
+-- Ejercicio 59
+
