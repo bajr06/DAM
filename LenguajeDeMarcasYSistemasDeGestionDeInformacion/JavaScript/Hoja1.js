@@ -16,6 +16,7 @@ function Ejercicio3(){
 
 function Ejercicio4(){
 	let nombre = prompt("¿Cuál es tu nombre?", "Bryan");
+	
 	document.writeln("Hola, mi nombre es " + nombre + "<br>");
 }
 
@@ -41,8 +42,9 @@ function Ejercicio6(){
 	}
 }
 
-/*
+
 function Ejercicio7(){
+
 	let nuevo1 = parseInt(prompt("Escriba otra vez, nuevamente, un número:"));
 	let nuevo2 = parseInt(prompt("Escriba otra vez, nuevamemnte, otro número:"));
 	let nuevo3 = parseInt(prompt("Escriba otro de otro de otro número:"));
