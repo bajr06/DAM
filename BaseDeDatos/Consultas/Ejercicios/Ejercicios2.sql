@@ -98,16 +98,23 @@ select Codigo Producto, sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioU
 select Codigo Producto, sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from     DetallePedidos group by CodigoProducto having CodigoProducto like 'FR%'; -- Solución correcta.
 
 -- Ejercicio 27
-select Nombre, PrecioVenta from Producto where PrecioVentas = (select max(PrecioVenta) Maximo from Productos);
+select Nombre, PrecioVenta from Producto where PrecioVentas = (select max(PrecioVenta) Maximo from Productos); -- Falta revisar.
 
 -- Ejercicio 28
-select * from;
+select Nombre from Productos where inner join (select CodigoProducto from DetallePedidos inner join (select max(Cantidad) Cantidad_Maxima from DetallePedidos) T1 on DetallePedidos.Cantidad = T1.CantidadMaxima) T2 on Productos.CodigoProducto = T2.CodigopProducto; -- Solución correcta.
+select CodigoProducto from DetallePedidos where Cantidad = (select max(Cantidad) Cantidad_Maxima from DetallePedidos) T; -- Otra solución válida.
 
 -- Ejercicio 29
+select NombreCliente, LimiteCredito, Cantidad_Pagada from Cliente inner join (select CodigoCliente, sum(Cantidad) Cantidadad_pagada from Pagos group by CodigoCliente) T on Cliente.CodigoCliente = T.CodigoCliente where LimiteCredito > CantidadPagada;
 
 -- Ejercicio 30
+select Nombre, CantidadEnStock from Productos where CantidadEnStock in ((select max(CantidadEnStock) MayorStock from Productos), (select min(CantidadEnStock) MenorStock from Productos)) order by CantidadEnStock desc;
+select Nombre, CantidadEnStock from Productos where CantidadEnStock = (select max(CantidadEnStock) MayorStock from Productos) T1, -- Revisar.
 
 -- Ejercicio 31
+select NombreCliente, Nombre, Ciudad from Oficinas inner join (select NombreCliente, Nombre, CodigoOficina from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes) T1 on Empleados.CodigoEmpleado = T1.CodigoEmpleadoRepVentas) T2 on Oficinas.CodigoOficina = T2.CodigoOficina;
+
+select CodigoCliente, NombreCliente, CodCli from Clientes left join (select CodigoCliente CodCli from Pagos) T1 on Clientes.CodigoCliente = T1.CodCli where CodCli is null;
 
 -- Ejercicio 32
 
@@ -164,4 +171,3 @@ select * from;
 -- Ejercicio 58
 
 -- Ejercicio 59
-
