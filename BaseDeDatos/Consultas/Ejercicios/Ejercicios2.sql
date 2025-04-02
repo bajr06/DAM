@@ -117,6 +117,7 @@ select NombreCliente, Nombre, Ciudad from Oficinas inner join (select NombreClie
 select CodigoCliente, NombreCliente, CodCli from Clientes left join (select CodigoCliente CodCli from Pagos) T1 on Clientes.CodigoCliente = T1.CodCli where CodCli is null;
 
 -- Ejercicio 32
+select NombreCliente, Nombrem Ciudad from Oficinas inner join (select NombreCliente, Nombre, CodigoOficina from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes where CodigoCliente not in (select CodigoCliente CodCli from Pagos)) T1 on Empleados.CodigoEmpleado = T1.CodigoEmpleadoRepVentas) T2 on Oficinas.CodigoEmpleados = T2.CodigoOficina;
 
 -- Ejercicio 33
 
