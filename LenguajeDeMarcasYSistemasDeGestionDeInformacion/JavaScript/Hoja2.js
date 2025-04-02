@@ -25,9 +25,9 @@ function Ejercicio1(){
 	} else {
 		document.writeln("Formato de la fecha incorrecto: " + Fecha);
 	}
+}
 
-
-function load(){
+function Carga(){
 	Ejercicio1();
 }
-window.addEventListener("DOMContentLoaded", load, false);
+window.addEventListener("DOMContentLoaded", Carga, false);
