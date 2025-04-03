@@ -19,6 +19,8 @@ $D4 \rightarrow n > 5$
 | F | F | F | V | 6 | 10 |
 | F | F | F | F | - | - |
 
+<br>
+
 
 ## Pregunta 2
 
@@ -44,6 +46,8 @@ j < n - i - 1
 | 0 | 5 | 3 |
 | 2 | 5 | 3 |
 | 1 | 5 | 2 |
+
+<br>
 
 
 ## Pregunta 3
@@ -82,17 +86,25 @@ num % 2 == 0
 | 6 | 6 |
 | 8 | 6 |
 
+<br>
+
 
 ## Pregunta 4
 
-NumMatricula - Es numero rango valores - NumMatricula (signo\_naturales) 001 < n < 7999 - NumMatricula no (signo\_naturales) n < 0001 n > 7999
-Curso - Conjunto valores - Curso 1º Curso 2º Curso 3º Curso 4º - Curso no es...
-Pagado - Conjunto Valores - Pagado = Si Pagado = No - Pagado distinto [Si, No]
+| <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| --- | --- | --- | --- |
+| **NumMatricula** | Es numero con rango de valores | $NumeroMatricula \in Z$; <br> $0001 < n < 7999$ | $NumMatricula \notin Z$; <br> $n < 0001$; <br> $n > 7999$ |
+| **Curso** | Conjunto valores | $Curso 1º$; <br> $Curso 2º$; <br> $Curso 3º$; <br> $Curso 4º$ | Curso no existente |
+| **Pagado** | Conjunto Valores | $Pagado = Si$; <br> $Pagado = No$ | $Pagado \neq [Si, No]$ |
+
+<br>
 
 
 ## Pregunta 5
 
-Nombre - Ser cadena alfabética Rango de valores - Nombre = [a - z A - Z]* 0 <= long(Nombre) <= 20 - Lo contrario long(Nombre) > 20
-Edad - Debe ser numero - Edad (Numeros naturales) 18 <= Edad <= 99 - Distinto
-Correo - Cadena alfanumerica Rango de valores - Correo = [A - Z a - z 0 - 9]+ /@ [A - Z] + [a - z] {3} long(Correo) >= 6 - Distinto
-Telefono - Debe ser cadena Rango de Valores - Telefono [0 - 9] {10} long(Telefono) = 10
+| <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| --- | --- | --- | --- |
+| **Nombre** | Ser cadena alfabética; <br>Rango de valores | $Nombre = [a - z A - Z]*$ <br> $0 \leqslant long(Nombre) \leqslant 20$ | $Nombre \neq [a - z A - Z]*$; <br> $long(Nombre) > 20$ |
+| **Edad** | Debe ser numero | $Edad \in N$; <br> $18 \leqslant Edad \leqslant 99$ | $Edad \notin N$; <br> $Edad < 18$; <br> $Edad > 100$ |
+| **Correo** | Cadena alfanumerica; <br> Rango de valores | $Correo = [A - Z a - z 0 - 9]+ /@ [A - Z] + [a - z] \{3\}$; <br> $long(Correo) \geqslant 6$ | $Correo \neq [A - Z a - z 0 - 9]+ /@ [A - Z] + [a - z] \{3\}$; <br> $long(Correo) < 6$ |
+| **Telefono** | Debe ser cadena; <br> Rango de Valores | $Telefono = [0 - 9] \{10\}$; <br> $long(Telefono) = 10$ |  $Telefono \neq [0 - 9] \{10\}$; <br> $long(Telefono) \neq 10$ |
