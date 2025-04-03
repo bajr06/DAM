@@ -4,7 +4,7 @@ echo "Antes de ejecutar este script, revisemos si tienes error en el repositorio
 
 git status
 
-echo "Si tienes error con HEAD, escriba si para ejecutar el programa:"
+echo "Si tienes error con HEAD, escriba "si" para ejecutar el programa:"
 read control
 
 if [ "$control" = "Si" ];
@@ -19,7 +19,7 @@ then
 
 	find .git -type f -empty -delete -print
 
-	tail -n 2 .git/logs/refs/heads/main #Cambia a main o master dependiendo del nombre que se encuentre en su ordenador en esa carpeta.
+	tail -n 2 .git/logs/refs/heads/main # Cambia a main o master dependiendo del nombre que se encuentre en su ordenador en esa carpeta.
 
 	echo "Copie el segundo valor de la línea mostrada:"
 	read encabezado # Se le da el valor del anterior commit para poder reiniciar el encabezado donde está.
@@ -34,5 +34,5 @@ then
 
 	echo "Arreglo finalizado con éxito, ¡Esperemos no nos tengas que volver a ejecutar!"
 else # Si no recibe el valor esperado, ejecuta esto.
-	echo "Cuando estés seguro del error ejecuta esta pequeña automatización."
+	echo "Cuando estés seguro del error, ejecuta esta pequeña automatización."
 fi
