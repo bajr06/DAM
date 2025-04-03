@@ -8,6 +8,50 @@ function isFecha(fecha){
 	}
 }
 
+function isEmail(correo) {
+	const regexCorreo = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
+
+	if(regexCorreo.test(correo)){
+		return false;
+	} else {
+		false;
+	}
+}
+
+function isTelefono(telefono){
+	let regexTelefono = /^\d{2}-\d{3}-\d{2}-\d{2}$/;
+
+	if(regexTelefono.test(telefono) && telefono.lenght == 9) {
+		return true;
+	} else {
+		false;
+	}
+}
+
+function contienePalabra(frase) {
+	let palabra = "Hola";
+
+	let partes = frase.split(palabra);
+	
+	return partes.lenght() - 1;
+}
+
+function reemplazarPalabra(palabra, reemplazo, frase){
+	return frase.replace(new RegExp(Palabra, "gi"), reemplazo);
+}
+
+function isContrasenaCorrecta(contrasena){
+	//let regex = /^[]$/;
+	let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).+$/;
+
+	if(regex.test(contrasena)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 function ejercicio1(){
 	let fecha = prompt("Introduce la fecha en formato: dd, mm, aaaa");
 	let fechaActual = new Date();
@@ -17,7 +61,13 @@ function ejercicio1(){
 		let dia = parseInt(patesFecha[0]);
 		let mes = parseInt(partesFecha[1]);
 		let anio = parseInt(partesFecha[2]);
-		let fechaActual = new Date(dia,mes,anio);
+		let fechaActual = new Date(dia, mes, anio); // Crear objeto de la fecha.
+		let fecha = new Date();
+
+		let diferencia = fechaActual.getTime - fecha.getTime; // Diferencia en milisegundos.
+		let diasTranscurridos =  Math.round.diferencia/(1000 * 60 * 60 * 24);
+
+		alert(diasTranscurridos);
 	} else {
 		document.writeln("Formato no es correcto " + fecha);
 	}
@@ -25,7 +75,6 @@ function ejercicio1(){
 
 function ejercicio2(){
 	let correo = prompt("Introduce tu correo electrónico:");
-	let regexCorreo = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
 	let match = correo.match(regexCorreo);
 
 	if(match) {
