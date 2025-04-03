@@ -120,12 +120,17 @@ select CodigoCliente, NombreCliente, CodCli from Clientes left join (select Codi
 select NombreCliente, Nombre, Ciudad from Oficinas inner join (select NombreCliente, Nombre, CodigoOficina from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes where CodigoCliente not in (select CodigoCliente CodCli from Pagos)) T1 on Empleados.CodigoEmpleado = T1.CodigoEmpleadoRepVentas) T2 on Oficinas.CodigoEmpleados = T2.CodigoOficina;
 
 -- Ejercicio 33
+select Empleados.CodigoEmpleado, Nombre, Apellido1, Apellido2, NombreJefe from Empleados inner join (select CodigoEmpleado, concat(Nombre, " ", Apellido1, " ", Apellido2) NombreJefe from Empleados) Jefe on Empleados.CodigoJefe = Jefe.CodigoEmpleado;
 
 -- Ejercicio 34
+select NombreCliente from Clientes inner join (select CodigoCliente from Pedidos where FechaEntrega > FechaEsperada or FechaEntrega is NULL) T1 on Clientes.CodigoCliente = T1.CodigoCliente;
 
 -- Ejercicio 35
+select NombreCliente, NumeroPedidos from Cliente inner join (select CodigoCliente, count(CodigoPedido) from Pedidos group by CodigoCliente) T1 on Clientes.CodigoCliente = T1.CodigoCliente;
 
 -- Ejercicio 36
+(select NombreCliente, Total from Clientes inner join (select CodigoCliente, sum(Cantidad) Total from Pagos) T1 on Clientes.CodigoCliente = T1.CodigoCliente;) TotalPagos
+(select CodigoCliente, sum(TotalPedido) TotalCliente from Pedidos inner join (select CodigoPedido, sum(Cantidad * PrecioUnidad) TotalPedido from DetallePedidos group by CodigoPedido) T1 on Pedidos.CodigoPedido = T1.CodigoPedido group by CodigoCliente order by CodigoCliente) TotalPedido;
 
 -- Ejercicio 37
 
