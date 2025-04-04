@@ -133,12 +133,18 @@ select NombreCliente, NumeroPedidos from Cliente inner join (select CodigoClient
 (select CodigoCliente, sum(TotalPedido) TotalCliente from Pedidos inner join (select CodigoPedido, sum(Cantidad * PrecioUnidad) TotalPedido from DetallePedidos group by CodigoPedido) T1 on Pedidos.CodigoPedido = T1.CodigoPedido group by CodigoCliente order by CodigoCliente) TotalPedido;
 
 -- Ejercicio 37
+select NombreCliente from Clientes inner join (select CodigoCliente from Pedidos where year(FechaPedido) = '2008') T1 on Cliente.CodigoCliente = T1.CodigoCliente; -- Solución 1
+select NombreCliente from Clientes inner join (select CodigoCliente from Pedidos where FechaPedido like '2008%') T1 on Clientes.CodigoCliente = T1.CodigoCliente; -- Solución 2
 
 -- Ejercicio 38
+select NombreCliente, Nombre, Apellido1, Apellido2 from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes left join (select CodigoCliente as C from Pagos) T1 on Clientes.CodigoCliente = T1.C where C is NULL) T2 on Empleados.CodigoEmpleado = T2.CodigoEmpleadoRepVentas; -- Solucion 1.
+select NombreCliente, Nombre, Apellido1, Apellido2 from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes where CodigoCliente not in (select CodigoCliente as C from Pagos)) T2 on Empleados.CodigoEmpleado = T2.CodigoEmpleadoRepVentas; -- Solución 2.
 
 -- Ejercicio 39
+select NombreCliente, Nombre, Apellido1, Ciudad from Oficinas inner join (select NombreCliente, Nombre, Apellido1, CodigoOficina from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas from Clientes) T1 on Empleados.CodigoEmpleado = T1.CodigoEmpleadoRepVentas) T2 on  Oficinas.CodigoOficina = T2.CodigoOficina;
 
 -- Ejercicio 40
+select Nombre * from Oficinas inner join (select Nombre, Apellido1, Apellido2, CodigoOficina, Puesto from Empleados where Puesto != 'Representante ventas') T1 on Oficinas.CodigoOficina = T1.CodigoOficina;
 
 -- Ejercicio 41
 
