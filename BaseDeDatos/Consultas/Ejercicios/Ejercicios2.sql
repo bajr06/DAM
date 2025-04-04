@@ -147,6 +147,7 @@ select NombreCliente, Nombre, Apellido1, Ciudad from Oficinas inner join (select
 select Nombre * from Oficinas inner join (select Nombre, Apellido1, Apellido2, CodigoOficina, Puesto from Empleados where Puesto != 'Representante ventas') T1 on Oficinas.CodigoOficina = T1.CodigoOficina;
 
 -- Ejercicio 41
+select CodigoOficina, Ciudad, Cantidad_Empleados from Oficinas inner join (select CodigoOficina as COF, count(CodigoEmpleado) as Cantidad_Empleados from Empleados group by CodigoOficina) T1 on Oficinas.CodigoOficina = T1.COF group by CodigoOficina;
 
 -- Ejercicio 42
 
