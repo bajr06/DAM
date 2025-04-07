@@ -8,8 +8,14 @@ function isFecha(fecha){
 	}
 }
 
+function isUsuarioCorrecto(usuario) {
+
+}
+
+// Añadir cosas-
+
 function isEmail(correo) {
-	const regexCorreo = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
+	const regexCorreo = /^[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-z]{2,3}/;
 
 	if(regexCorreo.test(correo)){
 		return false;
@@ -74,26 +80,13 @@ function ejercicio1(){
 }
 
 function ejercicio2(){
-	let correo = prompt("Introduce tu correo electrónico:");
-	let match = correo.match(regexCorreo);
+	let correo = prompt("Introduce el correo electrónico:");
+	let partes_correo = correo.split("@");
 
-	if(match) {
-		let usuario = match[1];
-		alert(`Correo válido. El usuario tiene ${usuario.length} letras.`);
+	if(isEmail(correo)) {
+		document.writeln("<h2>" + partes_correo[0].length +"</h2>");
 	} else {
-		if (!correo.includes("@")) {
-			alert("Correo inválido. Falta el símbolo '@'.");
-		} else {
-			let partes = correo.split("@");
-
-			if (partes[0] === "") {
-				alert("Correo inválido. Falta el nombre de usuario antes del '@'.");
-			} else if (!partes[1].includes(".")) {
-				alert("Correo inválido. Falta el dominio después del '@'.");
-			} else {
-				alert("Correo inválido. Verifica el formato del correo.");
-			}
-		}
+		alert("Correo inválido. Falta el símbolo '@'.");
 	}
 }
 
