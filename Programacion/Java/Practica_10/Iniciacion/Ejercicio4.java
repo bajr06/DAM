@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class Ejercicio4{
-	static int CONTADOR = 100000;
+public class Ejercicio4 {
+	static int CONTADOR = 100000000;
 	static Scanner entrada = new Scanner(System.in);
 
 	private static boolean comprobacion(int numero) {
