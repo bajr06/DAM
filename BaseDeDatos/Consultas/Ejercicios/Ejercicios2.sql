@@ -147,40 +147,59 @@ select NombreCliente, Nombre, Apellido1, Ciudad from Oficinas inner join (select
 select Nombre * from Oficinas inner join (select Nombre, Apellido1, Apellido2, CodigoOficina, Puesto from Empleados where Puesto != 'Representante ventas') T1 on Oficinas.CodigoOficina = T1.CodigoOficina;
 
 -- Ejercicio 41
-select CodigoOficina, Ciudad, Cantidad_Empleados from Oficinas inner join (select CodigoOficina as COF, count(CodigoEmpleado) as Cantidad_Empleados from Empleados group by CodigoOficina) T1 on Oficinas.CodigoOficina = T1.COF group by CodigoOficina;
+select CodigoOficina, Ciudad, Cantidad_Empleados from Oficinas inner join (select CodigoOficina COF, count(CodigoEmpleado) Cantidad_Empleados from Empleados group by CodigoOficina) T1 on Oficinas.CodigoOficina = T1.COF group by CodigoOficina; -- Solución medianamente correcta.
+select CodigoOficina, Ciudad, TotalEmpleados from Oficinas inner join (select CodigoOficina, count(CodigoEmpleado) TotalEmpleados from Empleados group by CodigoOficina) T1 on Oficinas.CodigoOficina = T1.CodigoOficina; -- Solución correcta.
 
 -- Ejercicio 42
+select CodigoEmpleado, Nombre, Apellido1, Apellido2, CodJefe, NoJefe, Ap1Jefe, Ap2Jefe from Empleados inner join (select CodigoEmpleado CodJefe, Nombre NoJefe, Apellido1 Ap1Jefe, Apellido2 Ap2Jefe from Empleados) Jefes on Empleados.CodigoJefe = Jefes.CodJefe;
 
 -- Ejercicio 43
+select Nombre, Apellido1, Apellido2, Puestom, Ciudad from Oficinas inner join (select Nombre, Apellido1, Apellido2, Puesto, CodigoOficina, C from Empleados left join (select CodigoEmpleadoRepVentas C from Clientes) T1 on Empleados.CodigoEmpleado = T1.C where C is NULL) T2 on Oficinas.CodigoOficina = T2.CodigoOficina; -- Solución Correcta
 
 -- Ejercicio 44
+select Gama, avg(CantidadEnStock) Media from Productos group by Gama; -- Solución correcta.
 
 -- Ejercicio 45
+select * from Clientes inner join (select Ciudad C from Oficinas) T1 on Clientes.Ciudad = T1.C;
 
 -- Ejercicio 46
+select * from Clientes inner join (select Ciudad C from Oficinas) T1 on Clientes.Ciudad = T1.C where C is NULL order by Ciudad;
 
 -- Ejercicio 47
+select T1.CodigoEmpleado, count(CodigoEmpleadoRepVentas) TotalClientes from Clientes right join (select CodigoEmpleado C from Empleados where Puesto = "Representante Ventas") T1 on Clientes.CodigoEmpleadoRepVentas = T1.C group by T1.C; -- Solución correcta.
 
 -- Ejercicio 48
+select CodigoPedido, sum(Cantidad * PrecioUnidad) TotalPedido from Detalle Pedido group by CodigoPedido;
 
 -- Ejercicio 49
+¿?
 
 -- Ejercicio 50
+select NombreCliente from Clientes inner join (select CodigoPedido, CodCliente, sum(Cantidad * PrecioUnidad) Total from DetallePedidos inner join (select CodigoPedido C, CodigoCliente from Pedidos where year(FechaPedido) = 2008) T1 on DetallePedidos.CodigoPedido = T1.C group by CodigoPedido having sum(Cantidad * PrecioUnidad) > 2000) T2 on Clientes.CodigoClientes = T2.CodigoCliente; -- Solución Correcta.
 
 -- Ejercicio 51
+select CodigoCliente, Estado count(Estado) Numero from Pedidos group by CodigoCliente, Estado;
 
 -- Ejercicio 52
+select CodigoCliente, sum(Cantidad) from Pedidos inner join (select CodigoPedido, Cantidad from DetallePedidos) T1 on Pedidos.CodigoPedido = T1.CodigoPedido group by CodigoCliente having sum(cantidad) > 200;
 
 -- Ejercicio 53
 
+
 -- Ejercicio 54
+
 
 -- Ejercicio 55
 
+
 -- Ejercicio 56
+
 
 -- Ejercicio 57
 
+
 -- Ejercicio 58
 
+
 -- Ejercicio 59
+

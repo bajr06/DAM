@@ -123,7 +123,7 @@ INSERT INTO Clientes VALUES (18,'Naturajardin','Victoria','Cruz','612343529','91
 INSERT INTO Clientes VALUES (19,'Golf S.A.','Luis','Martinez','916458762','912354475','C/Estancado',NULL,'Santa cruz de Tenerife','Islas Canarias','España','38297',12,30000);
 INSERT INTO Clientes VALUES (20,'AYMERICH GOLF MANAGEMENT, SL','Mario','Suarez','964493072','964493063','C/Letardo',NULL,'Barcelona','Cataluña','España','12320',12,20000);
 INSERT INTO Clientes VALUES (21,'Aloha','Cristian','Rodrigez','916485852','914489898','C/Roman 3',NULL,'Canarias','Canarias','España','35488',12,50000);
-INSERT INTO Clientes VALUES (22,'El Prat','Francisco','Camacho','916882323','916493211','Avenida Tibidabo',NULL,' Barcelona','Cataluña','España','12320',12,30000);
+INSERT INTO Clientes VALUES (22,'El Prat','Francisco','Camacho','916882323','916493211','Avenida Tibidabo',NULL,'Barcelona','Cataluña','España','12320',12,30000);
 INSERT INTO Clientes VALUES (23,'Sotogrande','Maria','Santillana','915576622','914825645','C/Paseo del Parque',NULL,'Sotogrande','Cadiz','España','11310',12,60000);
 INSERT INTO Clientes VALUES (24,'Vivero Humanes','Federico','Gomez','654987690','916040875','C/Miguel Echegaray 54',NULL,'Humanes','Madrid','España','28970',30,7430);
 INSERT INTO Clientes VALUES (25,'Fuenla City','Tony','Muñoz Mena','675842139','915483754','C/Callo 52',NULL,'Fuenlabrada','Madrid','España','28574',5,4500);

@@ -1,5 +1,5 @@
 function isFecha(fecha){
-	const regex = /^0[0-3][0-9],0[1-9]|1[0-2]],\d{4}$/;
+	const regex = /^(0[1-9]|[1-2][0-9]|3[0-1]),(0[1-9]|1[0-2]),(19|20\d{2})$/;
 
 	if (regex.test(fecha)){
 		return true;
@@ -9,10 +9,24 @@ function isFecha(fecha){
 }
 
 function isUsuarioCorrecto(usuario) {
+	const regex = /^[a-zA-Z0-9._]$/;
 
+	if(regex.test(usuario)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
-// Añadir cosas-
+function isDominioCorrecto(dominio) {
+	const regex = /^[a-zA-Z]+\.[a-z]{2,3}$/;
+
+	if(regex.test(dominio)) {
+		return true;
+	} else {
+		return false;
+}
+}
 
 function isEmail(correo) {
 	const regexCorreo = /^[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-z]{2,3}/;
