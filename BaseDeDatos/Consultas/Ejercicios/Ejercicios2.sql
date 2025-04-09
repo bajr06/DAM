@@ -178,28 +178,29 @@ select CodigoPedido, sum(Cantidad * PrecioUnidad) TotalPedido from Detalle Pedid
 select NombreCliente from Clientes inner join (select CodigoPedido, CodCliente, sum(Cantidad * PrecioUnidad) Total from DetallePedidos inner join (select CodigoPedido C, CodigoCliente from Pedidos where year(FechaPedido) = 2008) T1 on DetallePedidos.CodigoPedido = T1.C group by CodigoPedido having sum(Cantidad * PrecioUnidad) > 2000) T2 on Clientes.CodigoClientes = T2.CodigoCliente; -- Solución Correcta.
 
 -- Ejercicio 51
-select CodigoCliente, Estado count(Estado) Numero from Pedidos group by CodigoCliente, Estado;
+select CodigoCliente, Estado, count(Estado) Numero from Pedidos group by CodigoCliente, Estado;
 
 -- Ejercicio 52
 select CodigoCliente, sum(Cantidad) from Pedidos inner join (select CodigoPedido, Cantidad from DetallePedidos) T1 on Pedidos.CodigoPedido = T1.CodigoPedido group by CodigoCliente having sum(cantidad) > 200;
 
 -- Ejercicio 53
-
+select NombreCliente, LimiteCredito from Clientes order by LimiteCredito desc limit 1; -- Solución medianamente bien.
+select NombreCliente from Clientes inner join (select max(LimiteCredito) Limite from Clientes) T1 on Clientes.LimiteCredito = T1.Limite; -- Solución correcta.
 
 -- Ejercicio 54
-
+select Nombre, Apellido1, Puesto, C  from Empleados left join (select CodigoEmpleadoRepVentas C from Clientes) T1 on Empleados; -- Rellenar después
 
 -- Ejercicio 55
-
+select NombreCliente, Nombre, Apellido1 from Clientes inner join (select CodigoEmpleado, Nombre, Apellido1 from Empleados) T1 on Clientes.CodigoEmpleadoRepVentas = T1.CodigoEmpleado;
 
 -- Ejercicio 56
-
+select NombreCliente, Nombre, Apellido1, from Empleados inner join (select NombreCliente, CodigoEmpleadoRepVentas, C from Clientes left join (select CodigoCliente C from Pagos) T1 on Clientes.CodigoCliente = T1.C where C is NULL) T2 on Empleados.CodigoEmpleado = T2.CodigoEmpleadoRepVentas;
 
 -- Ejercicio 57
-
+-- Revisar en casa.
 
 -- Ejercicio 58
-
+-- Revisar en casa.
 
 -- Ejercicio 59
-
+-- Revisar en casa.
