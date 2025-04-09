@@ -6,11 +6,12 @@ select count(CodigoEmpleado) as Cantidad_Empleados from Empleados; -- Solución 
 select count(*) Numero_Empleados from Empleados; -- Solución correcta. 
 
 -- Ejercicio 3
-select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta. 
+select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución medianamente correcta.
+select Pais, count(CodigoCliente) NumeroCliente from Clientes group by Pais; -- Solución correcta.
 
 -- Ejercicio 4
+select avg(Cantidad) Media from Pagos group by FormaPago having Media > 800; -- Solución medianamente correcta.
 select avg(Cantidad) as Media_2008 from Pagos where FechaPago like '2008%'; -- Solución correcta.
-select avg(Cantidad) Media from Pagos group by FormaPago having Media > 800; -- Otra solución.
 
 -- Ejercicio 5
 select Estado, count(CodigoPedido) as Cantidad from Pedidos group by Estado order by Cantidad desc; -- Solución medianamente correcta.
@@ -18,37 +19,41 @@ select count(CodigoPedido) Numero from Pedidos group by Estado order by Numero a
 
 -- Ejercicio 6
 select min(PrecioVenta) as Precio_bajo, max(PrecioVenta) as Precio_alto from Productos; -- Solución medianamente correcta.
-select Nombre from Productos where PrecioVentas = (select max(PrecioVenta) Mas_Caro from Productos) T1, (select min(PrecioVenta) MasBarato from Productos) T2; -- Otra solución más o menos correcta.
-select * from (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasCaro from Productos) T1 on PrecioVenta = MasCaro) T3, (select Nombre, PrecioVenta from Productos inner join (select max(PrecioVenta) MasVenta from Productos) T1 on PrecioVenta = MasBarato) T4; -- Solución correcta.
+select MasCaro, MasBarato from (select max(PrecioVenta) MasCaro from Productos) T1, (select min(PrecioVenta) MasBarato from Productos) T2; -- Solución correcta 1.
+select * from (select Nombre Caro, PrecioVenta PrecioCaro from Productos inner join (select max(PrecioVenta) MasCaro from Productos) T1 on PrecioVenta = MasCaro) T3, (select Nombre Barato, PrecioVenta PrecioBarato from Productos inner join (select max(PrecioVenta) MasBarato from Productos) T2 on PrecioVenta = MasBarato) T4; -- Solución correcta 2.
 
 -- Ejercicio 7
 select Ciudad, Telefono from Oficinas where Pais = 'EEUU'; -- Solución correcta.
 
 -- Ejercicio 8
 select Nombre, Apellido1, Apellido2, Email from Empleados where CodigoJefe = (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria'); -- Solución correcta 1
-select Nombre, Apellido1, Apellido2, Email from Empleados where inner join (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria') T1 on Empleados.CodigoJefe = T1.CodigoEmpleado; -- Solución más correcta.
+select Nombre, Apellido1, Apellido2, Email from Empleados inner join (select CodigoEmpleado from Empleados where Nombre = 'Alberto' and Apellido1 = 'Soria') T1 on Empleados.CodigoJefe = T1.CodigoEmpleado; -- Solución correcta 2.
 
 -- Ejercicio 9
 select Puesto, Nombre, Apellido1, Apellido2, Email from Empleados where Puesto = 'Director General'; -- Solución medianamente correcta.
-select Nombre, Apellido1, Apeliidos from Empleados where CodigoJefe is null; -- Solución Correcta.
+select Nombre, Apellido1, Apellido2, Email from Empleados where CodigoJefe is NULL; -- Solución Correcta.
 
 -- Ejercicio 10
-select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto != 'Representante Ventas'; -- Solución correcta.
+select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto != 'Representante Ventas'; -- Solución medianamente correcta.
+select Nombre, Apellido1, Apellido2, Puesto from Empleados where Puesto <> 'Representante Ventas'; -- Solución correcta.
 
 -- Ejercicio 11
 select count(CodigoCliente) as Cantidad_Clientes from Clientes; -- Solución medianamente correcta.
-select count (*) TotalClientes from Clientes; -- Solución correcta.
+select count(CodigoCliente) TotalClientes from Clientes; -- Solución correcta 1.
+select count(*) TotalClientes from Clientes; -- Solución correcta 2.
 
 -- Ejercicio 12
-select NombreCliente from Clientes where Pais = 'España' or Pais = 'Spain'; -- Solución correcta 1.
-select NombreCliente from Clientes where Pais in ('España', 'Spain'); -- Solución correcta 2.
+select NombreCliente from Clientes where Pais = 'Spain' or Pais = 'España'; -- Solución correcta 1.
+select NombreCliente from Clientes where Pais in ('Spain', 'España'); -- Solución correcta 2.
 
 -- Ejercicio 13
-select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución correcta.
+select Pais, count(CodigoCliente) as Cantidad_Clientes from Clientes group by Pais; -- Solución medianamente correcta.
+select Pais, count(NombreCliente) TotalClientesPais from Clientes group by Pais; -- Solución correcta.
 
 -- Ejercicio 14
-select count(CodigoCliente) as Cantidad_Clientes from Clientes where Ciudad = 'Madrid'; -- Solución correcta 1.
-select Pais, count(NombreCliente) TotalClientesPais from Clientis where Ciudad = 'Madrid'; -- Solución correcta 2.
+select count(CodigoCliente) as Cantidad_Clientes from Clientes where Ciudad = 'Madrid'; -- Solución medianamente correcta.
+select Ciudad, count(NombreCliente) TotalClientesPais from Clientes group by Ciudad having Ciudad = 'Madrid'; -- Solución correcta 1.
+select count(NombreCliente) TotalClientesCiudad from Clientes where Ciudad = 'Madrid'; -- Solución correcta.
 
 -- Ejercicio 15
 select count(CodigoCliente) as Cantidad_Clientes_Ciudad from Clientes where Ciudad like 'M%'; -- Solución correcta.
@@ -59,13 +64,13 @@ select CodigoEmpleadoRepVentas, NumClientes from (select CodigoEmpleado from Emp
 
 -- Ejercicio 17
 select count(CodigoCliente) as Cantidad from Clientes where CodigoEmpleadoRepVentas = NULL; -- Solución incorrecta.
-select NombreCliente, B from Clientes left join (select CodigoCliente A, NombreCliente B from Clientes inner join (select CodigoEmpleado from Empleados where Puesto = 'Representante Ventas') T1 on Clientes.CodigoEmpleadoRepVentas = T1.CodigoEmpleado) ClienteRep on Clientes.CodigoCliente = ClienteRep.A; -- En revisión.
+select count(NombreCliente) ClienteSinRep from (select CodigoCliente A, NombreCliente B from (select CodigoEmpleado from Empleados where Puesto = 'Representate Ventas') T1 inner join Clientes on Clientes.CodigoEmpleadoRepVentas = T1.CodigoEmpleado) ClienteRep right join Clientes on Clientes on Clientes.CodigoCliente = ClienteRep.A where B is NULL; -- Solución correcta.
 
 -- Ejercicio 18
 select min(FechaPago) as Primera_Venta, max(FechaPago) as Ultima_Venta from Pagos; -- Medianamente correcto.
 select IDTransaccion from Pagos where FechaPago in ((select min(FechaPago) Primer from Pagos), (select max(FechaPago) Ultimo from Pagos)); -- Medianamente correcta 2.
-select * from (select IDTransaccion PrimerPago from Pagos where FechaPago = (select min(FechaPago) from Pagos)) T1,  (select IDTransaccion UltimoPago from Pagos where FechaPago = (select max(FechaPago) from Pagos)) T2; -- Solución Correcta.
- select IDTransaccion, FechaPago from Pagos order by FechaPago asc limit 10; -- Correcta pero con desventajas.
+select * from (select IDTransaccion UltimoPago from Pagos where FechaPago = (select max(FechaPago) from Pagos)) T1,  (select IDTransaccion PrimerPago from Pagos where FechaPago = (select min(FechaPago) from Pagos)) T2; -- Solución Correcta 1.
+ select IDTransaccion, FechaPago from Pagos order by FechaPago asc limit 10; -- Solución Correcta 2.
 
 -- Ejercicio 19
 select CodigoCliente from Pagos where FechaPago like '2008%'; -- Respuesta medianamente correcta.
@@ -73,25 +78,27 @@ select distinct CodigoCliente from Pagos where FechaPago like '2008%'; -- Respue
 
 -- Ejercicio 20
 select distinct Estado from Pedidos; -- Solución medianamente correcta.
-select count(*) from (select distinct Estado from Pedidos) T; -- Solución correcta.
+select count(*) from (select distinct Estado from Pedidos) T; -- Solución correcta 1.
+select distinct Estado from Pedidos;
 
 -- Ejercicio 21
 select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega; -- Solucicón medianamente correcta.
-select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEsperada < FechaEntrega or FechaEntrega is null; -- Solución correcta.
+select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where FechaEntrega > FechaEsperada or FechaEntrega is NULL; -- Solución correcta.
 
 -- Ejercicio 22
-select NumeroLinea, sum(Cantidad) Total from DetallePedidos group by NumeroLinea order by NumeroLinea asc; -- Solución correcta.
+select CodigoPedido, sum(Cantidad) TotalProductos from DetallePedidos group by CodigoPedido; -- Solución correcta 1.
+select NumeroLinea, sum(Cantidad) TotalProductos from DetallePedidos group by NumeroLinea; -- Solución correcta 2.
 
 -- Ejercicio 23
-select CodigoProducto, sum(Cantidad) Total from DetallePedidos group by CodigoProducto order by Total desc limit 20; -- Solución correcta.
+select CodigoProducto, sum(Cantidad) as TotalCantidad from DetallePedidos group by CodigoProducto order by Total desc limit 20; -- Solución correcta.
 
 -- Ejercicio 24
-select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where (FechaEntrega + 2) <= FechaEsperada; -- Solución medianamente correcta.
+select CodigoPedido, CodigoCliente, FechaEntrega, FechaEsperada from Pedidos where (FechaEsperada - 2) >= FechaEntrega; -- Solución correcta 1.
 select CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega from Pedidos where datediff(FechaEsperada, FechaEntrega) >= 2; -- Solución correcta.
 
 -- Ejercicio 25
-select BaseImponible, IVA, (BaseImponible + IVA) Total from (select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA from DetallePedidos) T; -- Solución correcta.
-select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from DetallePedidos; -- Solución correcta.
+select BaseImponible, IVA, (BaseImponible + IVA) Total from (select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA from DetallePedidos) T; -- Solución correcta 1.
+select sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from DetallePedidos; -- Solución correcta 2.
 
 -- Ejercicio 26
 select Codigo Producto, sum(Cantidad * PrecioUnidad) BaseImponible, (sum(PrecioUnidad * Cantidad) * 0.21) IVA, sum(Cantidad * PrecioUnidad + Cantidad * PrecioUnidad * 0.21) Total from DetallePedidos where CodigoProducto like 'FR%' group by CodigoProducto; -- Solución correcta.
