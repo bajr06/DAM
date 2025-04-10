@@ -1,0 +1,11 @@
+1.Nombre y apellido de los clientes que tienen un teléfono que termina en 23 (0,5 puntos)
+2.El nombre y el puesto de aquellos empleados que no han realizado ninguna venta(0,5 puntos)
+3.El total recaudado por cada empleado junto a su nombre (1 punto)
+4.Todos el nombre productos que se han vendido más cantidad en stock de la cantidad que se ha vendido (1 punto)
+5.El nombre de todos los clientes y el nombre de los empleados que tienen como puesto Reponendor ( 1 punto)
+6.El nombre y el puesto del empleado que ha vendido el producto que menos cantidad se ha vendido( 1 punto)
+7.El nombre y el stock de todos los productos que no ha sido comprados por  los clientes que viven en Madrid y tienen stock mas de 200 (la ciudad está al final de la dirección)( 1 punto)
+8. Las ventas (id_venta), nombre producto y la cantidad de los productos colocado en el supermercado por el empleado Ricardo Torres (nombre)( 1 punto)
+9.El nombre de los productos que se han vendido más caro de lo que se ha reflejado en la tabla productos( 1,5 puntos)
+10. El nombre, apellido de los clientes que han comprado todos los productos que ha colocado en la sección los empleados que cobran más de 1400 euros al mes.( 1,5 puntos)
+
