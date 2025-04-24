@@ -47,8 +47,11 @@ public class BryanAJR_MENU_Figuras {
 					System.out.println("Opcion inválida. Intentalo de nuevo.");
 					seleccion = entrada.nextInt();
 			} // TODO
+   menu();
 		seleccion = entrada.nextInt();
 		} while(seleccion > 0 || seleccion < 5);
+
+   return 4;
 	}
 
 	private static void rectangulo() {
