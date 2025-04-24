@@ -31,35 +31,35 @@ int main(){
 	printf("Introduce valores para rellenar la matriz: \n");
 	// Inicializamos la matriz y la rellenamos con valores positivos en función de cada posición de la matriz
 	for (int i = 0; i < n; i++){
-	    for (int j = 0; j < m; j++){
-	    	printf("Valor de la fila %d y columna %d: ", i, j);
-	        if (scanf("%d", &matriz[i][j]) <= 0){
-            	printf("Solo puedes introducir un número entero\n");
-            	return EXIT_FAILURE;
-            }
-	    }
-	} printf("\n");
+		for (int j = 0; j < m; j++){
+			printf("Valor de la fila %d y columna %d: ", i, j);
+			if (scanf("%d", &matriz[i][j]) <= 0){
+				printf("Solo puedes introducir un número entero\n");
+				return EXIT_FAILURE;
+			}
+		}
+	}
+	printf("\n");
 
 	// Imprimir la matriz
 	printf("Matriz:\n");
 	for (int i = 0; i < n; i++){
-	    for (int j = 0; j < m; j++){
-	        printf("%d\t", matriz[i][j]);
-	    }
-	    printf("\n"); // para que me salte de línea cada fila de la matriz
+		for (int j = 0; j < m; j++){
+			printf("%d\t", matriz[i][j]);
+		}
+		printf("\n"); // para que me salte de línea cada fila de la matriz
 	}
-
 	printf("\n");
 
 	int suma_main = suma(matriz, n, m);	// llamo a mi función pasando los valores y la meto en una variable para poder imprimirla
 	printf("La suma del contorno: %d\n", suma_main);
-
-for (int i = 0; i < n; i++) {
-	free(matriz[i]);
-}
-
-free(matriz);
-return EXIT_SUCCESS;
+	
+	for (int i = 0; i < n; i++) {
+		free(matriz[i]);
+	}
+	
+	free(matriz);
+	return EXIT_SUCCESS;
 }
 
 int suma(int ** matriz, int n, int m){
@@ -67,22 +67,22 @@ int suma(int ** matriz, int n, int m){
 
 	// Suma de la primera fila
 	for (int j = 0; j < m; j++){ // recorremos todos los números de la primera fila
-    	suma += matriz[0][j]; // ponemos un 0 predeterminado ya que ese valor no va a cambiar, es decir, la columna siempre va a ser la misma
+		suma += matriz[0][j]; // ponemos un 0 predeterminado ya que ese valor no va a cambiar, es decir, la columna siempre va a ser la misma
 	}
 
 	// Suma de la última fila
 	for (int j = 0; j < m; j++){ // recorremos todos los números de la última fila
-    	suma += matriz[n-1][j];
+		suma += matriz[n-1][j];
 	}
 
 	// Suma de la primera columna
 	for (int i = 0; i < n; i++){ // recorremos todos los números de la primera columna
-    	suma += matriz[i][0];
+		suma += matriz[i][0];
 	}
 
 	// Suma de la última columna
 	for (int i = 0; i < n; i++){ // recorremos todos los números de la última columna
-    	suma += matriz[i][m-1];
+		suma += matriz[i][m-1];
 	}
 
 	return suma;
