@@ -1,3 +1,5 @@
+let palabraSeleccionada;
+
 function cuentaAtras() {
 	let cuenta = 0;
 	clearInterval(cuenta);
@@ -42,11 +44,26 @@ function cambiarColor() {
 	document.getElementById("cambiarColor").style.background = color;
 }
 
-function ahorcado(event) {
-	let palabras = ["Perro", "Gato", "Tortuga", "Pez", "Caiman"];
-	let palabraSeleccionada = palabras[random(palabras.length)];
+function generarPalabra() {
+	let palabras = ['PERRO', "GATO", "TORTUGA", "PEZ", "CAIMAN"];
+	return palabras[random(palabras.length)];
+}
 
-	console.log(event.target.value.textContent);
+function ahorcado(event) {
+	let contador = 0;
+	let letra = event.target.textContent;
+
+	console.log(palabraSeleccionada);
+
+	for(let i = 0; i < palabraSeleccionada.length; i++) {
+		if(palabraSeleccionada[i] === letra) {
+			alert("Letra Acertada");
+			contador++;
+		}
+		event.target.disabled = true;
+	}
+
+	document.getElementById("resultado").textContent = Letras adivinadas: ${contador};
 }
 
 
@@ -56,28 +73,34 @@ function carga() {
 	
 	botonNumero.addEventListener("click", () => {
 		let numero = Math.floor(Math.random() * 100);
-		
+
 		document.getElementById("mostrarNumero").textContent = numero;
 	}
 	);
 
 	/* Ejercicio 2 */
 	let botonAtras = document.getElementById("cuentaAtras");
+
 	botonAtras.addEventListener("click", cuentaAtras);
 
 	/* Ejericicio 3 */
 	let tabla = document.getElementById("tabla");
+
 	tabla.addEventListener("click", rellenarTabla);
 
 	let tabla2 = document.getElementById("tabla2");
+
 	tabla2.addEventListener("click", rellenarTabla2);
 
 	/* Ejercicio 4 */
 	let caja = document.getElementById("cambiarColor");
+
 	caja.addEventListener("mousemove", cambiarColor);
 
 	/* Ejercicio 5 */
+	let palabraSeleccionada = generarPalabra();
 	let letras = document.querySelectorAll(".ejercicio5");
+
 	letras.forEach(botonesLetras => botonesLetras.addEventListener("click", ahorcado));
 }
 window.addEventListener("DOMContentLoaded", carga, false);
