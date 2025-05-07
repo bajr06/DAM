@@ -4,14 +4,16 @@ let barcos = [4, 3, 2, 1];
 let tableroUsuario:
 
 // Posicion es la cadena que nos devuelve el id. Ejemplo id -> u01.
+/*
 function esBarco2(posicion1, posicion2, m) {
 	if(m[i][j] == m[][])
 }
+*/
 
 function guardarBarco(event) {
 	alert("Guardo el Barco");
-	let i = event.target.value[1];
-	let j = event.target.value[2];
+	let i = event.target.name[1];
+	let j = event.target.name[2];
 
 	if(i = event.target.id[0] === 'u') {
 		tableroUsuario[i][j] = 'x';
