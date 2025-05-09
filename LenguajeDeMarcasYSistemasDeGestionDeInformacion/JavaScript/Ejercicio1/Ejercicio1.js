@@ -6,7 +6,7 @@ function exp1(){
 	
 	// Copiar.
 
-	let expReg1 
+	let expReg =  "Cazador"; 
 
 	if(expReg.test(palabra)){
 		document.writeln("<h2> Empieza por A. <h2>");
