@@ -48,7 +48,6 @@ function generarDatos() {
 	document.getElementById("j").textContent = coordenadaJ;
 }
 
-// Corregir
 function colocarCasillas(event) {
 	let i = event.target.name[0];
 	let j = event.target.name[1];
@@ -80,3 +79,4 @@ function principal() {
 }
 
 window.addEventListener("DOMContentLoaded", principal);
+
