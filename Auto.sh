@@ -7,7 +7,7 @@ read opcion
 
 if [ "$opcion" = "Si" ] || [ "$opcion" = "SI" ] || [ "$opcion" = "si" ] || [ "$opcion" = "sI" ];
 then
-	echo "Escriba el nombre del commit que quieres crea:"
+	echo "Escriba el nombre del commit que quieres crear:"
 	read Nombre # Escanea por pantalla el nombre a dar al Commit.
 
 	git add .
