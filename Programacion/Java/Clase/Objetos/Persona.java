@@ -1,49 +1,53 @@
-// package Objetos;
-
+package Objetos;
 
 public class Persona {
-	private int getEdad() {
+	public int getEdad() {
 		return edad;
 	}
-	private void setEdad(int edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 	
-	private float getAltura() {
+	public float getAltura() {
 		return altura;
 	}
-	private void setAltura(float altura) {
+	public void setAltura(float altura) {
 		this.altura = altura;
 	}
 
-	private double getPeso() {
+	public double getPeso() {
 		return peso;
 	}
-	private void setPeso(double peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 
-	private boolean isPelo() {
+	public boolean isPelo() {
 		return pelo;
 	}
-	private void setPelo(boolean pelo) {
+	public void setPelo(boolean pelo) {
 		this.pelo = pelo;
 	}
 
-	private String getVoz() {
+	public String getVoz() {
 		return voz;
 	}
-	private void setVoz(String voz) {
+	public void setVoz(String voz) {
 		this.voz = voz;
 	}
 	
 	public Persona(int edad, float altura, double peso, boolean pelo, String voz) {
-		super();
+		// super();
 		this.edad = edad;
 		this.altura = altura;
 		this.peso = peso;
 		this.pelo = pelo;
 		this.voz = voz;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [edad = " + edad + ", altura = " + altura + ", peso = " + peso + ", pelo = " + pelo + ", voz = " + voz + "]";
 	}
 
 	int edad;
