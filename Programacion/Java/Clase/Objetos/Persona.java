@@ -1,4 +1,4 @@
-package Objetos;
+// package Objetos;
 
 public class Persona {
 	public int getEdad() {

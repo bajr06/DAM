@@ -1,4 +1,4 @@
-package Practica_12;
+// package Practica_12;
 
 public class AparatoElectrico {
 	public String getAparato() {
@@ -22,7 +22,7 @@ public class AparatoElectrico {
 		this.consumo = consumo;
 	}
 
-	static int getconsumoTotal() {
+	static int getConsumoTotal() {
 		return consumoTotal;
 	}
 

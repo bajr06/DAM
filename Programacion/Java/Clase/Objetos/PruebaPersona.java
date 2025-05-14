@@ -1,4 +1,4 @@
-package Objetos;
+// package Objetos;
 
 public class PruebaPersona {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Practica_12;
+// package Practica_12;
 
 public class Aparatos {
 	public static void main(String[] args) {
