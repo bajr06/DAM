@@ -2,9 +2,10 @@
  * Clase Coche: con Marca, Modelo y Potencia.
  * @author
 */
-package P1;
 
-public class Ejemplo_U5(){
+//package P1;
+
+public class Coche(){
 	private String Marca;
 	private String Modelo;
 	private int Potencia;

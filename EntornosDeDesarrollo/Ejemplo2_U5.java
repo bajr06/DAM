@@ -1,4 +1,4 @@
-package P1;
+// package P1;
 import java.io.ByteArrayInputStream;
 
 public class Ejemplo2_U5() {
