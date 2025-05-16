@@ -20,8 +20,6 @@ public class Modulo {
 		this.convalidacion = convalidacion;
 	}
 	
-	
-
 	public Modulo(String nombre, int numeroHoras, Profesor docente, boolean convalidacion) {
 		this.nombre = nombre;
 		this.numeroHoras = numeroHoras;
@@ -31,8 +29,9 @@ public class Modulo {
 
 	@Override
 	public String toString() {
-		return "Modulo [Nombre = " + nombre + ", Numero de Horas = " + numeroHoras + ", Docente = " + docente.toString() + ", convalidacion = " + convalidacion + "]";
+		return "Modulo [Nombre = " + nombre + ", Numero de Horas = " + numeroHoras + ", Docente = " + docente + ", Convalidacion = " + convalidacion + "]";
 	}
+
 
 	String nombre;
 	int numeroHoras;

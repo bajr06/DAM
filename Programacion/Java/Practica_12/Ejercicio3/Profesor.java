@@ -41,6 +41,21 @@ public class Profesor {
 		this.tutor = tutor;
 	}
     
+	public Profesor(int dni, String nombre, String apellidos, int salario, int numeroAsignaturas, boolean tutor) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.salario = salario;
+		this.numeroAsignaturas = numeroAsignaturas;
+		this.tutor = tutor;
+	}
+
+	@Override
+	public String toString() {
+		return "Profesor [DNI = " + dni + ", Nombre = " + nombre + ", Apellidos = " + apellidos + ", Salario = " + salario + ", Numero de Asignaturas = " + numeroAsignaturas + ", Tutor = " + tutor + "]";
+	}
+
+
 	int dni;
 	String nombre;
 	String apellidos;

@@ -42,11 +42,28 @@ public class Alumno {
 	public void setRepetidor(boolean repetidor) {
 		this.repetidor = repetidor;
 	}
-    
+
+	public Alumno(int dni, String nombre, String apellidos, int fechaNacimiento, Sexo genero, boolean repetidor, Modulo modulos) {
+		// super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.fechaNacimiento = fechaNacimiento;
+		this.genero = genero;
+		this.repetidor = repetidor;
+		this.modulos = modulos;
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [DNI = " + dni + ", Nombre = " + nombre + ", Apellidos = " + apellidos + ", Fecha de Nacimiento = " + fechaNacimiento + ", Genero = " + genero + ", Repetidor = " + repetidor + ", Modulos = " + modulos.toString() + "]";
+	}
+
 	int dni;
 	String nombre;
 	String apellidos;
 	int fechaNacimiento;
 	Sexo genero;
 	boolean repetidor;
+	Modulo modulos;
 }

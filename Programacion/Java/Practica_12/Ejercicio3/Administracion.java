@@ -40,7 +40,22 @@ public class Administracion {
 	public void setAntiguedad(int antiguedad) {
 		this.antiguedad = antiguedad;
 	}
-    
+
+	public Administracion(int dni, String nombre, String apellidos, int salario, String estudios, int antiguedad) {
+		//super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.salario = salario;
+		this.estudios = estudios;
+		this.antiguedad = antiguedad;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrador [DNI = " + dni + ", Nombre = " + nombre + ", Apellidos = " + apellidos + ", Salario = " + salario + ", Estudios = " + estudios + ", Antiguedad = " + antiguedad + "]";
+	}
+
 	int dni;
 	String nombre;
 	String apellidos;
