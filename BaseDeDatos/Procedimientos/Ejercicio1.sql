@@ -38,39 +38,48 @@ delimiter ;
 delimiter $$
 create procedure PrecioProducto(in NombreProducto varchar(70))
 begin
-	select Nombre, PrecioVenta, PrecioProveedor from Productos where Nombre = NombreProducto;
+	select Nombre, PrecioVenta, PrecioProveedor from Productos where Nombre like concat(NombreProducto, '%');
 end$$
 delimiter ;
 
 -- Ejercicio 6
-/*
 delimiter $$
-create procedure NuevoPedido(in Producto varchar(70), in CantidadProducto int)
+create procedure NuevoDetallesPedido(in NumeroPedido int, in Id_Producto varchar(15), in CantidadProducto int)
 begin
-	declare Codigo int;
-	declare Codigo2 varchar(15);
-	
-	set Codigo = (select count(*) from DetallePedidos) + 1;
-	set Codigo2 = (select CodigoProducto from Productos where Nombre = Producto limit 1);
+	declare Precio decimal(15,2);
+	set Precio = (select PrecioVenta from Productos where CodigoProducto = Id_Producto);
 
-	insert into DetallePedidos values(Codigo, Codigo2, CantidadProducto, NULL, NULL);
+	insert into DetallePedidos values(NumeroPedido, Id_Producto, CantidadProducto, Precio, floor(1 + rand() * (8 - 1)));
 end$$
 delimiter ;
-*/
 
 delimiter $$
-create procedure NuevoPedido(in Id_Cliente int, Id_Producto varchar(15))
+create procedure NuevoPedido(in Id_Cliente int, in Id_Producto varchar(15), in CantidadProducto int)
 begin
-	declare Codigo1 int;
+	declare NumeroPedido int;
+	set NumeroPedido = (select max(CodigoPedido) from Pedidos) + 1;
 
+	insert into Pedidos values(NumeroPedido, curdate(), date_add(curdate(), interval 5 day), NULL, 'Pendiente', NULL, Id_Cliente);
 
-	set Codigo = (select count(*) from Pedidos) + 1;
+	call NuevoDetallesPedido(NumeroPedido, Id_Producto, CantidadProducto);
 end$$
 delimiter ;
+
 -- Ejercicio 7
-
+delimiter $$
+create procedure ModificarNombre(in CodigoProducto varchar(15), in NombreProducto varchar(70))
+begin
+	update Productos set Nombre = NombreProducto where CodigoProducto = CodProducto;
+end$$
+delimiter ;
 
 -- Ejercicio 8
+delimiter $$
+create procedure ModificarEstado(in NumeroPedido int, in EstadoActual varchar(15))
+begin
+	update Pedidos set Estado = EstadoActual where CodigoPedido = NumeroPedido;
+end$$
+delimiter ;
 
 
 
@@ -82,3 +91,11 @@ call CambiarJefe(50, 8);
 call NombreEmpleadoYJefe("Madrid");
 
 call PedidosNoCancelados2("FLORES S.L.");
+
+call PrecioProducto("Granados");
+
+call NuevoPedido(4, "AR-004", 45);
+
+call ModificarNombre("AR-004", 'Melisa2');
+
+call ModificarEstado(128, 'Enviado');
