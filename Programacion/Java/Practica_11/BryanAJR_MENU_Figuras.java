@@ -46,7 +46,7 @@ public class BryanAJR_MENU_Figuras {
 				default:
 					System.out.println("Opcion inválida. Intentalo de nuevo.");
 					seleccion = entrada.nextInt();
-			} // TODO
+			}
 		menu();
 		seleccion = entrada.nextInt();
 		} while(seleccion > 0 || seleccion < 5);

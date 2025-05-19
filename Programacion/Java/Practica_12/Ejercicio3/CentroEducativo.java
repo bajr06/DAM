@@ -1,7 +1,5 @@
 //package Ejercicio3;
 
-import javax.print.attribute.standard.PrinterResolution;
-
 public class CentroEducativo {
 	public static void main(String[] args) {
 		Administracion administrador1 = new Administracion(02555657, "Bryan", "Jimenez Rojas", 5000, "Ingeniería en Informática", 12);

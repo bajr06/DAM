@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ejercicio4{
+public class Ejercicio3{
 	static Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] argv) {
@@ -12,6 +12,7 @@ public class Ejercicio4{
 
 			if(numero > 0) {
 				total += numero;
+				System.out.println(total);
 			}
 		} while(numero != 0 && numero > 0);
 	}
