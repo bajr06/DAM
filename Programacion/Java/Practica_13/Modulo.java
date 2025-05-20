@@ -20,6 +20,13 @@ public class Modulo {
 		this.convalidacion = convalidacion;
 	}
 	
+	public Profesor getDocente() {
+		return docente;
+	}
+	public void setDocente(Profesor docente) {
+		this.docente = docente;
+	}
+	
 	public Modulo(String nombre, int numeroHoras, Profesor docente, boolean convalidacion) {
 		this.nombre = nombre;
 		this.numeroHoras = numeroHoras;

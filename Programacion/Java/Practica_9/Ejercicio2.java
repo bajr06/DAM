@@ -1,4 +1,4 @@
-package Programacion.Java.Practica_9;
+// package Programacion.Java.Practica_9;
 
 import java.util.Scanner;
 
