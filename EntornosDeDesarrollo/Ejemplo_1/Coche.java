@@ -5,7 +5,7 @@
 
 //package P1;
 
-public class Coche(){
+public class Coche {
 	private String Marca;
 	private String Modelo;
 	private int Potencia;
