@@ -1,0 +1,29 @@
+@startuml
+class Universidad {
+	+nombre : String;
+	+profesor : ArrayList<Profesor>;
+	+estudiantes : ArrayList<Estudiante>;
+	+agregarProfesor(profesor : Profesor) : void;
+	+agregarEstudiante(estudiante Estudiante) : void;
+	+mostrarMiembros() : void;
+}
+
+class Profesor {
+	+nombre : String;
+	+impartir(cusos : Curso) : void;
+}
+
+class Estudiante {
+	+nombre : String;
+	+registrarCurso(cursos : Curso) : void;
+}
+
+class Curso {
+	+nombre : String;
+}
+
+Profesor --|> Universidad;
+Estudiante --|> Universidad;
+Profesor --> Curso;
+Estudiante --> Curso;
+@enduml

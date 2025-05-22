@@ -1,0 +1,34 @@
+@startuml
+class Empleado {
+	+nombre : String;
+	+salario : double;
+   
+	+mostrarInfo() : void;
+}
+
+class Gerente {
+	+departamento : String;
+
+	+supervisar() : void;
+}
+
+class Departamento {
+	+nombre : String;
+	+empleados : ArrayList<Empleado>;
+
+	+agregarEmpleado(empleado : Empleado) : void;
+	+mostrarEmpleado() : void;
+}
+
+class Empresa {
+	+nombre : String;
+	+departamentos : ArrayList<Departamento>;
+	
+	+agregarDepartamento() : void;
+	+mostrarDepartamentos() : void;
+}
+
+Gerente --|> Empleado;
+Departamento "1" *-- "muchos" Empleado;
+Empresa "1..*" -- Departamento;
+@enduml
