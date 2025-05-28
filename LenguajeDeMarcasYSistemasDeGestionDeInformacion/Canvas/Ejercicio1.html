@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Canvas </title>
+		<style>
+			canvas {
+				border: 1px solid black;
+			}
+		</style>
+		<script>
+			function pintar() {
+				var a = canvas.getContext("2d");
+
+				a.fillStyle = "rgb(255, 0, 0)";
+				a.fillRect(100, 100, 50, 50);
+				a.strokeStyle = "rgb(255, 0, 0)"
+				a.strokeRect(200, 200, 50, 50);
+			}
+		</script>
+	</head>
+
+	<body onload="pintar()">
+		<canvas id="canvas", width="300" height="300"> </canvas>
+	</body>
+</html>
