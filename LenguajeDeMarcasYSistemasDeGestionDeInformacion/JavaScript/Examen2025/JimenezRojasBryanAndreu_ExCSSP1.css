@@ -1,0 +1,9 @@
+#tabla1, tr, td {
+    border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#tabla2, tr, td {
+    border: 1px solid black;
+	border-collapse: collapse;
+}

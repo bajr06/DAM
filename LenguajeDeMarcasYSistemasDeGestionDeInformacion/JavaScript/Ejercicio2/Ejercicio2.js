@@ -63,7 +63,7 @@ function ahorcado(event) {
 		event.target.disabled = true;
 	}
 
-	document.getElementById("resultado").textContent = Letras adivinadas: ${contador};
+	document.getElementById("resultado").textContent = `Letras adivinadas: ${contador}`;
 }
 
 
@@ -99,6 +99,8 @@ function carga() {
 
 	/* Ejercicio 5 */
 	let palabraSeleccionada = generarPalabra();
+	console.log(palabraSeleccionada);
+	
 	let letras = document.querySelectorAll(".ejercicio5");
 
 	letras.forEach(botonesLetras => botonesLetras.addEventListener("click", ahorcado));

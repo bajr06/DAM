@@ -37,7 +37,7 @@ function color(event) {
 	document.getElementById(id).style.background = color;
 }
 
-function ejercicio2(event) {
+function ejercicio2() {
 	let casillas= document.querySelectorAll(".casilla");
 
 	casillas.forEach(casilla=>casilla.addEventListener("mouseover", color));
@@ -118,7 +118,7 @@ function carga() {
 	//ejercicio1();
 
 	// Ejercicio 2
-	//ejercicio2();
+	ejercicio2();
 
 	// Ejercicio 3
 	let elemento1 = document.getElementById("palabra1");
