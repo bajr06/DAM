@@ -1,4 +1,5 @@
 let matrizColores=[[0,0],[0,0]];
+
 function verificacion(respuesta) {
 	const reGexp = /^[a-zA-Z]+$/;
 	
@@ -31,7 +32,8 @@ function color(event) {
 	let color2=aleatorio(255);
 	let color3=aleatorio(255);
 	console.log(id);
-	matrizColores[id[0]][id[1]]=color1+","+color2+","+color3;
+
+	matrizColores[id[0]][id[1]] = color1 + ", " + color2 + ", " + color3;
 	let color = `rgb(${aleatorio(255)}, ${aleatorio(255)}, ${aleatorio(255)})`;
 
 	document.getElementById(id).style.background = color;

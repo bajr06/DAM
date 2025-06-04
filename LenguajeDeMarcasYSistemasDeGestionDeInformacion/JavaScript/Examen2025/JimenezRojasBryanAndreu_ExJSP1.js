@@ -127,6 +127,8 @@ function ejercicio4() {
 			cambiarColor(valor);
 			valor -= 9;
 		}
+
+		document.getElementById("boton5").addEventListener("click", () => clearInterval(cuenta));
 	}, 1000);
 
 }
