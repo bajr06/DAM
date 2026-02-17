@@ -84,7 +84,7 @@ function ejercicio4() {
     let numero = document.getElementById("numero4").value;
     let tabla4 = document.querySelectorAll("#tabla4 td");
 
-    document.querySelector(".valor4").textContent = numero;
+    document.getElementById("valor4").textContent = numero;
 
     for(let i = 0; i < tabla4.length; i++) {
         document.getElementById(`${i}`).textContent = numero * i;
