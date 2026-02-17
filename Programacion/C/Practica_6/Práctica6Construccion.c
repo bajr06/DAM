@@ -126,6 +126,7 @@ int main(/* int argc, char **argv*/){
 	int escoger, buscar1, buscar2, stock, buscat;
 	char escritor[MAX_NOMBRE];
 
+	libro * libros = (libro *)malloc(MAX_LIBROS*sizeof(libro));
 	// Creamos la variable con tipo de dato libro, que contenga los 40 libros con sus correspondientes datos.
 	inicializarLibro(1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICCION, 10);
 	inicializarLibro(2, "1984", "George Orwell", 12.49, FICCION, 5);
@@ -182,7 +183,7 @@ int main(/* int argc, char **argv*/){
 	switch(escoger){
 		case 1:
 			// Pasa por cada uno de los libros guardado en el array.
-				mostrarLibreria(&libros[0] + i); 
+				//mostrarLibreria(&libros[0] + i); 
 				// mostrarLibro(libros + i); // Es lo mismo, porque empieza de manera predeterminada en el 0,.
 			break;
 		case 2:
